@@ -21,7 +21,7 @@
 import Foundation
 import SwiftUI
 
-class FileInfo: Identifiable, ObservableObject {    
+class FileInfo: NSObject, Identifiable, ObservableObject, PasteboardObject {    
     
     // MARK: - Public Properties
     
@@ -41,12 +41,19 @@ class FileInfo: Identifiable, ObservableObject {
     public private(set) var modifiedAt: String
     @Published
     public private(set) var sizeInBytes: Int64
+    public var url: URL {
+        URL(fileURLWithPath: self.parent.appendingPathComponent(self.name))
+    }
     public var size: String {
         if !isDirectory {
             return FileInfo.byteCountFormatter.string(fromByteCount: sizeInBytes)
         } else {
             return "---"
         }
+    }
+    public var isApplication: Bool {
+        return NSWorkspace.shared.isFilePackage(atPath: self.parent.appendingPathComponent(self.name))
+                && self.name.hasSuffix("app")
     }
     
     

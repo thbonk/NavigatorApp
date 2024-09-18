@@ -6,7 +6,7 @@
 	<integer>11</integer>
 	<key>logs</key>
 	<dict>
-		<key>0FE3ED81-F42F-434A-B9D0-5168115986BA</key>
+		<key>03ACAB59-831D-491C-9ACE-1B478BDEB7DA</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -15,7 +15,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>0FE3ED81-F42F-434A-B9D0-5168115986BA.xcactivitylog</string>
+			<string>03ACAB59-831D-491C-9ACE-1B478BDEB7DA.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -40,15 +40,15 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747779873.04451299</real>
+			<real>748374123.840114</real>
 			<key>timeStoppedRecording</key>
-			<real>747779873.27441597</real>
+			<real>748374125.11073697</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>0FE3ED81-F42F-434A-B9D0-5168115986BA</string>
+			<string>03ACAB59-831D-491C-9ACE-1B478BDEB7DA</string>
 		</dict>
-		<key>564FB9CB-550B-4E61-A643-F99C6532896B</key>
+		<key>07DD9DA2-1186-465E-B600-B1F982547107</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -57,17 +57,17 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>564FB9CB-550B-4E61-A643-F99C6532896B.xcactivitylog</string>
+			<string>07DD9DA2-1186-465E-B600-B1F982547107.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
 			<dict>
 				<key>highLevelStatus</key>
-				<string>S</string>
+				<string>E</string>
 				<key>totalNumberOfAnalyzerIssues</key>
 				<integer>0</integer>
 				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
@@ -82,15 +82,15 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747772101.04800999</real>
+			<real>748295980.82809997</real>
 			<key>timeStoppedRecording</key>
-			<real>747772103.55055106</real>
+			<real>748295981.30235195</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>564FB9CB-550B-4E61-A643-F99C6532896B</string>
+			<string>07DD9DA2-1186-465E-B600-B1F982547107</string>
 		</dict>
-		<key>6769AA62-2C43-4B1F-B4B3-3E518A459E9E</key>
+		<key>0912E47C-B261-4EF6-9DE9-5A028F96FC1E</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -99,49 +99,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>6769AA62-2C43-4B1F-B4B3-3E518A459E9E.xcactivitylog</string>
-			<key>hasPrimaryLog</key>
-			<true/>
-			<key>primaryObservable</key>
-			<dict>
-				<key>highLevelStatus</key>
-				<string>S</string>
-				<key>totalNumberOfAnalyzerIssues</key>
-				<integer>0</integer>
-				<key>totalNumberOfErrors</key>
-				<integer>0</integer>
-				<key>totalNumberOfTestFailures</key>
-				<integer>0</integer>
-				<key>totalNumberOfWarnings</key>
-				<integer>0</integer>
-			</dict>
-			<key>schemeIdentifier-containerName</key>
-			<string>Navigator project</string>
-			<key>schemeIdentifier-schemeName</key>
-			<string>Navigator</string>
-			<key>schemeIdentifier-sharedScheme</key>
-			<integer>1</integer>
-			<key>signature</key>
-			<string>Build Navigator</string>
-			<key>timeStartedRecording</key>
-			<real>747778993.22048795</real>
-			<key>timeStoppedRecording</key>
-			<real>747778994.27316594</real>
-			<key>title</key>
-			<string>Build Navigator</string>
-			<key>uniqueIdentifier</key>
-			<string>6769AA62-2C43-4B1F-B4B3-3E518A459E9E</string>
-		</dict>
-		<key>8E5742E1-4403-471A-893D-F58830E1F5D5</key>
-		<dict>
-			<key>className</key>
-			<string>IDEActivityLogSection</string>
-			<key>documentTypeString</key>
-			<string>&lt;nil&gt;</string>
-			<key>domainType</key>
-			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
-			<key>fileName</key>
-			<string>8E5742E1-4403-471A-893D-F58830E1F5D5.xcactivitylog</string>
+			<string>0912E47C-B261-4EF6-9DE9-5A028F96FC1E.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -155,7 +113,7 @@
 				<key>totalNumberOfTestFailures</key>
 				<integer>0</integer>
 				<key>totalNumberOfWarnings</key>
-				<integer>2</integer>
+				<integer>4</integer>
 			</dict>
 			<key>schemeIdentifier-containerName</key>
 			<string>Navigator project</string>
@@ -166,15 +124,15 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747779620.42884004</real>
+			<real>748281296.17911303</real>
 			<key>timeStoppedRecording</key>
-			<real>747779621.19841802</real>
+			<real>748281297.15282297</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>8E5742E1-4403-471A-893D-F58830E1F5D5</string>
+			<string>0912E47C-B261-4EF6-9DE9-5A028F96FC1E</string>
 		</dict>
-		<key>C5372D41-3D52-4BC3-8D69-AC2F42958A19</key>
+		<key>0B4EED22-9C00-4993-AA43-D398C0574037</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -183,7 +141,175 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>C5372D41-3D52-4BC3-8D69-AC2F42958A19.xcactivitylog</string>
+			<string>0B4EED22-9C00-4993-AA43-D398C0574037.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748295523.96599901</real>
+			<key>timeStoppedRecording</key>
+			<real>748295524.80605602</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>0B4EED22-9C00-4993-AA43-D398C0574037</string>
+		</dict>
+		<key>0BEE5709-05BE-4316-A56C-7947F5DDCB39</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0BEE5709-05BE-4316-A56C-7947F5DDCB39.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748295068.35518003</real>
+			<key>timeStoppedRecording</key>
+			<real>748295069.05101299</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>0BEE5709-05BE-4316-A56C-7947F5DDCB39</string>
+		</dict>
+		<key>10548DE8-52ED-42AE-AC3D-395AD17A202F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>10548DE8-52ED-42AE-AC3D-395AD17A202F.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281582.99706805</real>
+			<key>timeStoppedRecording</key>
+			<real>748281583.79872096</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>10548DE8-52ED-42AE-AC3D-395AD17A202F</string>
+		</dict>
+		<key>10FD07B0-93DB-4BCF-A5DB-80BC592A8BBF</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>10FD07B0-93DB-4BCF-A5DB-80BC592A8BBF.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281696.01366496</real>
+			<key>timeStoppedRecording</key>
+			<real>748281696.99843502</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>10FD07B0-93DB-4BCF-A5DB-80BC592A8BBF</string>
+		</dict>
+		<key>11AFA11B-EE20-4287-AE54-89F2C5DBA4F8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>11AFA11B-EE20-4287-AE54-89F2C5DBA4F8.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -208,15 +334,15 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747779861.78236496</real>
+			<real>748325418.18861699</real>
 			<key>timeStoppedRecording</key>
-			<real>747779862.56355202</real>
+			<real>748325419.36458302</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>C5372D41-3D52-4BC3-8D69-AC2F42958A19</string>
+			<string>11AFA11B-EE20-4287-AE54-89F2C5DBA4F8</string>
 		</dict>
-		<key>C87FF052-3BE9-4255-95D8-82FE3A98E7E7</key>
+		<key>17161528-2DEC-4240-AE59-93CFD3928388</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -225,7 +351,49 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>C87FF052-3BE9-4255-95D8-82FE3A98E7E7.xcactivitylog</string>
+			<string>17161528-2DEC-4240-AE59-93CFD3928388.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281520.47318494</real>
+			<key>timeStoppedRecording</key>
+			<real>748281521.26600695</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>17161528-2DEC-4240-AE59-93CFD3928388</string>
+		</dict>
+		<key>234DEEDE-6C60-4DA3-9D85-2A3D271BD877</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>234DEEDE-6C60-4DA3-9D85-2A3D271BD877.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -250,15 +418,15 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747779250.02130795</real>
+			<real>748296248.24864101</real>
 			<key>timeStoppedRecording</key>
-			<real>747779251.19740403</real>
+			<real>748296249.93296897</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>C87FF052-3BE9-4255-95D8-82FE3A98E7E7</string>
+			<string>234DEEDE-6C60-4DA3-9D85-2A3D271BD877</string>
 		</dict>
-		<key>DB2B980A-5FE7-4664-95ED-2E926A136F03</key>
+		<key>2AAF007F-7AD1-4CB0-9708-EAABDC69B5E1</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -267,7 +435,133 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>DB2B980A-5FE7-4664-95ED-2E926A136F03.xcactivitylog</string>
+			<string>2AAF007F-7AD1-4CB0-9708-EAABDC69B5E1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748295563.16343606</real>
+			<key>timeStoppedRecording</key>
+			<real>748295563.95831501</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>2AAF007F-7AD1-4CB0-9708-EAABDC69B5E1</string>
+		</dict>
+		<key>32863E03-295A-413A-9F80-AA4A26802115</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>32863E03-295A-413A-9F80-AA4A26802115.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748295115.84911001</real>
+			<key>timeStoppedRecording</key>
+			<real>748295116.72385001</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>32863E03-295A-413A-9F80-AA4A26802115</string>
+		</dict>
+		<key>332E5867-8381-4793-A7EC-1DF06FEEA7C5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>332E5867-8381-4793-A7EC-1DF06FEEA7C5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>3</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748296548.64630604</real>
+			<key>timeStoppedRecording</key>
+			<real>748296549.34692502</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>332E5867-8381-4793-A7EC-1DF06FEEA7C5</string>
+		</dict>
+		<key>3BAA6835-00F8-4731-BCD4-3D80ECCC81E0</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>3BAA6835-00F8-4731-BCD4-3D80ECCC81E0.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -292,15 +586,15 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747778793.474406</real>
+			<real>748325126.55230498</real>
 			<key>timeStoppedRecording</key>
-			<real>747778798.41740501</real>
+			<real>748325127.90694404</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>DB2B980A-5FE7-4664-95ED-2E926A136F03</string>
+			<string>3BAA6835-00F8-4731-BCD4-3D80ECCC81E0</string>
 		</dict>
-		<key>E29D389E-19EF-4823-AA15-2148E0BCFDEE</key>
+		<key>42D67BC9-DB3A-4C64-AFBC-50DDFB02E082</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -309,7 +603,7 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>E29D389E-19EF-4823-AA15-2148E0BCFDEE.xcactivitylog</string>
+			<string>42D67BC9-DB3A-4C64-AFBC-50DDFB02E082.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -334,15 +628,15 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747770609.35842299</real>
+			<real>748325139.84731698</real>
 			<key>timeStoppedRecording</key>
-			<real>747770610.050565</real>
+			<real>748325139.92873394</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>E29D389E-19EF-4823-AA15-2148E0BCFDEE</string>
+			<string>42D67BC9-DB3A-4C64-AFBC-50DDFB02E082</string>
 		</dict>
-		<key>F635DDD3-7757-4087-90BD-AC16C0A5F815</key>
+		<key>466A4E9C-2AD3-4E8D-A03A-1B129206431E</key>
 		<dict>
 			<key>className</key>
 			<string>IDEActivityLogSection</string>
@@ -351,7 +645,91 @@
 			<key>domainType</key>
 			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
 			<key>fileName</key>
-			<string>F635DDD3-7757-4087-90BD-AC16C0A5F815.xcactivitylog</string>
+			<string>466A4E9C-2AD3-4E8D-A03A-1B129206431E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748295246.29517996</real>
+			<key>timeStoppedRecording</key>
+			<real>748295247.11365998</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>466A4E9C-2AD3-4E8D-A03A-1B129206431E</string>
+		</dict>
+		<key>4825017F-8487-4411-B5DB-A73DFCD0AB37</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>4825017F-8487-4411-B5DB-A73DFCD0AB37.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748295275.81189406</real>
+			<key>timeStoppedRecording</key>
+			<real>748295276.55500996</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>4825017F-8487-4411-B5DB-A73DFCD0AB37</string>
+		</dict>
+		<key>49620965-EBC0-40ED-8118-117FDAA5959F</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>49620965-EBC0-40ED-8118-117FDAA5959F.xcactivitylog</string>
 			<key>hasPrimaryLog</key>
 			<true/>
 			<key>primaryObservable</key>
@@ -376,13 +754,1525 @@
 			<key>signature</key>
 			<string>Build Navigator</string>
 			<key>timeStartedRecording</key>
-			<real>747779746.12399006</real>
+			<real>748325696.19829595</real>
 			<key>timeStoppedRecording</key>
-			<real>747779746.91175497</real>
+			<real>748325697.39356101</real>
 			<key>title</key>
 			<string>Build Navigator</string>
 			<key>uniqueIdentifier</key>
-			<string>F635DDD3-7757-4087-90BD-AC16C0A5F815</string>
+			<string>49620965-EBC0-40ED-8118-117FDAA5959F</string>
+		</dict>
+		<key>55770EB3-106C-4F8B-9707-9F0F26A1DFBD</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>55770EB3-106C-4F8B-9707-9F0F26A1DFBD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748294853.74612796</real>
+			<key>timeStoppedRecording</key>
+			<real>748294855.13832998</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>55770EB3-106C-4F8B-9707-9F0F26A1DFBD</string>
+		</dict>
+		<key>55D621A0-897C-4758-8050-54F8023D76ED</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>55D621A0-897C-4758-8050-54F8023D76ED.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748296582.86743402</real>
+			<key>timeStoppedRecording</key>
+			<real>748296583.36946905</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>55D621A0-897C-4758-8050-54F8023D76ED</string>
+		</dict>
+		<key>5C15E7AF-4595-486B-8E32-8D841DDE0833</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>5C15E7AF-4595-486B-8E32-8D841DDE0833.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748373841.66706204</real>
+			<key>timeStoppedRecording</key>
+			<real>748373841.73862398</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>5C15E7AF-4595-486B-8E32-8D841DDE0833</string>
+		</dict>
+		<key>62517675-0176-47DE-B516-95E714C8A25E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>62517675-0176-47DE-B516-95E714C8A25E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748296271.56252503</real>
+			<key>timeStoppedRecording</key>
+			<real>748296272.36932695</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>62517675-0176-47DE-B516-95E714C8A25E</string>
+		</dict>
+		<key>777A25B0-A15B-45CC-9DA0-C4D765E847F7</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>777A25B0-A15B-45CC-9DA0-C4D765E847F7.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325093.45611894</real>
+			<key>timeStoppedRecording</key>
+			<real>748325094.86499798</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>777A25B0-A15B-45CC-9DA0-C4D765E847F7</string>
+		</dict>
+		<key>77DA35BA-54C9-41A6-9469-19D43D2AABBC</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>77DA35BA-54C9-41A6-9469-19D43D2AABBC.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325652.76768899</real>
+			<key>timeStoppedRecording</key>
+			<real>748325654.189363</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>77DA35BA-54C9-41A6-9469-19D43D2AABBC</string>
+		</dict>
+		<key>7F714005-78AC-499E-999B-73ABACC36D4A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>7F714005-78AC-499E-999B-73ABACC36D4A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281833.03606498</real>
+			<key>timeStoppedRecording</key>
+			<real>748281833.86109197</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>7F714005-78AC-499E-999B-73ABACC36D4A</string>
+		</dict>
+		<key>852B580E-0C09-4FBB-B5F8-7A6D9CE473C4</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>852B580E-0C09-4FBB-B5F8-7A6D9CE473C4.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748297501.09298301</real>
+			<key>timeStoppedRecording</key>
+			<real>748297502.71778405</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>852B580E-0C09-4FBB-B5F8-7A6D9CE473C4</string>
+		</dict>
+		<key>865B0C79-69C8-43FF-B37B-06479E8F459B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>865B0C79-69C8-43FF-B37B-06479E8F459B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325508.83048499</real>
+			<key>timeStoppedRecording</key>
+			<real>748325510.12229395</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>865B0C79-69C8-43FF-B37B-06479E8F459B</string>
+		</dict>
+		<key>8C01C329-B9DD-4358-A158-5495D92050B9</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>8C01C329-B9DD-4358-A158-5495D92050B9.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748373793.28361106</real>
+			<key>timeStoppedRecording</key>
+			<real>748373794.50941598</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>8C01C329-B9DD-4358-A158-5495D92050B9</string>
+		</dict>
+		<key>94C3157E-5A52-491B-A458-14A8EDF6FF0E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>94C3157E-5A52-491B-A458-14A8EDF6FF0E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281459.55960202</real>
+			<key>timeStoppedRecording</key>
+			<real>748281460.489784</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>94C3157E-5A52-491B-A458-14A8EDF6FF0E</string>
+		</dict>
+		<key>95FA66D0-E0B6-4128-BD02-1E63A3373578</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>95FA66D0-E0B6-4128-BD02-1E63A3373578.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748373335.33842599</real>
+			<key>timeStoppedRecording</key>
+			<real>748373336.68180001</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>95FA66D0-E0B6-4128-BD02-1E63A3373578</string>
+		</dict>
+		<key>9682E9A0-271E-4C01-AA2F-8ED995F60CC1</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>9682E9A0-271E-4C01-AA2F-8ED995F60CC1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325833.480106</real>
+			<key>timeStoppedRecording</key>
+			<real>748325834.68473995</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>9682E9A0-271E-4C01-AA2F-8ED995F60CC1</string>
+		</dict>
+		<key>968660FB-3C46-4E7E-BA01-0EA671E3640B</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>968660FB-3C46-4E7E-BA01-0EA671E3640B.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325521.13961196</real>
+			<key>timeStoppedRecording</key>
+			<real>748325521.22501504</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>968660FB-3C46-4E7E-BA01-0EA671E3640B</string>
+		</dict>
+		<key>A1049FD3-EB56-4D6F-88DD-3DE2B928C5D7</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A1049FD3-EB56-4D6F-88DD-3DE2B928C5D7.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748296216.06023395</real>
+			<key>timeStoppedRecording</key>
+			<real>748296217.12502098</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>A1049FD3-EB56-4D6F-88DD-3DE2B928C5D7</string>
+		</dict>
+		<key>A1601542-B40A-49C0-9C90-D6B8F46C3B9A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A1601542-B40A-49C0-9C90-D6B8F46C3B9A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748373123.78655803</real>
+			<key>timeStoppedRecording</key>
+			<real>748373125.02264202</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>A1601542-B40A-49C0-9C90-D6B8F46C3B9A</string>
+		</dict>
+		<key>A56A2B60-EC10-4B25-8FE1-6092637FC836</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A56A2B60-EC10-4B25-8FE1-6092637FC836.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748283030.80852497</real>
+			<key>timeStoppedRecording</key>
+			<real>748283032.02173495</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>A56A2B60-EC10-4B25-8FE1-6092637FC836</string>
+		</dict>
+		<key>A939EBFB-3D43-4A58-BFE6-D21AA5EF7463</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A939EBFB-3D43-4A58-BFE6-D21AA5EF7463.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325717.05249798</real>
+			<key>timeStoppedRecording</key>
+			<real>748325718.25149</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>A939EBFB-3D43-4A58-BFE6-D21AA5EF7463</string>
+		</dict>
+		<key>AB4172F8-297A-44BC-95A8-E2FE5F6A0EB3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>AB4172F8-297A-44BC-95A8-E2FE5F6A0EB3.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748372995.14223301</real>
+			<key>timeStoppedRecording</key>
+			<real>748372996.44847906</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>AB4172F8-297A-44BC-95A8-E2FE5F6A0EB3</string>
+		</dict>
+		<key>B0E49A7C-4DE3-44A9-89BC-E35463957451</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B0E49A7C-4DE3-44A9-89BC-E35463957451.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325744.50952399</real>
+			<key>timeStoppedRecording</key>
+			<real>748325744.58141398</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>B0E49A7C-4DE3-44A9-89BC-E35463957451</string>
+		</dict>
+		<key>BA275593-BAF4-42ED-B6C0-128E583B70F8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>BA275593-BAF4-42ED-B6C0-128E583B70F8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748283163.59474599</real>
+			<key>timeStoppedRecording</key>
+			<real>748283164.54460704</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>BA275593-BAF4-42ED-B6C0-128E583B70F8</string>
+		</dict>
+		<key>C630C968-6E0E-4283-994D-81B97E003CD4</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C630C968-6E0E-4283-994D-81B97E003CD4.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748099063.94085503</real>
+			<key>timeStoppedRecording</key>
+			<real>748099064.69514501</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>C630C968-6E0E-4283-994D-81B97E003CD4</string>
+		</dict>
+		<key>C717BFA3-8D71-4174-AF93-68CBA9932CED</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C717BFA3-8D71-4174-AF93-68CBA9932CED.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325271.74460495</real>
+			<key>timeStoppedRecording</key>
+			<real>748325271.81362295</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>C717BFA3-8D71-4174-AF93-68CBA9932CED</string>
+		</dict>
+		<key>C90375FF-697F-4192-AB37-6F4A601219B8</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C90375FF-697F-4192-AB37-6F4A601219B8.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748373606.13852894</real>
+			<key>timeStoppedRecording</key>
+			<real>748373607.41127598</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>C90375FF-697F-4192-AB37-6F4A601219B8</string>
+		</dict>
+		<key>CD3D7179-BD82-491A-B362-0C12D08942D5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CD3D7179-BD82-491A-B362-0C12D08942D5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748297732.421013</real>
+			<key>timeStoppedRecording</key>
+			<real>748297733.40959203</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>CD3D7179-BD82-491A-B362-0C12D08942D5</string>
+		</dict>
+		<key>CDED7530-4695-4E93-94DD-86192431EFEA</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>CDED7530-4695-4E93-94DD-86192431EFEA.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325729.14855301</real>
+			<key>timeStoppedRecording</key>
+			<real>748325730.40483999</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>CDED7530-4695-4E93-94DD-86192431EFEA</string>
+		</dict>
+		<key>D01AEA70-C45D-473B-BAFA-C9C0613AD1A5</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D01AEA70-C45D-473B-BAFA-C9C0613AD1A5.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748373204.29819202</real>
+			<key>timeStoppedRecording</key>
+			<real>748373204.37609696</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>D01AEA70-C45D-473B-BAFA-C9C0613AD1A5</string>
+		</dict>
+		<key>D2D92E1D-3881-4A94-ADAB-8F78A42C81FF</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D2D92E1D-3881-4A94-ADAB-8F78A42C81FF.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281382.95885599</real>
+			<key>timeStoppedRecording</key>
+			<real>748281383.91226804</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>D2D92E1D-3881-4A94-ADAB-8F78A42C81FF</string>
+		</dict>
+		<key>D71DC138-BB6F-4A74-98DF-B877BC8518F7</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D71DC138-BB6F-4A74-98DF-B877BC8518F7.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748295057.01225805</real>
+			<key>timeStoppedRecording</key>
+			<real>748295057.95712101</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>D71DC138-BB6F-4A74-98DF-B877BC8518F7</string>
+		</dict>
+		<key>D8F6581E-00EF-4F2D-8801-8109E61EE9FC</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D8F6581E-00EF-4F2D-8801-8109E61EE9FC.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325850.75654805</real>
+			<key>timeStoppedRecording</key>
+			<real>748325850.83015394</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>D8F6581E-00EF-4F2D-8801-8109E61EE9FC</string>
+		</dict>
+		<key>DA984F67-47C5-4C70-ADDA-88D765BCAA9A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>DA984F67-47C5-4C70-ADDA-88D765BCAA9A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748294863.21419704</real>
+			<key>timeStoppedRecording</key>
+			<real>748294863.43621099</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>DA984F67-47C5-4C70-ADDA-88D765BCAA9A</string>
+		</dict>
+		<key>DA9BC867-3473-455C-A793-55ABC4DE537E</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>DA9BC867-3473-455C-A793-55ABC4DE537E.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281230.31257701</real>
+			<key>timeStoppedRecording</key>
+			<real>748281241.06824803</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>DA9BC867-3473-455C-A793-55ABC4DE537E</string>
+		</dict>
+		<key>E0A3148E-C829-422B-8804-53B13B9CF2AD</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E0A3148E-C829-422B-8804-53B13B9CF2AD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748373027.12312198</real>
+			<key>timeStoppedRecording</key>
+			<real>748373027.82673097</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>E0A3148E-C829-422B-8804-53B13B9CF2AD</string>
+		</dict>
+		<key>E5EFC7E6-478C-4F17-968D-76A52ADD74B7</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E5EFC7E6-478C-4F17-968D-76A52ADD74B7.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>4</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748281723.06625795</real>
+			<key>timeStoppedRecording</key>
+			<real>748281723.79169703</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>E5EFC7E6-478C-4F17-968D-76A52ADD74B7</string>
+		</dict>
+		<key>EAFEAC22-432A-4AF1-BFF0-0E262A0B3543</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>EAFEAC22-432A-4AF1-BFF0-0E262A0B3543.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748296455.55870295</real>
+			<key>timeStoppedRecording</key>
+			<real>748296456.71756005</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>EAFEAC22-432A-4AF1-BFF0-0E262A0B3543</string>
+		</dict>
+		<key>F8F17E41-2902-4630-A1EB-84456425B214</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>F8F17E41-2902-4630-A1EB-84456425B214.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748325239.25526595</real>
+			<key>timeStoppedRecording</key>
+			<real>748325240.44577003</real>
+			<key>title</key>
+			<string>Build Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>F8F17E41-2902-4630-A1EB-84456425B214</string>
 		</dict>
 	</dict>
 </dict>

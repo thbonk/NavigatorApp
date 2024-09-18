@@ -1,8 +1,8 @@
 //
-//  String+Identifiable.swift
+//  KeyboardShortcut.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 10.09.24.
+//  Created by Thomas Bonk on 12.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,23 @@
 //  limitations under the License.
 //
 
-import Foundation
+import SwiftUI
 
-extension String: @retroactive Identifiable {
-    public var id: Int {
-        return self.hashValue
+struct KeyboardShortcut: View {
+    
+    // MARK: - Public Properties
+    
+    var body: some View {
+        Button(title) {
+            action()
+        }
+        .frame(width: 0, height: 0)
+        .keyboardShortcut(key, modifiers: modifiers)
+        .hidden()
     }
+    
+    let title: LocalizedStringKey
+    let key: KeyEquivalent
+    let modifiers: EventModifiers
+    let action: () -> Void
 }

@@ -1,8 +1,8 @@
 //
-//  NavigatorApp.swift
+//  CommandRegistry.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 06.09.24.
+//  Created by Thomas Bonk on 14.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,29 +18,34 @@
 //  limitations under the License.
 //
 
-import Causality
-import SwiftUI
+import Foundation
 
-@main
-struct NavigatorApp: App {
+class CommandRegistry: ObservableObject, Equatable {
     
     // MARK: - Public Properties
     
-    var body: some Scene {
-        WindowGroup(id: "navigator.view", for: String.self) { path in
-            ContentView(path: path.wrappedValue ?? FileManager.default.userHomeDirectoryPath)
-                .environmentObject(Causality.Bus(label: "\(self)-\(UUID())"))
-                .environmentObject(pasteboard)
-                .environmentObject(commandRegistry)
-        }
+    @Published
+    public private(set) var commands: Set<Command> = Set()
+    
+    
+    // MARK: - Public Methods
+    
+    func add(command: Command) {
+        self.commands.insert(command)
+    }
+    
+    func add(contentsOf cmds: [Command]) {
+        cmds.forEach { self.commands.insert($0) }
+    }
+    
+    func remove(command: Command) {
+        self.commands.remove(command)
     }
     
     
-    // MARK: - Private Properties
+    // MARK: - Equatable
     
-    @StateObject
-    private var commandRegistry = CommandRegistry()
-    
-    @StateObject
-    private var pasteboard = Pasteboard()
+    static func == (lhs: CommandRegistry, rhs: CommandRegistry) -> Bool {
+        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
 }

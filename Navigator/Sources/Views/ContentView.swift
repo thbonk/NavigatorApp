@@ -26,15 +26,18 @@ struct ContentView: View {
     // MARK: - Public Properties
     
     var body: some View {
-        NavigationSplitView {
-            SidebarView().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
-        } content: {
-            DirectoryView(path: $path).frame(minWidth: 400, idealWidth: 400, maxWidth: .infinity)
-        } detail: {
-            InfoView().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
+        ShortcutEnabled {
+            NavigationSplitView {
+                SidebarView().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
+            } content: {
+                DirectoryView(path: $path).frame(minWidth: 400, idealWidth: 400, maxWidth: .infinity)
+            } detail: {
+                InfoView().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
+            }
+            .onAppear(perform: self.subscribeEvents)
+            .onDisappear(perform: self.unsubscribeEvents)
         }
-        .onAppear(perform: self.subscribeEvents)
-        .onDisappear(perform: self.unsubscribeEvents)
+        .commandPanel(Shortcut("p", modifiers: [.shift, .command]), commands: [])
     }
     
     

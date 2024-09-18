@@ -1,8 +1,8 @@
 //
-//  String+Identifiable.swift
+//  ShortcutEnabled.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 10.09.24.
+//  Created by Thomas Bonk on 13.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,25 @@
 //  limitations under the License.
 //
 
-import Foundation
+import SwiftUI
 
-extension String: @retroactive Identifiable {
-    public var id: Int {
-        return self.hashValue
+struct ShortcutEnabled<Content: View>: View {
+    
+    // MARK: - Public Properties
+    
+    var body: some View {
+        content()
+    }
+    
+    
+    // MARK: - Private Properties
+    
+    private var content: () -> Content
+    
+    
+    // MARK: - Initialization
+    
+    public init(@ViewBuilder _ content: @escaping () -> Content) {
+        self.content = content
     }
 }

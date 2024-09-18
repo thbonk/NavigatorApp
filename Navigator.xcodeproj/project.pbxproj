@@ -60,12 +60,21 @@
 		E91EC2272C90E0C700CBF246 /* ShowAlertEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EC2262C90E0C700CBF246 /* ShowAlertEvent.swift */; };
 		E91EC2292C914E2700CBF246 /* FileManager+ConvenienceMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EC2282C914E2700CBF246 /* FileManager+ConvenienceMethods.swift */; };
 		E91EC22D2C92326D00CBF246 /* FloatingFilter in Frameworks */ = {isa = PBXBuildFile; productRef = E91EC22C2C92326D00CBF246 /* FloatingFilter */; };
+		E92FB96E2C99E29A00B6F640 /* FileManager+observeDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB96D2C99E29A00B6F640 /* FileManager+observeDirectory.swift */; };
+		E92FB9762C9A1B2400B6F640 /* Pasteboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB9752C9A1B2400B6F640 /* Pasteboard.swift */; };
 		E96079482C8B0A8400A7A500 /* NavigatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96079472C8B0A8400A7A500 /* NavigatorApp.swift */; };
 		E960794A2C8B0A8400A7A500 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96079492C8B0A8400A7A500 /* ContentView.swift */; };
 		E960794C2C8B0A8500A7A500 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E960794B2C8B0A8500A7A500 /* Assets.xcassets */; };
 		E960794F2C8B0A8500A7A500 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E960794E2C8B0A8500A7A500 /* Preview Assets.xcassets */; };
 		E960795F2C8C2AF700A7A500 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960795E2C8C2AF700A7A500 /* SidebarView.swift */; };
 		E96079612C8C2BD300A7A500 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96079602C8C2BD300A7A500 /* InfoView.swift */; };
+		E9E462DC2C93802A00F71683 /* KeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */; };
+		E9E462E12C944C8300F71683 /* ShortcutEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */; };
+		E9E462E32C95724200F71683 /* LocalizedStringKey+stringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E22C95724200F71683 /* LocalizedStringKey+stringKey.swift */; };
+		E9E462E72C95734E00F71683 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E62C95734E00F71683 /* Shortcut.swift */; };
+		E9E462E92C95738C00F71683 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E82C95738C00F71683 /* Command.swift */; };
+		E9E462EB2C95757400F71683 /* CommandPanel+ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462EA2C95757400F71683 /* CommandPanel+ViewModifier.swift */; };
+		E9E462ED2C9597B100F71683 /* CommandRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462EC2C9597B100F71683 /* CommandRegistry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +130,8 @@
 		E91EC2262C90E0C700CBF246 /* ShowAlertEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlertEvent.swift; sourceTree = "<group>"; };
 		E91EC2282C914E2700CBF246 /* FileManager+ConvenienceMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+ConvenienceMethods.swift"; sourceTree = "<group>"; };
 		E91EC22A2C92172E00CBF246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E92FB96D2C99E29A00B6F640 /* FileManager+observeDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+observeDirectory.swift"; sourceTree = "<group>"; };
+		E92FB9752C9A1B2400B6F640 /* Pasteboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pasteboard.swift; sourceTree = "<group>"; };
 		E96079442C8B0A8400A7A500 /* Navigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96079472C8B0A8400A7A500 /* NavigatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorApp.swift; sourceTree = "<group>"; };
 		E96079492C8B0A8400A7A500 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +140,13 @@
 		E96079502C8B0A8500A7A500 /* Navigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Navigator.entitlements; sourceTree = "<group>"; };
 		E960795E2C8C2AF700A7A500 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E96079602C8C2BD300A7A500 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcut.swift; sourceTree = "<group>"; };
+		E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEnabled.swift; sourceTree = "<group>"; };
+		E9E462E22C95724200F71683 /* LocalizedStringKey+stringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+stringKey.swift"; sourceTree = "<group>"; };
+		E9E462E62C95734E00F71683 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
+		E9E462E82C95738C00F71683 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		E9E462EA2C95757400F71683 /* CommandPanel+ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommandPanel+ViewModifier.swift"; sourceTree = "<group>"; };
+		E9E462EC2C9597B100F71683 /* CommandRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRegistry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +303,7 @@
 			children = (
 				E91EC21B2C90D73400CBF246 /* Causality */,
 				E91EC21E2C90DAEF00CBF246 /* Foundation */,
+				E9E462E42C95726C00F71683 /* SwiftUI */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,9 +319,10 @@
 		E91EC21E2C90DAEF00CBF246 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E91EC2282C914E2700CBF246 /* FileManager+ConvenienceMethods.swift */,
+				E92FB96D2C99E29A00B6F640 /* FileManager+observeDirectory.swift */,
 				E91EC21F2C90DB1300CBF246 /* String+pathOperations.swift */,
 				E91EC2212C90DFE000CBF246 /* String+Identifiable.swift */,
-				E91EC2282C914E2700CBF246 /* FileManager+ConvenienceMethods.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -314,6 +334,14 @@
 				E91EC2262C90E0C700CBF246 /* ShowAlertEvent.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		E92FB9742C9A1AE400B6F640 /* ObservableObjects */ = {
+			isa = PBXGroup;
+			children = (
+				E92FB9752C9A1B2400B6F640 /* Pasteboard.swift */,
+			);
+			path = ObservableObjects;
 			sourceTree = "<group>";
 		};
 		E960793B2C8B0A8400A7A500 = {
@@ -360,6 +388,7 @@
 				E91EC2232C90E07800CBF246 /* Events */,
 				E91EC2142C90D46100CBF246 /* Extensions */,
 				E91EC20B2C8E366000CBF246 /* GlobalModels */,
+				E92FB9742C9A1AE400B6F640 /* ObservableObjects */,
 				E96079582C8B0BAA00A7A500 /* Views */,
 			);
 			path = Sources;
@@ -369,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				E96079472C8B0A8400A7A500 /* NavigatorApp.swift */,
+				E9E462EC2C9597B100F71683 /* CommandRegistry.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -380,6 +410,7 @@
 				E91EC1A82C8D9C4400CBF246 /* DirectoryView.swift */,
 				E96079602C8C2BD300A7A500 /* InfoView.swift */,
 				E960795E2C8C2AF700A7A500 /* SidebarView.swift */,
+				E9E462DA2C93800400F71683 /* Reusable */,
 				E91EC1AA2C8DA04700CBF246 /* ViewRepresentables */,
 			);
 			path = Views;
@@ -393,6 +424,34 @@
 				E960794D2C8B0A8500A7A500 /* Preview Content */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		E9E462DA2C93800400F71683 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */,
+				E9E462E52C95730500F71683 /* ShortcutEnabled */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		E9E462E42C95726C00F71683 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				E9E462E22C95724200F71683 /* LocalizedStringKey+stringKey.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		E9E462E52C95730500F71683 /* ShortcutEnabled */ = {
+			isa = PBXGroup;
+			children = (
+				E9E462E82C95738C00F71683 /* Command.swift */,
+				E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */,
+				E9E462E62C95734E00F71683 /* Shortcut.swift */,
+				E9E462EA2C95757400F71683 /* CommandPanel+ViewModifier.swift */,
+			);
+			path = ShortcutEnabled;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,7 +487,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					E96079432C8B0A8400A7A500 = {
 						CreatedOnToolsVersion = 15.4;
@@ -481,11 +540,14 @@
 				E91EC1F22C8E34E400CBF246 /* MarcoIntLiteralNode.swift in Sources */,
 				E91EC1DF2C8E34E400CBF246 /* MarcoArray.swift in Sources */,
 				E91EC1E92C8E34E400CBF246 /* AsExtensions.swift in Sources */,
+				E9E462E12C944C8300F71683 /* ShortcutEnabled.swift in Sources */,
 				E91EC1F92C8E34E400CBF246 /* CollectionUtil.swift in Sources */,
 				E96079612C8C2BD300A7A500 /* InfoView.swift in Sources */,
 				E91EC1E72C8E34E400CBF246 /* MarcoStringLiteral.swift in Sources */,
 				E91EC1FC2C8E34E400CBF246 /* MarcoKeyValuePairNode.swift in Sources */,
 				E91EC1FF2C8E34E400CBF246 /* MarcoParser.swift in Sources */,
+				E9E462E32C95724200F71683 /* LocalizedStringKey+stringKey.swift in Sources */,
+				E9E462ED2C9597B100F71683 /* CommandRegistry.swift in Sources */,
 				E91EC1ED2C8E34E400CBF246 /* MarcoVisitor.swift in Sources */,
 				E91EC1F02C8E34E400CBF246 /* MarcoDoubleLiteralNode.swift in Sources */,
 				E91EC1F62C8E34E400CBF246 /* MarcoStringLiteralNode.swift in Sources */,
@@ -493,6 +555,7 @@
 				E91EC1EB2C8E34E400CBF246 /* Marco.swift in Sources */,
 				E91EC1AC2C8DA06100CBF246 /* PathView.swift in Sources */,
 				E91EC1E62C8E34E400CBF246 /* MarcoObject.swift in Sources */,
+				E9E462E92C95738C00F71683 /* Command.swift in Sources */,
 				E91EC1EE2C8E34E400CBF246 /* NumberExtensions.swift in Sources */,
 				E91EC2062C8E34E400CBF246 /* ToJsonVisitor.swift in Sources */,
 				E91EC1F32C8E34E400CBF246 /* MarcoBoolLiteralNode.swift in Sources */,
@@ -512,6 +575,7 @@
 				E91EC1EC2C8E34E400CBF246 /* MarcoParsingError.swift in Sources */,
 				E91EC2222C90DFE000CBF246 /* String+Identifiable.swift in Sources */,
 				E91EC1FA2C8E34E400CBF246 /* MarcoArrayNode.swift in Sources */,
+				E9E462E72C95734E00F71683 /* Shortcut.swift in Sources */,
 				E91EC1E32C8E34E400CBF246 /* MarcoIntLiteral.swift in Sources */,
 				E91EC1FB2C8E34E400CBF246 /* MarcoDocumentNode.swift in Sources */,
 				E91EC1A92C8D9C4400CBF246 /* DirectoryView.swift in Sources */,
@@ -519,10 +583,14 @@
 				E91EC1F52C8E34E400CBF246 /* MarcoNullLiteralNode.swift in Sources */,
 				E91EC1FD2C8E34E400CBF246 /* MarcoObjectNode.swift in Sources */,
 				E91EC2002C8E34E400CBF246 /* MarcoParserState.swift in Sources */,
+				E92FB9762C9A1B2400B6F640 /* Pasteboard.swift in Sources */,
 				E91EC1FE2C8E34E400CBF246 /* MarcoNode.swift in Sources */,
 				E91EC1F72C8E34E400CBF246 /* MarcoStructuralElementNode.swift in Sources */,
 				E91EC2032C8E34E400CBF246 /* MinifyingVisitor.swift in Sources */,
+				E9E462DC2C93802A00F71683 /* KeyboardShortcut.swift in Sources */,
 				E91EC1EA2C8E34E400CBF246 /* Conversions.swift in Sources */,
+				E92FB96E2C99E29A00B6F640 /* FileManager+observeDirectory.swift in Sources */,
+				E9E462EB2C95757400F71683 /* CommandPanel+ViewModifier.swift in Sources */,
 				E91EC1E22C8E34E400CBF246 /* MarcoDoubleLiteral.swift in Sources */,
 				E91EC1E42C8E34E400CBF246 /* MarcoNullLiteral.swift in Sources */,
 				E91EC1F42C8E34E400CBF246 /* MarcoIdentifierNode.swift in Sources */,
@@ -569,6 +637,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -632,6 +701,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -662,6 +732,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Navigator/Preview Content\"";
 				DEVELOPMENT_TEAM = GQE994U6EG;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -690,6 +761,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Navigator/Preview Content\"";
 				DEVELOPMENT_TEAM = GQE994U6EG;
 				ENABLE_HARDENED_RUNTIME = YES;

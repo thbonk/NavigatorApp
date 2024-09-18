@@ -21,6 +21,6 @@
 import Causality
 import Foundation
 
-extension Causality.Bus: ObservableObject {
+extension Causality.Bus: @retroactive ObservableObject {
     // Empty by design
 }

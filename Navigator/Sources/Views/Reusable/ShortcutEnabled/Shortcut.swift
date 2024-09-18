@@ -1,8 +1,8 @@
 //
-//  String+Identifiable.swift
+//  Shortcut.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 10.09.24.
+//  Created by Thomas Bonk on 14.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,32 @@
 //  limitations under the License.
 //
 
-import Foundation
+import SwiftUI
 
-extension String: @retroactive Identifiable {
+public struct Shortcut: Hashable, Identifiable {
+    
+    // MARK: - Public Properties
+    
+    public private(set) var key: KeyEquivalent
+    public private(set) var modifiers: EventModifiers
+    
     public var id: Int {
         return self.hashValue
+    }
+    
+    
+    // MARK: - Initialization
+    
+    public init(_ key: KeyEquivalent, modifiers: EventModifiers = [], title: LocalizedStringKey? = nil) {
+        self.key = key
+        self.modifiers = modifiers
+    }
+    
+    
+    // MARK: - Hashable
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(key)
+        hasher.combine(modifiers.rawValue)
     }
 }

@@ -39,21 +39,26 @@ struct DirectoryView: View {
                 TableColumn("Modified At", value: \.modifiedAt)
                 TableColumn("Size", value: \.size)
             }
-            .contextMenu(forSelectionType: FileInfo.ID.self, menu: { ids in
-                //self.menuForItems(ids)
-            }, primaryAction: { ids in
-                self.openItem(ids)
-            })
-            .onChange(of: sortOrder) { _, sortOrder in
-                directoryContents.sort(using: sortOrder)
-            }
+            .contextMenu(
+                forSelectionType: FileInfo.ID.self,
+                menu: self.menuForItems(_:),
+                primaryAction: self.openItem(_:))
+            .onChange(of: sortOrder, self.sortDirectoryContents(oldSortOrder:newSortOrder:))
+            
             PathView(path: $path).padding([.horizontal, .bottom], 5)
+                .focusable(interactions: [.activate, .automatic, .edit])
         }
-        .onAppear {
-            loadDirectoryContents()
-        }
+        .onAppear(perform: self.registerCommands)
+        .onAppear(perform: self.loadDirectoryContents)
         .onChange(of: path, self.loadDirectoryContents)
         .navigationTitle(path.removingPercentEncoding ?? path)
+        .alert(isPresented: $showQuestionAlert) {
+            Alert(
+                title: questionAlertTitle,
+                message: questionAlertMessage,
+                primaryButton: questionAlertPrimaryButton,
+                secondaryButton: questionAlertSecondaryButton)
+        }
     }
     
     @Binding
@@ -65,25 +70,68 @@ struct DirectoryView: View {
     @State
     private var selectedFiles = Set<FileInfo.ID>()
     
+    private var selectedFileInfos: [FileInfo] {
+        self.directoryContents
+            .filter { fileInfo in self.selectedFiles.contains(ObjectIdentifier(fileInfo)) }
+    }
+    
     @State 
     private var sortOrder = [
         KeyPathComparator(\FileInfo.name),
-        KeyPathComparator(\FileInfo.createdAt),
         KeyPathComparator(\FileInfo.modifiedAt),
+        KeyPathComparator(\FileInfo.createdAt),
         KeyPathComparator(\FileInfo.size)
     ]
     
     @State
     private var directoryContents: [FileInfo] = []
     
+    @State
+    private var directoryObserver: Cancellable?
+    
+    @State
+    private var showQuestionAlert: Bool = false
+    @State
+    private var questionAlertTitle: Text!
+    @State
+    private var questionAlertMessage: Text!
+    @State
+    private var questionAlertPrimaryButton: Alert.Button!
+    @State
+    private var questionAlertSecondaryButton: Alert.Button!
+    
+    
     @EnvironmentObject
     private var eventBus: Causality.Bus
+    
+    @EnvironmentObject
+    private var commandRegistry: CommandRegistry
+    
+    @EnvironmentObject
+    private var pasteboard: Pasteboard
     
     @Environment(\.openWindow)
     private var openWindow
     
     
     // MARK: - Private Methods
+    
+    private func registerCommands() {
+        commandRegistry.add(command: Command(
+            Shortcut(.upArrow, modifiers: [.command]), title: "Go up", action: self.goUp))
+        commandRegistry.add(command: Command(
+            Shortcut("c", modifiers: [.command]), title: "Copy", action: self.copySelectedFiles))
+        commandRegistry.add(command: Command(
+            Shortcut("x", modifiers: [.command]), title: "Cut", action: self.cutSelectedFiles))
+        commandRegistry.add(command: Command(
+            Shortcut("v", modifiers: [.command]), title: "Paste", action: self.pasteFiles))
+        commandRegistry.add(command: Command(
+            Shortcut(.delete, modifiers: []), title: "Move to Trash", action: self.deleteSelectedFiles))
+        commandRegistry.add(command: Command(
+            Shortcut(.delete, modifiers: [.option]), title: "Delete", action: self.deleteSelectedFilesFinally))
+        commandRegistry.add(command: Command(
+            Shortcut("r", modifiers: [.command]), title: "Refresh", action: self.loadDirectoryContents))
+    }
     
     private func loadDirectoryContents() {
         Task {
@@ -92,15 +140,51 @@ struct DirectoryView: View {
     }
     
     private func loadDirectoryContentsAsync() async {
+        self.directoryObserver?.cancel()
+        
         if let contents = try? FileManager.default.contentsOfDirectory(atPath: path, withHiddenFiles: false) {
             directoryContents.removeAll()
-            directoryContents.append(contentsOf: contents)
+            
+            let filesInPasteboard = Set(self.pasteboard.readObjects(asType: FileInfo.self).map({ $0.url }))
+            
+            directoryContents.append(contentsOf: contents.filter({ fi in
+                if self.pasteboard.operation == .cut {
+                    return !filesInPasteboard.contains(fi.url)
+                }
+                return true
+            }))
         }
+        
+        self.directoryObserver = FileManager
+            .default
+            .observeDirectory(self.path.fileUrl, callback: self.loadDirectoryContents)
     }
     
-    private func menuForItems(_ ids: Set<FileInfo.ID>) {
+    private func sortDirectoryContents(oldSortOrder: [KeyPathComparator<FileInfo>],
+                                       newSortOrder: [KeyPathComparator<FileInfo>]) {
         
+        directoryContents.sort(using: newSortOrder)
     }
+    
+    @ViewBuilder private func menuForItems(_ ids: Set<FileInfo.ID>) -> some View {
+        EmptyView()
+    }
+    
+    private func showQuestion(
+        title: Text,
+        message: Text? = nil,
+        primaryButton: Alert.Button,
+        secondaryButton: Alert.Button) {
+        
+        self.questionAlertTitle = title
+        self.questionAlertMessage = message
+        self.questionAlertPrimaryButton = primaryButton
+        self.questionAlertSecondaryButton = secondaryButton
+        self.showQuestionAlert = true
+    }
+    
+    
+    // MARK: - Action Handlers
     
     private func openItem(_ ids: Set<FileInfo.ID>) {
         let severalDirectoriesSelected = directoryContents
@@ -112,15 +196,96 @@ struct DirectoryView: View {
             .forEach { fileInfo in
                 let tempPath = path.appendingPathComponent(fileInfo.name)
                 
-                if fileInfo.isDirectory {
+                if fileInfo.isDirectory && !fileInfo.isApplication {
                     if severalDirectoriesSelected {
                         openWindow(id: "navigator.view", value: tempPath)
                     } else {
-                        path = tempPath
+                        self.path = tempPath
                     }
                 } else {
                     NSWorkspace.shared.open(path.appendingPathComponent(fileInfo.name).fileUrl)
                 }
             }
+    }
+    
+    private func goUp() {
+        self.path = self.path.deletingLastPathComponent
+    }
+    
+    private func copySelectedFiles() {
+        if !self.selectedFiles.isEmpty {
+            self.pasteboard.writeObjects(self.selectedFileInfos, operation: .copy)
+        }
+    }
+    
+    private func cutSelectedFiles() {
+        if !self.selectedFiles.isEmpty {
+            self.pasteboard.writeObjects(self.selectedFileInfos, operation: .cut)
+            self.loadDirectoryContents()
+        }
+    }
+    
+    private func pasteFiles() {
+        let fileInfos = self.pasteboard.readObjects(asType: FileInfo.self)
+        
+        fileInfos.forEach { fileInfo in
+            do {
+                switch self.pasteboard.operation {
+                case .copy:
+                    try FileManager
+                        .default
+                        .copyItem(
+                            at: fileInfo.url,
+                            to: self.path.appendingPathComponent(fileInfo.name).fileUrl)
+                    break
+                    
+                case .cut:
+                    try FileManager
+                        .default
+                        .moveItem(
+                            at: fileInfo.url,
+                            to: self.path.appendingPathComponent(fileInfo.name).fileUrl)
+                    self.pasteboard.clear()
+                    break
+                    
+                default:
+                    break
+                }
+                
+            } catch {
+                // TODO error handling
+            }
+        }
+    }
+    
+    private func deleteSelectedFiles() {
+        self.showQuestion(
+            title: Text("Do you want to move the selected files to the bin?"),
+            primaryButton: .default(Text("Yes"), action: {
+                let fileManager = FileManager.default
+                
+                self.selectedFileInfos
+                    .forEach { fileInfo in
+                        try? fileManager.trashItem(at: fileInfo.url, resultingItemURL: nil)
+                    }
+                
+                self.loadDirectoryContents()
+            }), secondaryButton: .cancel())
+    }
+    
+    private func deleteSelectedFilesFinally() {
+        self.showQuestion(
+            title: Text("Do you want to delete the selected files?"),
+            message: Text("There is no undo!"),
+            primaryButton: .default(Text("Yes"), action: {
+                let fileManager = FileManager.default
+                
+                self.selectedFileInfos
+                    .forEach { fileInfo in
+                        try? fileManager.removeItem(at: fileInfo.url)
+                    }
+                
+                self.loadDirectoryContents()
+            }), secondaryButton: .cancel())
     }
 }
