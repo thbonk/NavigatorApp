@@ -28,16 +28,19 @@ struct DirectoryView: View {
     
     var body: some View {
         VStack {
-            Table(directoryContents, selection: $selectedFiles, sortOrder: $sortOrder) {
+            Table(directoryContents, selection: $selectedFiles, sortOrder: $sortOrder, columnCustomization: $columnCustomization) {
                 TableColumn("Name", value: \.name) { fileInfo in
                     HStack {
                         fileInfo.icon.resizable().frame(width: 24, height: 24)
                         Text(fileInfo.name)
                     }
-                }
+                }.customizationID("name-column")
                 TableColumn("Created At", value: \.createdAt)
+                    .customizationID("created-at-column")
                 TableColumn("Modified At", value: \.modifiedAt)
+                    .customizationID("modified-at-column")
                 TableColumn("Size", value: \.size)
+                    .customizationID("size-column")
             }
             .contextMenu(
                 forSelectionType: FileInfo.ID.self,
@@ -66,6 +69,9 @@ struct DirectoryView: View {
     
     
     // MARK: - Private Properties
+    
+    @AppStorage("DirectoryView.columnCustomization")
+    private var columnCustomization: TableColumnCustomization<FileInfo>
     
     @State
     private var selectedFiles = Set<FileInfo.ID>()
@@ -142,22 +148,27 @@ struct DirectoryView: View {
     private func loadDirectoryContentsAsync() async {
         self.directoryObserver?.cancel()
         
-        if let contents = try? FileManager.default.contentsOfDirectory(atPath: path, withHiddenFiles: false) {
-            directoryContents.removeAll()
+        if FileManager.default.isReadableFile(atPath: path) {
+            if let contents = try? FileManager.default.contentsOfDirectory(atPath: path, withHiddenFiles: false) {
+                directoryContents.removeAll()
+                
+                let filesInPasteboard = Set(self.pasteboard.readObjects(asType: FileInfo.self).map({ $0.url }))
+                
+                directoryContents.append(contentsOf: contents.filter({ fi in
+                    if self.pasteboard.operation == .cut {
+                        return !filesInPasteboard.contains(fi.url)
+                    }
+                    return true
+                }))
+            }
             
-            let filesInPasteboard = Set(self.pasteboard.readObjects(asType: FileInfo.self).map({ $0.url }))
-            
-            directoryContents.append(contentsOf: contents.filter({ fi in
-                if self.pasteboard.operation == .cut {
-                    return !filesInPasteboard.contains(fi.url)
-                }
-                return true
-            }))
+            self.directoryObserver = FileManager
+                .default
+                .observeDirectory(self.path.fileUrl, callback: self.loadDirectoryContents)
+        } else {
+            // TODO Show error: No access or file does not exist.
+            path = path.deletingLastPathComponent
         }
-        
-        self.directoryObserver = FileManager
-            .default
-            .observeDirectory(self.path.fileUrl, callback: self.loadDirectoryContents)
     }
     
     private func sortDirectoryContents(oldSortOrder: [KeyPathComparator<FileInfo>],

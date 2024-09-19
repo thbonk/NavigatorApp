@@ -67,6 +67,128 @@
 			<key>uniqueIdentifier</key>
 			<string>019419B4-032C-4F99-8673-60588979919E</string>
 		</dict>
+		<key>05B5DAA5-A660-4A14-89DF-29EA9B36D57F</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>5ED70BC9-88EC-4A2F-8DE6-0724DC11ACD7</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-50-12-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748468212.31301296</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>05B5DAA5-A660-4A14-89DF-29EA9B36D57F</string>
+		</dict>
+		<key>08359A1F-CA27-4914-BF05-924B45728C5A</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>8D35EE2B-1766-4A82-BAE2-2871A77A8B34</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_22-01-10-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748468870.67965996</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>08359A1F-CA27-4914-BF05-924B45728C5A</string>
+		</dict>
 		<key>08EEF41C-2465-4706-A615-04D0161A84CD</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -433,6 +555,128 @@
 			<key>uniqueIdentifier</key>
 			<string>194DAABF-DF7A-43B5-BD05-61486E7C7CF1</string>
 		</dict>
+		<key>20D8490E-8825-473F-9821-89A66B01C0FA</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>79732C97-4738-4589-8087-9C9FE9CA7167</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-53-31-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748468411.08984196</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>20D8490E-8825-473F-9821-89A66B01C0FA</string>
+		</dict>
+		<key>246C2EC3-3876-47CD-BE17-9EF67B33D9E9</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>D240BDD6-61B3-403F-84BE-3C3352F06C57</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-40-51-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381251.21331203</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>246C2EC3-3876-47CD-BE17-9EF67B33D9E9</string>
+		</dict>
 		<key>250B51CA-9177-4D14-AC50-86A11C3F40D2</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -493,6 +737,67 @@
 			<string>Run Navigator</string>
 			<key>uniqueIdentifier</key>
 			<string>250B51CA-9177-4D14-AC50-86A11C3F40D2</string>
+		</dict>
+		<key>2AA648A4-5F18-407A-B787-9811FC442E44</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>94B838B9-C1CC-4320-8627-2279516D5547</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-30-06-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748467006.94421697</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>2AA648A4-5F18-407A-B787-9811FC442E44</string>
 		</dict>
 		<key>2AD09353-9C54-48A7-9DCE-8DAEE4B51F36</key>
 		<dict>
@@ -799,6 +1104,128 @@
 			<key>uniqueIdentifier</key>
 			<string>3B6614BD-60F9-4515-B9AB-10C4E208F5FA</string>
 		</dict>
+		<key>3C6DD0DE-F1E8-4FBC-8150-4BE29B17B581</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>57B2F9D4-B127-49E2-B042-3E758201DFC3</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-22-37-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748380157.21944594</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>3C6DD0DE-F1E8-4FBC-8150-4BE29B17B581</string>
+		</dict>
+		<key>400B66BB-E711-43D0-BFA2-295770D78B6F</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>F518FDC5-B628-4913-88F2-DEC2D49E579F</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-33-16-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748467196.23195696</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>400B66BB-E711-43D0-BFA2-295770D78B6F</string>
+		</dict>
 		<key>43830261-66CB-44F0-917C-D6EA4A0BCDF8</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -921,6 +1348,128 @@
 			<key>uniqueIdentifier</key>
 			<string>4EBB109C-8974-466C-811A-35DA2D818B67</string>
 		</dict>
+		<key>504CE309-AF8F-44A8-93A9-47FCC168F8B8</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>91310068-FF66-4D92-B456-BF871ECFBF41</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-39-17-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381157.98182201</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>504CE309-AF8F-44A8-93A9-47FCC168F8B8</string>
+		</dict>
+		<key>54280F21-2A1B-4F6E-8EF1-9D17D8F92EBA</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>BA2BCDE8-2A35-483E-8331-9AF8CF58E595</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-39-36-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381176.96961498</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>54280F21-2A1B-4F6E-8EF1-9D17D8F92EBA</string>
+		</dict>
 		<key>577B2D4D-590D-4199-BFD4-BCE7E97CFE7E</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -981,6 +1530,67 @@
 			<string>Run Navigator</string>
 			<key>uniqueIdentifier</key>
 			<string>577B2D4D-590D-4199-BFD4-BCE7E97CFE7E</string>
+		</dict>
+		<key>60F448E3-915C-436A-B614-B9FFC374AF16</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>AE00685E-4C12-4790-93C2-0168C9E0ABD1</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-58-22-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748468702.26643395</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>60F448E3-915C-436A-B614-B9FFC374AF16</string>
 		</dict>
 		<key>64D6B0F6-6C46-4B29-AEDF-CD0456ED5CF3</key>
 		<dict>
@@ -1531,6 +2141,67 @@
 			<key>uniqueIdentifier</key>
 			<string>7C563B52-A751-475F-AE28-AF09678886AF</string>
 		</dict>
+		<key>7D005A0C-2426-4EAD-9D8C-47E5EB4F8A5C</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>A16C2280-B493-4E82-A86E-385CC71B82E0</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-25-21-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748466721.46126699</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>7D005A0C-2426-4EAD-9D8C-47E5EB4F8A5C</string>
+		</dict>
 		<key>7E8F1CA9-3477-4C53-88A3-603177527B95</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -1652,6 +2323,67 @@
 			<string>Run Navigator</string>
 			<key>uniqueIdentifier</key>
 			<string>863F1653-3258-4E17-A200-86A40B205F7B</string>
+		</dict>
+		<key>9468671C-0146-4971-AF94-AF79C4ACAC83</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>3FD6B4AE-0C49-412C-AD05-48D60A24CD2F</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-22-22-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748380142.78929996</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>9468671C-0146-4971-AF94-AF79C4ACAC83</string>
 		</dict>
 		<key>98435EDF-B34C-4EC7-8C83-1FB56B5B2E80</key>
 		<dict>
@@ -1835,6 +2567,128 @@
 			<string>Run Navigator</string>
 			<key>uniqueIdentifier</key>
 			<string>99DF2233-C752-4F06-B454-C4FC902FE5D5</string>
+		</dict>
+		<key>9DA7FB2F-58C0-4B95-BEA7-1D43EB08FD64</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>606B0B58-7F23-4AFA-B8D1-8E34A6E87803</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-24-07-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748380247.45348299</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>9DA7FB2F-58C0-4B95-BEA7-1D43EB08FD64</string>
+		</dict>
+		<key>9DD83246-920F-4879-8DE8-2B7FB468E432</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>AF2CF0CB-A70A-457A-96AC-18F304BC9814</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-42-54-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381374.59040201</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>9DD83246-920F-4879-8DE8-2B7FB468E432</string>
 		</dict>
 		<key>9FEB0B6B-EB76-4CF9-BC7B-8C875D2CCDAB</key>
 		<dict>
@@ -2385,6 +3239,311 @@
 			<key>uniqueIdentifier</key>
 			<string>C396E53F-4E88-44D1-AF65-6A1101D10CDC</string>
 		</dict>
+		<key>C5D78DEC-E3AE-477A-B229-FB5F1AF5510E</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>3121CA79-2350-4D9F-9B09-75E3D2023751</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>2</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-24-28-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748466668.72813106</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>C5D78DEC-E3AE-477A-B229-FB5F1AF5510E</string>
+		</dict>
+		<key>C86E26E6-8F8B-4490-ABB9-88FC3E581662</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>485407E3-4110-4691-83CB-E09517A1E8A2</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-25-34-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748380334.03343403</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>C86E26E6-8F8B-4490-ABB9-88FC3E581662</string>
+		</dict>
+		<key>D92D83ED-87E1-4964-9103-5948268146F5</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>9BDBEC19-4E03-4854-9730-B57413A58BC1</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-37-29-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381049.87357497</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>D92D83ED-87E1-4964-9103-5948268146F5</string>
+		</dict>
+		<key>DB291C1B-8580-4F4E-9A9E-E4446EC23E66</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>BEC44BC7-CFAE-4210-BB8E-CFAA49396F09</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-43-09-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381389.80673599</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>DB291C1B-8580-4F4E-9A9E-E4446EC23E66</string>
+		</dict>
+		<key>DC08FA53-F948-4B30-8C6E-F227EC04D353</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>544015CD-9134-4833-839C-F5F584E27FEE</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-24-20-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748380260.00435901</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>DC08FA53-F948-4B30-8C6E-F227EC04D353</string>
+		</dict>
 		<key>DEAA0EC1-687D-44D6-9442-99247DDF3C2A</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -2445,6 +3604,67 @@
 			<string>Run Navigator</string>
 			<key>uniqueIdentifier</key>
 			<string>DEAA0EC1-687D-44D6-9442-99247DDF3C2A</string>
+		</dict>
+		<key>DECED4B2-7ED1-49A5-91AF-F7A940546ADB</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>AF49CA17-8643-4574-8917-F0F9EB5E3C6D</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-29-51-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>1</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748466991.99857795</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>DECED4B2-7ED1-49A5-91AF-F7A940546ADB</string>
 		</dict>
 		<key>DFF6A3C5-1833-45F9-A3AB-87B5C8157ECF</key>
 		<dict>
@@ -2568,6 +3788,67 @@
 			<key>uniqueIdentifier</key>
 			<string>E17E80A6-71B8-4A24-925C-6F761EEDC035</string>
 		</dict>
+		<key>E3BF4AEB-2F38-4DAF-9719-32A1BA4A26E3</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>2D180EF6-5184-4967-8F26-E2B64BFC1200</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.19_21-33-26-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>1</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748467206.52416503</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>E3BF4AEB-2F38-4DAF-9719-32A1BA4A26E3</string>
+		</dict>
 		<key>F02B118A-98EA-4C82-B160-24DBDA079D16</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -2690,6 +3971,67 @@
 			<key>uniqueIdentifier</key>
 			<string>F13B9684-2587-4C93-BCD8-9334E284FC22</string>
 		</dict>
+		<key>F798C887-C359-49C8-A479-B9547DDCC293</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>9EA14F25-8BE5-49FB-A831-DBA23C08E078</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-37-48-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381068.09889603</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>F798C887-C359-49C8-A479-B9547DDCC293</string>
+		</dict>
 		<key>FE551F15-FAC1-4025-8812-5A7818CC66AB</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -2811,6 +4153,67 @@
 			<string>Run Navigator</string>
 			<key>uniqueIdentifier</key>
 			<string>FE61DC4B-9139-4252-A9A9-5DCD3107C0DE</string>
+		</dict>
+		<key>FF63EFE7-A318-4E5F-BB07-179CE8E62935</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>21A6E675-184C-46E8-A5DD-AC0367B491C1</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.18_21-40-24-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748381224.135131</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>FF63EFE7-A318-4E5F-BB07-179CE8E62935</string>
 		</dict>
 	</dict>
 </dict>

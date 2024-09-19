@@ -22,8 +22,8 @@ import Combine
 import Foundation
 
 extension FileManager {
-    public func observeDirectory(_ directory: URL, callback: @escaping () -> Void) -> Cancellable {
-        return DirectoryObserver(URL: directory, block: callback)
+    public func observeDirectory(_ directory: URL, callback: @escaping () -> Void) -> Cancellable? {
+        return DirectoryObserver(url: directory, block: callback)
     }
 }
 
@@ -37,25 +37,28 @@ private class DirectoryObserver: Cancellable {
     
     // MARK: - Initialization
     
-    init(URL: URL, block: @escaping ()->Void) {
+    init?(url: URL, block: @escaping () -> Void) {
+        self.fileDescriptor = open(url.path, O_EVTONLY)
+        
+        guard
+            self.fileDescriptor >= 0
+        else {
+            return nil
+        }
 
-      self.fileDescriptor = open(URL.path, O_EVTONLY)
-      self.source = DispatchSource.makeFileSystemObjectSource(fileDescriptor: self.fileDescriptor, eventMask: .all, queue: DispatchQueue.global())
-      self.source.setEventHandler {
+        self.source = DispatchSource.makeFileSystemObjectSource(fileDescriptor: self.fileDescriptor, eventMask: .all, queue: DispatchQueue.global())
+        self.source.setEventHandler {
           block()
-      }
-      self.source.resume()
+        }
+        self.source.resume()
     }
     
     
     // MARK: - Cancellable
 
     func cancel() {
-
       self.source.cancel()
       close(fileDescriptor)
     }
-
-    
 
 }
