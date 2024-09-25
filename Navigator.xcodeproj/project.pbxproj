@@ -78,6 +78,7 @@
 		E960794F2C8B0A8500A7A500 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E960794E2C8B0A8500A7A500 /* Preview Assets.xcassets */; };
 		E960795F2C8C2AF700A7A500 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960795E2C8C2AF700A7A500 /* SidebarView.swift */; };
 		E96079612C8C2BD300A7A500 /* InfoSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96079602C8C2BD300A7A500 /* InfoSideBar.swift */; };
+		E9D3BE682CA45EAD0004296F /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = E9D3BE672CA45EAD0004296F /* CHANGELOG.md */; };
 		E9E462DC2C93802A00F71683 /* KeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */; };
 		E9E462E12C944C8300F71683 /* ShortcutEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */; };
 		E9E462E32C95724200F71683 /* LocalizedStringKey+stringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E22C95724200F71683 /* LocalizedStringKey+stringKey.swift */; };
@@ -160,6 +161,7 @@
 		E96079502C8B0A8500A7A500 /* Navigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Navigator.entitlements; sourceTree = "<group>"; };
 		E960795E2C8C2AF700A7A500 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E96079602C8C2BD300A7A500 /* InfoSideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSideBar.swift; sourceTree = "<group>"; };
+		E9D3BE672CA45EAD0004296F /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcut.swift; sourceTree = "<group>"; };
 		E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEnabled.swift; sourceTree = "<group>"; };
 		E9E462E22C95724200F71683 /* LocalizedStringKey+stringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+stringKey.swift"; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 		E960793B2C8B0A8400A7A500 = {
 			isa = PBXGroup;
 			children = (
+				E9D3BE672CA45EAD0004296F /* CHANGELOG.md */,
 				E91EC2072C8E357100CBF246 /* LICENSE.md */,
 				E91EC2092C8E35C800CBF246 /* README.md */,
 				E96079462C8B0A8400A7A500 /* Navigator */,
@@ -563,6 +566,7 @@
 				E91EC20A2C8E35C800CBF246 /* README.md in Resources */,
 				E960794F2C8B0A8500A7A500 /* Preview Assets.xcassets in Resources */,
 				E960794C2C8B0A8500A7A500 /* Assets.xcassets in Resources */,
+				E9D3BE682CA45EAD0004296F /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
