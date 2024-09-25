@@ -311,6 +311,67 @@
 			<key>uniqueIdentifier</key>
 			<string>0402B456-D024-40E9-98C8-70E98655B6CB</string>
 		</dict>
+		<key>04B3E785-BBEE-45BC-92EB-E3B780BC7866</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>A212CA0B-305B-4F0D-B9C2-7F2F99A2CBDF</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>6</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.25_12-37-46-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>6</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748953466.69260299</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>04B3E785-BBEE-45BC-92EB-E3B780BC7866</string>
+		</dict>
 		<key>05B5DAA5-A660-4A14-89DF-29EA9B36D57F</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -7997,6 +8058,67 @@
 			<key>uniqueIdentifier</key>
 			<string>A3AC7E48-E74C-4B67-9EAC-DA315F842AB4</string>
 		</dict>
+		<key>A6F85F1E-7A45-4FFA-A517-679EF8530A12</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>9BFE8D73-F3F5-4789-AB0E-B7449B654852</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>6</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.25_12-28-34-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>6</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748952914.15354705</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>A6F85F1E-7A45-4FFA-A517-679EF8530A12</string>
+		</dict>
 		<key>A7FD6C10-2BFA-4BEB-A0CC-67B00EC7DF9D</key>
 		<dict>
 			<key>auxiliaryLogUniqueIdentifier</key>
@@ -9887,6 +10009,67 @@
 			<string>Run Navigator</string>
 			<key>uniqueIdentifier</key>
 			<string>CEE4354F-6FF8-4EA6-A3B9-A20B5F49AC34</string>
+		</dict>
+		<key>CFE4BD31-16DC-428F-89EC-90A222FBEB36</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>BA3BC97F-4411-4682-BCA2-09CD430FA54F</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Navigator-2024.09.25_12-32-14-+0200.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Navigator project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Navigator</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Navigator</string>
+			<key>timeStartedRecording</key>
+			<real>748953134.89053798</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Navigator</string>
+			<key>uniqueIdentifier</key>
+			<string>CFE4BD31-16DC-428F-89EC-90A222FBEB36</string>
 		</dict>
 		<key>D1BC9F8E-751E-4534-93C2-E0A5D440C4F1</key>
 		<dict>

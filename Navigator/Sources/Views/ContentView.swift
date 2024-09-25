@@ -28,11 +28,14 @@ struct ContentView: View {
     var body: some View {
         ShortcutEnabled {
             NavigationSplitView {
-                SidebarView().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
+                SidebarView()
+                    .frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
             } content: {
-                DirectoryView(path: $path).frame(minWidth: 400, idealWidth: 400, maxWidth: .infinity)
+                DirectoryView(path: $path)
+                    .frame(minWidth: 600, idealWidth: 600, maxWidth: .infinity, minHeight: 600)
             } detail: {
-                InfoSideBar().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
+                InfoSideBar()
+                    .frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
             }
             .onAppear(perform: self.subscribeEvents)
             .onDisappear(perform: self.unsubscribeEvents)

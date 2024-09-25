@@ -109,7 +109,7 @@ struct CommandPanel: ViewModifier {
 
 extension ShortcutEnabled {
     
-    func commandPanel(_ shortcut: Shortcut, commands: [Command]) -> some View {
+    func commandPanel(_ shortcut: Shortcut, commands: [Command] = []) -> some View {
         modifier(CommandPanel(shortcut, commands: commands))
     }
     
