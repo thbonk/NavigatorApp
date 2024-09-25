@@ -1,8 +1,8 @@
 //
-//  NavigatorApp.swift
+//  ShowFavoriteEvent.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 06.09.24.
+//  Created by Thomas Bonk on 21.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,23 +19,16 @@
 //
 
 import Causality
-import SwiftUI
+import Foundation
 
-@main
-struct NavigatorApp: App {
+struct ShowFavorite: Causality.Message {
     
-    // MARK: - Public Properties
+    // MARK: - Properties
     
-    var body: some Scene {
-        WindowGroup(id: "navigator.view", for: String.self) { path in
-            ContentView(path: path.wrappedValue ?? FileManager.default.userHomeDirectoryPath)
-                .environmentObject(pasteboard)
-        }
-    }
+    let path: String
     
-    
-    // MARK: - Private Properties
-    
-    @StateObject
-    private var pasteboard = Pasteboard()
+}
+
+extension Events {
+    static let ShowFavoriteEvent = Causality.Event<ShowFavorite>(label: "Show contents of the favorite")
 }

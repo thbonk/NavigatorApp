@@ -1,8 +1,8 @@
 //
-//  NavigatorApp.swift
+//  EventModifiers+description.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 06.09.24.
+//  Created by Thomas Bonk on 24.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +18,30 @@
 //  limitations under the License.
 //
 
-import Causality
 import SwiftUI
 
-@main
-struct NavigatorApp: App {
+extension EventModifiers {
     
-    // MARK: - Public Properties
-    
-    var body: some Scene {
-        WindowGroup(id: "navigator.view", for: String.self) { path in
-            ContentView(path: path.wrappedValue ?? FileManager.default.userHomeDirectoryPath)
-                .environmentObject(pasteboard)
+    var description: String {
+        var modifierString = ""
+
+        if self.contains(.command) {
+            modifierString += "⌘"
         }
+        if self.contains(.option) {
+            modifierString += "⌥"
+        }
+        if self.contains(.control) {
+            modifierString += "⌃"
+        }
+        if self.contains(.shift) {
+            modifierString += "⇧"
+        }
+        if self.contains(.capsLock) {
+            modifierString += "⇪"
+        }
+
+        return modifierString
     }
     
-    
-    // MARK: - Private Properties
-    
-    @StateObject
-    private var pasteboard = Pasteboard()
 }

@@ -1,8 +1,8 @@
 //
-//  NavigatorApp.swift
+//  KeyEquivalent+description.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 06.09.24.
+//  Created by Thomas Bonk on 24.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +18,26 @@
 //  limitations under the License.
 //
 
-import Causality
 import SwiftUI
 
-@main
-struct NavigatorApp: App {
+extension KeyEquivalent: @retroactive CustomStringConvertible {
     
-    // MARK: - Public Properties
-    
-    var body: some Scene {
-        WindowGroup(id: "navigator.view", for: String.self) { path in
-            ContentView(path: path.wrappedValue ?? FileManager.default.userHomeDirectoryPath)
-                .environmentObject(pasteboard)
+    public var description: String {
+        switch self {            case .return:
+                return "⏎"
+            case .delete:
+                return "⌫"
+            case .upArrow:
+                return "↑"
+            case .downArrow:
+                return "↓"
+            case .leftArrow:
+                return "←"
+            case .rightArrow:
+                return "→"
+            default:
+            return String(self.character).localizedUppercase
         }
     }
     
-    
-    // MARK: - Private Properties
-    
-    @StateObject
-    private var pasteboard = Pasteboard()
 }

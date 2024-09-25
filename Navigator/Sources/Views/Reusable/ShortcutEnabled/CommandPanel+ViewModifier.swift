@@ -94,11 +94,11 @@ struct CommandPanel: ViewModifier {
         var items: [Item] = []
         
         items.append(contentsOf: self.commands.map { command in
-            Item(identifier: command, title: command.title.localizedString, icon: command.icon)
+            Item(identifier: command, title: command.titleWithShortcut, icon: command.icon)
         })
         
         items.append(contentsOf: (Array(commandRegistry.commands) as [Command]).map { command in
-            Item(identifier: command, title: command.title.localizedString, icon: command.icon)
+            Item(identifier: command, title: command.titleWithShortcut, icon: command.icon)
         })
         
         return items.sorted { i1, i2 in

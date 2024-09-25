@@ -19,6 +19,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension FileManager {
     
@@ -28,6 +29,36 @@ extension FileManager {
         let homePath = FileManager.default.string(withFileSystemRepresentation: home!, length: Int(strlen(home!)))
 
         return homePath
+    }
+    
+    var userHomeDirectory: FileInfo {
+        let path = userHomeDirectoryPath
+        let icon = Image(nsImage: NSWorkspace.shared.icon(forFile: path))
+        
+        return FileInfo(parent: path.deletingLastPathComponent,
+                        name: path.lastPathComponent,
+                        icon: icon,
+                        isDirectory: true,
+                        createdAt: "",
+                        modifiedAt: "",
+                        sizeInBytes: 0)
+    }
+    
+    var userDocumentDirectoryPath: String {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path
+    }
+    
+    var userDocumentDirectory: FileInfo {
+        let path = userDocumentDirectoryPath
+        let icon = Image(nsImage: NSWorkspace.shared.icon(forFile: path))
+        
+        return FileInfo(parent: path.deletingLastPathComponent,
+                        name: path.lastPathComponent,
+                        icon: icon,
+                        isDirectory: true,
+                        createdAt: "",
+                        modifiedAt: "",
+                        sizeInBytes: 0)
     }
     
     func isDirectory(path: String) -> Bool {

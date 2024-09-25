@@ -32,22 +32,34 @@ struct ContentView: View {
             } content: {
                 DirectoryView(path: $path).frame(minWidth: 400, idealWidth: 400, maxWidth: .infinity)
             } detail: {
-                InfoView().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
+                InfoSideBar().frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
             }
             .onAppear(perform: self.subscribeEvents)
             .onDisappear(perform: self.unsubscribeEvents)
         }
         .commandPanel(Shortcut("p", modifiers: [.shift, .command]), commands: [])
+        .environmentObject(commandRegistry)
+        .environmentObject(eventBus)
     }
     
     
     // MARK: - Private Properties
     
     @State
-    public var path = FileManager.default.userHomeDirectoryPath
+    public var path: String
     
-    @EnvironmentObject
-    private var eventBus: Causality.Bus
+    @State
+    private var commandRegistry = CommandRegistry()
+    
+    @State
+    private var eventBus = Causality.Bus(label: "eventBus-\(UUID())")
+    
+    
+    // MARK: - Initialization
+    
+    public init(path: String) {
+        self.path = path
+    }
     
     
     // MARK: Subscribe and unsubscribe events
@@ -59,8 +71,4 @@ struct ContentView: View {
     private func unsubscribeEvents() {
         // TODO
     }
-}
-
-#Preview {
-    ContentView()
 }

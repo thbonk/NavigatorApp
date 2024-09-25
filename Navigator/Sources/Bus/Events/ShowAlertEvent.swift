@@ -52,5 +52,5 @@ struct ShowAlertMessage: Causality.Message {
 }
 
 extension Events {
-    static let ShowAlert = Causality.Event<ShowAlertMessage>(label: "Show an alert based on the passed message")
+    static let ShowAlertEvent = Causality.Event<ShowAlertMessage>(label: "Show an alert based on the passed message")
 }

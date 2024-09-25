@@ -1,8 +1,8 @@
 //
-//  NavigatorApp.swift
+//  SelectedFileInfosState.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 06.09.24.
+//  Created by Thomas Bonk on 24.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,23 +19,12 @@
 //
 
 import Causality
-import SwiftUI
+import Foundation
 
-@main
-struct NavigatorApp: App {
-    
-    // MARK: - Public Properties
-    
-    var body: some Scene {
-        WindowGroup(id: "navigator.view", for: String.self) { path in
-            ContentView(path: path.wrappedValue ?? FileManager.default.userHomeDirectoryPath)
-                .environmentObject(pasteboard)
-        }
-    }
-    
-    
-    // MARK: - Private Properties
-    
-    @StateObject
-    private var pasteboard = Pasteboard()
+struct SelectedFileInfos: Causality.StateValue {
+    let fileInfos: [FileInfo]
+}
+
+extension States {
+    public static let SelectedFileInfosState = Causality.State<SelectedFileInfos>(label: "Selected files in the directory view")
 }

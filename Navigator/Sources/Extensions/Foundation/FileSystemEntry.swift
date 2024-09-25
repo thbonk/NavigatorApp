@@ -1,8 +1,8 @@
 //
-//  NavigatorApp.swift
+//  FileSystemEntry.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 06.09.24.
+//  Created by Thomas Bonk on 21.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +18,20 @@
 //  limitations under the License.
 //
 
-import Causality
-import SwiftUI
+import Foundation
 
-@main
-struct NavigatorApp: App {
+class FileSystemEntry: NSObject, Identifiable {
     
     // MARK: - Public Properties
     
-    var body: some Scene {
-        WindowGroup(id: "navigator.view", for: String.self) { path in
-            ContentView(path: path.wrappedValue ?? FileManager.default.userHomeDirectoryPath)
-                .environmentObject(pasteboard)
-        }
+    let path: String
+    
+    var id: String { path }
+    
+    
+    // MARK: - Initialisation
+    
+    init(path: String) {
+        self.path = path
     }
-    
-    
-    // MARK: - Private Properties
-    
-    @StateObject
-    private var pasteboard = Pasteboard()
 }

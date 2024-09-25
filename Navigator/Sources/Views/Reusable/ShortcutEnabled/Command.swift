@@ -29,6 +29,25 @@ public struct Command: Hashable, Identifiable {
     let icon: NSImage?
     let action: () -> Void
     
+    var titleWithShortcut: String {
+        guard
+            let shortcut
+        else {
+            return self.title.localizedString
+        }
+        
+        var title = self.title.localizedString
+        
+        title += " ("
+        if !shortcut.modifiers.isEmpty {
+            title += shortcut.modifiers.description + " "
+        }
+        title += shortcut.key.description
+        title += ")"
+        
+        return title
+    }
+    
     
     // MARK: - Initialization
     

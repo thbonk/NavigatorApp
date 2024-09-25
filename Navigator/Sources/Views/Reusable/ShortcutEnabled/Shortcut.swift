@@ -31,6 +31,10 @@ public struct Shortcut: Hashable, Identifiable {
         return self.hashValue
     }
     
+    public var description: String {
+        return "\(self.modifiers.description) \(self.key.description)"
+    }
+    
     
     // MARK: - Initialization
     

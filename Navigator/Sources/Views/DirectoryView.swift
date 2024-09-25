@@ -28,22 +28,33 @@ struct DirectoryView: View {
     
     var body: some View {
         VStack {
-            Table(directoryContents, selection: $selectedFiles, sortOrder: $sortOrder, columnCustomization: $columnCustomization) {
-                TableColumn("Name", value: \.name) { fileInfo in
+            Table(of: FileInfo.self,selection: $selectedFiles, sortOrder: $sortOrder, columnCustomization: $columnCustomization, columns: {
+                TableColumn("Name") { fileInfo in
                     HStack {
                         fileInfo.icon.resizable().frame(width: 24, height: 24)
                         Text(fileInfo.name)
                     }
                 }.customizationID("name-column")
-                TableColumn("Created At", value: \.createdAt)
-                    .customizationID("created-at-column")
-                TableColumn("Modified At", value: \.modifiedAt)
-                    .customizationID("modified-at-column")
-                TableColumn("Size", value: \.size)
-                    .customizationID("size-column")
-            }
+                
+                TableColumn("Created At") { fileInfo in
+                    Text(fileInfo.createdAt)
+                }.customizationID("created-at-column")
+                
+                TableColumn("Modified At") { fileInfo in
+                    Text(fileInfo.modifiedAt)
+                }.customizationID("modified-at-column")
+                
+                TableColumn("Size") { fileInfo in
+                    Text(fileInfo.size)
+                }.customizationID("size-column")
+            }, rows: {
+                ForEach(self.directoryContents) { fileInfo in
+                    TableRow(fileInfo)
+                        .draggable(fileInfo)
+                }
+            })
             .contextMenu(
-                forSelectionType: FileInfo.ID.self,
+                forSelectionType: String.self,
                 menu: self.menuForItems(_:),
                 primaryAction: self.openItem(_:))
             .onChange(of: sortOrder, self.sortDirectoryContents(oldSortOrder:newSortOrder:))
@@ -51,9 +62,12 @@ struct DirectoryView: View {
             PathView(path: $path).padding([.horizontal, .bottom], 5)
                 .focusable(interactions: [.activate, .automatic, .edit])
         }
+        .onAppear(perform: self.subscribeEvents)
+        .onDisappear(perform: self.unsubscribeEvents)
         .onAppear(perform: self.registerCommands)
         .onAppear(perform: self.loadDirectoryContents)
         .onChange(of: path, self.loadDirectoryContents)
+        .onChange(of: selectedFiles, self.updateSelectedFiles)
         .navigationTitle(path.removingPercentEncoding ?? path)
         .alert(isPresented: $showQuestionAlert) {
             Alert(
@@ -74,11 +88,11 @@ struct DirectoryView: View {
     private var columnCustomization: TableColumnCustomization<FileInfo>
     
     @State
-    private var selectedFiles = Set<FileInfo.ID>()
+    private var selectedFiles = Set<String>()
     
     private var selectedFileInfos: [FileInfo] {
         self.directoryContents
-            .filter { fileInfo in self.selectedFiles.contains(ObjectIdentifier(fileInfo)) }
+            .filter { fileInfo in self.selectedFiles.contains(fileInfo.path) }
     }
     
     @State 
@@ -118,6 +132,24 @@ struct DirectoryView: View {
     
     @Environment(\.openWindow)
     private var openWindow
+    
+    
+    // MARK: Subscribe and unsubscribe events
+    
+    @State
+    var showFavoriteEventSubscription: Causality.EventSubscription<Causality.Event<ShowFavorite>, ShowFavorite>?
+    
+    private func subscribeEvents() {
+        showFavoriteEventSubscription = eventBus.subscribe(Events.ShowFavoriteEvent) { message in
+            self.path = message.path
+        }
+    }
+    
+    private func unsubscribeEvents() {
+        if let showFavoriteEventSubscription {
+            eventBus.unsubscribe(showFavoriteEventSubscription)
+        }
+    }
     
     
     // MARK: - Private Methods
@@ -181,6 +213,12 @@ struct DirectoryView: View {
         EmptyView()
     }
     
+    private func updateSelectedFiles() {
+        eventBus
+            .set(state: States.SelectedFileInfosState,
+                 value: SelectedFileInfos(fileInfos: self.selectedFileInfos))
+    }
+    
     private func showQuestion(
         title: Text,
         message: Text? = nil,
@@ -197,13 +235,13 @@ struct DirectoryView: View {
     
     // MARK: - Action Handlers
     
-    private func openItem(_ ids: Set<FileInfo.ID>) {
+    private func openItem(_ ids: Set<String>) {
         let severalDirectoriesSelected = directoryContents
-            .filter { fileInfo in ids.contains(ObjectIdentifier(fileInfo)) }
+            .filter { fileInfo in ids.contains(fileInfo.path) }
             .filter { fileInfo in fileInfo.isDirectory }
             .count > 1
         directoryContents
-            .filter { fileInfo in ids.contains(ObjectIdentifier(fileInfo)) }
+            .filter { fileInfo in ids.contains(fileInfo.path) }
             .forEach { fileInfo in
                 let tempPath = path.appendingPathComponent(fileInfo.name)
                 

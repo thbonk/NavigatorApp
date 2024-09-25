@@ -16,6 +16,44 @@
 				<string>public.folder</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>FileInfo</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.github.thbonk.Navigator.fileInfo</string>
+			</array>
+		</dict>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>Information about a files</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>com.github.thbonk.Navigator.fileInfo</string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
+	</array>
+	<key>UTImportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeDescription</key>
+			<string>Information about a files</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>com.github.thbonk.Navigator.fileInfo</string>
+			<key>UTTypeTagSpecification</key>
+			<dict/>
+		</dict>
 	</array>
 </dict>
 </plist>

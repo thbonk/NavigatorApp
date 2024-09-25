@@ -1,8 +1,8 @@
 //
-//  NavigatorApp.swift
+//  Array+RawRepresentable.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 06.09.24.
+//  Created by Thomas Bonk on 21.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +18,24 @@
 //  limitations under the License.
 //
 
-import Causality
-import SwiftUI
+import Foundation
 
-@main
-struct NavigatorApp: App {
-    
-    // MARK: - Public Properties
-    
-    var body: some Scene {
-        WindowGroup(id: "navigator.view", for: String.self) { path in
-            ContentView(path: path.wrappedValue ?? FileManager.default.userHomeDirectoryPath)
-                .environmentObject(pasteboard)
+extension Array: @retroactive RawRepresentable where Element: Codable {
+    public init?(rawValue: String) {
+        guard let data = rawValue.data(using: .utf8),
+              let result = try? JSONDecoder().decode([Element].self, from: data)
+        else {
+            return nil
         }
+        self = result
     }
-    
-    
-    // MARK: - Private Properties
-    
-    @StateObject
-    private var pasteboard = Pasteboard()
+
+    public var rawValue: String {
+        guard let data = try? JSONEncoder().encode(self),
+              let result = String(data: data, encoding: .utf8)
+        else {
+            return "[]"
+        }
+        return result
+    }
 }
