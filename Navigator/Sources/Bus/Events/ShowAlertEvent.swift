@@ -32,4 +32,8 @@ struct ShowAlertMessage {
 
 extension Events {
     static let ShowAlertEvent = Causality.Event<ShowAlertMessage>(label: "Show an alert based on the passed message")
+    
+    static func publishShowAlertEvent(eventBus: Causality.Bus, _ alert: AlertView.Alert) {
+        eventBus.publish(event: Events.ShowAlertEvent, message: ShowAlertMessage(alert: alert))
+    }
 }
