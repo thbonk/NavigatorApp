@@ -37,12 +37,17 @@ struct ContentView: View {
                 InfoSideBar()
                     .frame(minWidth: 200, idealWidth: 200, maxWidth: .infinity)
             }
-            .onAppear(perform: self.subscribeEvents)
-            .onDisappear(perform: self.unsubscribeEvents)
         }
         .commandPanel(Shortcut("p", modifiers: [.shift, .command]), commands: [])
+        .onAppear(perform: self.subscribeEvents)
+        .onDisappear(perform: self.unsubscribeEvents)
         .environmentObject(commandRegistry)
         .environmentObject(eventBus)
+        .popover(isPresented: $showAlert) {
+            AlertView(alert: self.alert.get()) {
+                self.alert.clear()
+            }
+        }
     }
     
     
@@ -57,6 +62,14 @@ struct ContentView: View {
     @State
     private var eventBus = Causality.Bus(label: "eventBus-\(UUID())")
     
+    @State
+    var showAlertEventSubscription: Causality.EventSubscription<Causality.Event<ShowAlertMessage>, ShowAlertMessage>?
+    
+    @State
+    private var showAlert = false
+    @State
+    private var alert: ObjectReference<AlertView.Alert> = ObjectReference()
+    
     
     // MARK: - Initialization
     
@@ -68,10 +81,26 @@ struct ContentView: View {
     // MARK: Subscribe and unsubscribe events
     
     private func subscribeEvents() {
-        // TODO
+        showAlertEventSubscription = eventBus.subscribe(Events.ShowAlertEvent, handler:  self.showAlert)
     }
     
     private func unsubscribeEvents() {
-        // TODO
+        showAlertEventSubscription?.unsubscribe()
+    }
+    
+    
+    // MARK: - Private Methods
+    
+    private func showAlert(_ message: ShowAlertMessage) {
+        DispatchQueue.main.async {
+            self.alert.set(message.alert)
+            self.showAlert = true
+        }
+        /*DispatchQueue.main.async {
+            self.alert = message.alert
+        }
+        DispatchQueue.main.async {
+            self.showAlert = true
+        }*/
     }
 }

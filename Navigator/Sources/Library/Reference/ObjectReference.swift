@@ -1,8 +1,8 @@
 //
-//  ShowAlertEvent.swift
+//  ObjectReference.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 10.09.24.
+//  Created by Thomas Bonk on 27.09.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,18 +18,40 @@
 //  limitations under the License.
 //
 
-import Causality
-import Drops
 import Foundation
-import SwiftUI
 
-struct ShowAlertMessage {
+class ObjectReference<T> {
     
-    // MARK: - Properties
+    // MARK: - Public Properties
     
-    public let alert: AlertView.Alert
-}
-
-extension Events {
-    static let ShowAlertEvent = Causality.Event<ShowAlertMessage>(label: "Show an alert based on the passed message")
+    public var isEmpty: Bool {
+        return self.object == nil
+    }
+    
+    
+    // MARK: - Private Properties
+    
+    private var object: T?
+    
+    
+    // MARK: - Initialization
+    
+    init(_ object: T? = nil) {
+        self.object = object
+    }
+    
+    
+    // MARK: - API
+    
+    public func get() -> T? {
+        return self.object
+    }
+    
+    public func set(_ object: T) {
+        self.object = object
+    }
+    
+    public func clear() {
+        self.object = nil
+    }
 }

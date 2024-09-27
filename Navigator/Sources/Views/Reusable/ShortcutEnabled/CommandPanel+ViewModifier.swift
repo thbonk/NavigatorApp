@@ -28,9 +28,6 @@ struct CommandPanel: ViewModifier {
     private let shortcut: Shortcut
     private let commands: [Command]
     
-    @State
-    private var forceUpdate: Bool = true
-    
     @EnvironmentObject
     private var commandRegistry: CommandRegistry
     
@@ -64,9 +61,6 @@ struct CommandPanel: ViewModifier {
             }
             
             content
-        }
-        .onChange(of: commandRegistry.commands) { oldValue, newValue in
-            self.forceUpdate.toggle()
         }
     }
     
