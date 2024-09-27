@@ -18,39 +18,28 @@
 //  limitations under the License.
 //
 
-import AlertToast
 import Causality
+import Drops
 import Foundation
 import SwiftUI
 
-struct ShowAlertMessage: Causality.Message {
+struct ShowAlertMessage {
     
     // MARK: - Properties
     
-    let displayMode: AlertToast.DisplayMode
-    let type: AlertToast.AlertType
-    let title: LocalizedStringKey?
-    let subTitle: LocalizedStringKey?
-    let style: AlertToast.AlertStyle?
-    
-    
-    // MARK: - Initialization
-    
-    init(
-        displayMode: AlertToast.DisplayMode,
-        type: AlertToast.AlertType,
-        title: LocalizedStringKey? = nil,
-        subTitle: LocalizedStringKey? = nil,
-        style: AlertToast.AlertStyle? = nil) {
-            
-        self.displayMode = displayMode
-        self.type = type
-        self.title = title
-        self.subTitle = subTitle
-        self.style = style
-    }
+    public let alert: AlertView.Alert
 }
 
 extension Events {
     static let ShowAlertEvent = Causality.Event<ShowAlertMessage>(label: "Show an alert based on the passed message")
+    
+    static func publishShowAlertEvent(eventBus: Causality.Bus, _ alert: AlertView.Alert) {
+        eventBus.publish(event: Events.ShowAlertEvent, message: ShowAlertMessage(alert: alert))
+    }
+    
+    static func publishShowErrorAlertEvent(eventBus: Causality.Bus, title: LocalizedStringKey, error: Error) {
+        publishShowAlertEvent(
+            eventBus: eventBus,
+                .init(severity: .error, title: title, subtitle: LocalizedStringKey(error.localizedDescription)))
+    }
 }

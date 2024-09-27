@@ -27,59 +27,66 @@ struct DirectoryView: View {
     // MARK: - Public Properties
     
     var body: some View {
-        VStack {
-            Table(of: FileInfo.self,selection: $selectedFiles, sortOrder: $sortOrder, columnCustomization: $columnCustomization, columns: {
-                TableColumn("Name") { fileInfo in
-                    HStack {
-                        fileInfo.icon.resizable().frame(width: 24, height: 24)
-                        Text(fileInfo.name)
+        ShortcutEnabled {
+            VStack {
+                Table(of: FileInfo.self,selection: $selectedFiles, sortOrder: $sortOrder, columnCustomization: $columnCustomization, columns: {
+                    TableColumn("Name") { fileInfo in
+                        HStack {
+                            fileInfo.icon.resizable().frame(width: 24, height: 24)
+                            Text(fileInfo.name)
+                        }
+                    }.customizationID("name-column")
+                    
+                    TableColumn("Created At") { fileInfo in
+                        Text(fileInfo.createdAt)
+                    }.customizationID("created-at-column")
+                    
+                    TableColumn("Modified At") { fileInfo in
+                        Text(fileInfo.modifiedAt)
+                    }.customizationID("modified-at-column")
+                    
+                    TableColumn("Size") { fileInfo in
+                        Text(fileInfo.size)
+                    }.customizationID("size-column")
+                }, rows: {
+                    ForEach(self.directoryContents) { fileInfo in
+                        TableRow(fileInfo)
+                            .draggable(fileInfo)
                     }
-                }.customizationID("name-column")
+                })
+                .contextMenu(
+                    forSelectionType: String.self,
+                    menu: self.menuForItems(_:),
+                    primaryAction: self.openItem(_:))
+                .onChange(of: sortOrder, self.sortDirectoryContents(oldSortOrder:newSortOrder:))
                 
-                TableColumn("Created At") { fileInfo in
-                    Text(fileInfo.createdAt)
-                }.customizationID("created-at-column")
-                
-                TableColumn("Modified At") { fileInfo in
-                    Text(fileInfo.modifiedAt)
-                }.customizationID("modified-at-column")
-                
-                TableColumn("Size") { fileInfo in
-                    Text(fileInfo.size)
-                }.customizationID("size-column")
-            }, rows: {
-                ForEach(self.directoryContents) { fileInfo in
-                    TableRow(fileInfo)
-                        .draggable(fileInfo)
-                }
-            })
-            .contextMenu(
-                forSelectionType: String.self,
-                menu: self.menuForItems(_:),
-                primaryAction: self.openItem(_:))
-            .onChange(of: sortOrder, self.sortDirectoryContents(oldSortOrder:newSortOrder:))
-            
-            PathView(path: $path).padding([.horizontal, .bottom], 5)
-                .focusable(interactions: [.activate, .automatic, .edit])
+                PathView(path: $path).padding([.horizontal, .bottom], 5)
+                    .focusable(interactions: [.activate, .automatic, .edit])
+            }
+            .onAppear(perform: self.subscribeEvents)
+            .onDisappear(perform: self.unsubscribeEvents)
+            .onAppear(perform: self.registerCommands)
+            .onAppear(perform: self.loadDirectoryContents)
+            .onChange(of: path, self.loadDirectoryContents)
+            .onChange(of: selectedFiles, self.updateSelectedFiles)
+            .navigationTitle(path.removingPercentEncoding ?? path)
+            .alert(isPresented: $showQuestionAlert) {
+                Alert(
+                    title: questionAlertTitle,
+                    message: questionAlertMessage,
+                    primaryButton: questionAlertPrimaryButton,
+                    secondaryButton: questionAlertSecondaryButton)
+            }
         }
-        .onAppear(perform: self.subscribeEvents)
-        .onDisappear(perform: self.unsubscribeEvents)
-        .onAppear(perform: self.registerCommands)
-        .onAppear(perform: self.loadDirectoryContents)
-        .onChange(of: path, self.loadDirectoryContents)
-        .onChange(of: selectedFiles, self.updateSelectedFiles)
-        .navigationTitle(path.removingPercentEncoding ?? path)
-        .alert(isPresented: $showQuestionAlert) {
-            Alert(
-                title: questionAlertTitle,
-                message: questionAlertMessage,
-                primaryButton: questionAlertPrimaryButton,
-                secondaryButton: questionAlertSecondaryButton)
-        }
+        .openWithPanel(Shortcut("o", modifiers: [.command]), selectedFiles: $selectedFiles)
     }
     
     @Binding
-    public var path: String
+    public var path: String {
+        willSet {
+            self.selectedFiles.removeAll()
+        }
+    }
     
     
     // MARK: - Private Properties
@@ -181,7 +188,9 @@ struct DirectoryView: View {
         self.directoryObserver?.cancel()
         
         if FileManager.default.isReadableFile(atPath: path) {
-            if let contents = try? FileManager.default.contentsOfDirectory(atPath: path, withHiddenFiles: false) {
+            do {
+                let contents = try FileManager.default.contentsOfDirectory(atPath: path, withHiddenFiles: false)
+                
                 directoryContents.removeAll()
                 
                 let filesInPasteboard = Set(self.pasteboard.readObjects(asType: FileInfo.self).map({ $0.url }))
@@ -192,13 +201,21 @@ struct DirectoryView: View {
                     }
                     return true
                 }))
+                
+                self.directoryObserver = FileManager
+                    .default
+                    .observeDirectory(self.path.fileUrl, callback: self.loadDirectoryContents)
+            } catch {
+                Events.publishShowErrorAlertEvent(
+                    eventBus: eventBus,
+                    title: "Can't read contents of directory '\(self.path)'",
+                    error: error)
             }
-            
-            self.directoryObserver = FileManager
-                .default
-                .observeDirectory(self.path.fileUrl, callback: self.loadDirectoryContents)
         } else {
-            // TODO Show error: No access or file does not exist.
+            Events.publishShowAlertEvent(
+                eventBus: eventBus,
+                .init(severity: .warning,
+                      title: "The file \(path.lastPathComponent) doesn't exist or you have no access to it."))
             path = path.deletingLastPathComponent
         }
     }
@@ -249,7 +266,9 @@ struct DirectoryView: View {
                     if severalDirectoriesSelected {
                         openWindow(id: "navigator.view", value: tempPath)
                     } else {
-                        self.path = tempPath
+                        DispatchQueue.main.async {
+                            self.path = tempPath
+                        }
                     }
                 } else {
                     NSWorkspace.shared.open(path.appendingPathComponent(fileInfo.name).fileUrl)
@@ -258,7 +277,9 @@ struct DirectoryView: View {
     }
     
     private func goUp() {
-        self.path = self.path.deletingLastPathComponent
+        DispatchQueue.main.async {
+            self.path = self.path.deletingLastPathComponent
+        }
     }
     
     private func copySelectedFiles() {
@@ -302,7 +323,10 @@ struct DirectoryView: View {
                 }
                 
             } catch {
-                // TODO error handling
+                Events.publishShowErrorAlertEvent(
+                    eventBus: eventBus,
+                    title: "Can't paste files.",
+                    error: error)
             }
         }
     }
@@ -313,10 +337,17 @@ struct DirectoryView: View {
             primaryButton: .default(Text("Yes"), action: {
                 let fileManager = FileManager.default
                 
-                self.selectedFileInfos
-                    .forEach { fileInfo in
-                        try? fileManager.trashItem(at: fileInfo.url, resultingItemURL: nil)
-                    }
+                do {
+                    try self.selectedFileInfos
+                        .forEach { fileInfo in
+                            try fileManager.trashItem(at: fileInfo.url, resultingItemURL: nil)
+                        }
+                } catch {
+                    Events.publishShowErrorAlertEvent(
+                        eventBus: eventBus,
+                        title: "Error while moving files or directories to bin.",
+                        error: error)
+                }
                 
                 self.loadDirectoryContents()
             }), secondaryButton: .cancel())
@@ -329,10 +360,17 @@ struct DirectoryView: View {
             primaryButton: .default(Text("Yes"), action: {
                 let fileManager = FileManager.default
                 
-                self.selectedFileInfos
-                    .forEach { fileInfo in
-                        try? fileManager.removeItem(at: fileInfo.url)
-                    }
+                do {
+                    try self.selectedFileInfos
+                        .forEach { fileInfo in
+                            try fileManager.removeItem(at: fileInfo.url)
+                        }
+                } catch {
+                    Events.publishShowErrorAlertEvent(
+                        eventBus: eventBus,
+                        title: "Error while deleting files or directories.",
+                        error: error)
+                }
                 
                 self.loadDirectoryContents()
             }), secondaryButton: .cancel())

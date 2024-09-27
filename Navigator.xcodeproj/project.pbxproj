@@ -51,7 +51,6 @@
 		E91EC2062C8E34E400CBF246 /* ToJsonVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EC1DC2C8E34E400CBF246 /* ToJsonVisitor.swift */; };
 		E91EC20A2C8E35C800CBF246 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E91EC2092C8E35C800CBF246 /* README.md */; };
 		E91EC20D2C8E368200CBF246 /* FileManager+contentsOfDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EC20C2C8E368200CBF246 /* FileManager+contentsOfDirectory.swift */; };
-		E91EC2102C90ABBB00CBF246 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = E91EC20F2C90ABBB00CBF246 /* AlertToast */; };
 		E91EC21A2C90D72900CBF246 /* Causality in Frameworks */ = {isa = PBXBuildFile; productRef = E91EC2192C90D72900CBF246 /* Causality */; };
 		E91EC21D2C90D75600CBF246 /* Causality.Bus+ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EC21C2C90D75600CBF246 /* Causality.Bus+ObservableObject.swift */; };
 		E91EC2202C90DB1300CBF246 /* String+pathOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91EC21F2C90DB1300CBF246 /* String+pathOperations.swift */; };
@@ -78,6 +77,10 @@
 		E960794F2C8B0A8500A7A500 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E960794E2C8B0A8500A7A500 /* Preview Assets.xcassets */; };
 		E960795F2C8C2AF700A7A500 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E960795E2C8C2AF700A7A500 /* SidebarView.swift */; };
 		E96079612C8C2BD300A7A500 /* InfoSideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96079602C8C2BD300A7A500 /* InfoSideBar.swift */; };
+		E9D3BE682CA45EAD0004296F /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = E9D3BE672CA45EAD0004296F /* CHANGELOG.md */; };
+		E9D3BE6A2CA49B320004296F /* OpenWithPanel+ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D3BE692CA49B320004296F /* OpenWithPanel+ViewModifier.swift */; };
+		E9D3BE772CA5DBE40004296F /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D3BE762CA5DBE40004296F /* AlertView.swift */; };
+		E9D3BE7C2CA683800004296F /* ObjectReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D3BE7B2CA683800004296F /* ObjectReference.swift */; };
 		E9E462DC2C93802A00F71683 /* KeyboardShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */; };
 		E9E462E12C944C8300F71683 /* ShortcutEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */; };
 		E9E462E32C95724200F71683 /* LocalizedStringKey+stringKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E462E22C95724200F71683 /* LocalizedStringKey+stringKey.swift */; };
@@ -160,6 +163,10 @@
 		E96079502C8B0A8500A7A500 /* Navigator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Navigator.entitlements; sourceTree = "<group>"; };
 		E960795E2C8C2AF700A7A500 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		E96079602C8C2BD300A7A500 /* InfoSideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSideBar.swift; sourceTree = "<group>"; };
+		E9D3BE672CA45EAD0004296F /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		E9D3BE692CA49B320004296F /* OpenWithPanel+ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWithPanel+ViewModifier.swift"; sourceTree = "<group>"; };
+		E9D3BE762CA5DBE40004296F /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		E9D3BE7B2CA683800004296F /* ObjectReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectReference.swift; sourceTree = "<group>"; };
 		E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcut.swift; sourceTree = "<group>"; };
 		E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutEnabled.swift; sourceTree = "<group>"; };
 		E9E462E22C95724200F71683 /* LocalizedStringKey+stringKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+stringKey.swift"; sourceTree = "<group>"; };
@@ -176,7 +183,6 @@
 			files = (
 				E91EC22D2C92326D00CBF246 /* FloatingFilter in Frameworks */,
 				E91EC21A2C90D72900CBF246 /* Causality in Frameworks */,
-				E91EC2102C90ABBB00CBF246 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +388,7 @@
 		E960793B2C8B0A8400A7A500 = {
 			isa = PBXGroup;
 			children = (
+				E9D3BE672CA45EAD0004296F /* CHANGELOG.md */,
 				E91EC2072C8E357100CBF246 /* LICENSE.md */,
 				E91EC2092C8E35C800CBF246 /* README.md */,
 				E96079462C8B0A8400A7A500 /* Navigator */,
@@ -422,6 +429,7 @@
 				E96079572C8B0B9A00A7A500 /* Application */,
 				E92FB9872CA3259700B6F640 /* Bus */,
 				E91EC2142C90D46100CBF246 /* Extensions */,
+				E9D3BE782CA683560004296F /* Library */,
 				E92FB9742C9A1AE400B6F640 /* ObservableObjects */,
 				E96079582C8B0BAA00A7A500 /* Views */,
 			);
@@ -461,9 +469,26 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		E9D3BE782CA683560004296F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				E9D3BE792CA683620004296F /* Reference */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		E9D3BE792CA683620004296F /* Reference */ = {
+			isa = PBXGroup;
+			children = (
+				E9D3BE7B2CA683800004296F /* ObjectReference.swift */,
+			);
+			path = Reference;
+			sourceTree = "<group>";
+		};
 		E9E462DA2C93800400F71683 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				E9D3BE762CA5DBE40004296F /* AlertView.swift */,
 				E92FB98D2CA3C8DB00B6F640 /* If.swift */,
 				E9E462DB2C93802A00F71683 /* KeyboardShortcut.swift */,
 				E9E462E52C95730500F71683 /* ShortcutEnabled */,
@@ -488,6 +513,7 @@
 				E9E462E02C944C8300F71683 /* ShortcutEnabled.swift */,
 				E9E462E62C95734E00F71683 /* Shortcut.swift */,
 				E9E462EA2C95757400F71683 /* CommandPanel+ViewModifier.swift */,
+				E9D3BE692CA49B320004296F /* OpenWithPanel+ViewModifier.swift */,
 			);
 			path = ShortcutEnabled;
 			sourceTree = "<group>";
@@ -509,7 +535,6 @@
 			);
 			name = Navigator;
 			packageProductDependencies = (
-				E91EC20F2C90ABBB00CBF246 /* AlertToast */,
 				E91EC2192C90D72900CBF246 /* Causality */,
 				E91EC22C2C92326D00CBF246 /* FloatingFilter */,
 			);
@@ -542,7 +567,6 @@
 			);
 			mainGroup = E960793B2C8B0A8400A7A500;
 			packageReferences = (
-				E91EC20E2C90ABBB00CBF246 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				E91EC2182C90D72900CBF246 /* XCRemoteSwiftPackageReference "Causality" */,
 				E91EC22B2C92326D00CBF246 /* XCRemoteSwiftPackageReference "FloatingFilter" */,
 			);
@@ -563,6 +587,7 @@
 				E91EC20A2C8E35C800CBF246 /* README.md in Resources */,
 				E960794F2C8B0A8500A7A500 /* Preview Assets.xcassets in Resources */,
 				E960794C2C8B0A8500A7A500 /* Assets.xcassets in Resources */,
+				E9D3BE682CA45EAD0004296F /* CHANGELOG.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +615,7 @@
 				E91EC1FC2C8E34E400CBF246 /* MarcoKeyValuePairNode.swift in Sources */,
 				E91EC1FF2C8E34E400CBF246 /* MarcoParser.swift in Sources */,
 				E92FB9902CA4185700B6F640 /* InfoView.swift in Sources */,
+				E9D3BE772CA5DBE40004296F /* AlertView.swift in Sources */,
 				E9E462E32C95724200F71683 /* LocalizedStringKey+stringKey.swift in Sources */,
 				E9E462ED2C9597B100F71683 /* CommandRegistry.swift in Sources */,
 				E91EC1ED2C8E34E400CBF246 /* MarcoVisitor.swift in Sources */,
@@ -608,6 +634,7 @@
 				E960794A2C8B0A8400A7A500 /* ContentView.swift in Sources */,
 				E91EC1E02C8E34E400CBF246 /* MarcoBoolLiteral.swift in Sources */,
 				E91EC1F12C8E34E400CBF246 /* MarcoHexLiteralNode.swift in Sources */,
+				E9D3BE6A2CA49B320004296F /* OpenWithPanel+ViewModifier.swift in Sources */,
 				E91EC2292C914E2700CBF246 /* FileManager+Convenience.swift in Sources */,
 				E91EC2042C8E34E400CBF246 /* MutatingPrettifyingVisitor.swift in Sources */,
 				E96079482C8B0A8400A7A500 /* NavigatorApp.swift in Sources */,
@@ -621,6 +648,7 @@
 				E91EC1FA2C8E34E400CBF246 /* MarcoArrayNode.swift in Sources */,
 				E9E462E72C95734E00F71683 /* Shortcut.swift in Sources */,
 				E91EC1E32C8E34E400CBF246 /* MarcoIntLiteral.swift in Sources */,
+				E9D3BE7C2CA683800004296F /* ObjectReference.swift in Sources */,
 				E91EC1FB2C8E34E400CBF246 /* MarcoDocumentNode.swift in Sources */,
 				E91EC1A92C8D9C4400CBF246 /* DirectoryView.swift in Sources */,
 				E91EC1F82C8E34E400CBF246 /* MarcoWhitespaceNode.swift in Sources */,
@@ -853,14 +881,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E91EC20E2C90ABBB00CBF246 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/elai950/AlertToast.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.9;
-			};
-		};
 		E91EC2182C90D72900CBF246 /* XCRemoteSwiftPackageReference "Causality" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dannys42/Causality.git";
@@ -880,11 +900,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E91EC20F2C90ABBB00CBF246 /* AlertToast */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E91EC20E2C90ABBB00CBF246 /* XCRemoteSwiftPackageReference "AlertToast" */;
-			productName = AlertToast;
-		};
 		E91EC2192C90D72900CBF246 /* Causality */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E91EC2182C90D72900CBF246 /* XCRemoteSwiftPackageReference "Causality" */;
