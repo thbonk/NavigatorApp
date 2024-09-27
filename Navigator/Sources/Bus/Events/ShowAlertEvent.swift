@@ -36,4 +36,10 @@ extension Events {
     static func publishShowAlertEvent(eventBus: Causality.Bus, _ alert: AlertView.Alert) {
         eventBus.publish(event: Events.ShowAlertEvent, message: ShowAlertMessage(alert: alert))
     }
+    
+    static func publishShowErrorAlertEvent(eventBus: Causality.Bus, title: LocalizedStringKey, error: Error) {
+        publishShowAlertEvent(
+            eventBus: eventBus,
+                .init(severity: .error, title: title, subtitle: LocalizedStringKey(error.localizedDescription)))
+    }
 }

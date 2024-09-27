@@ -188,7 +188,9 @@ struct DirectoryView: View {
         self.directoryObserver?.cancel()
         
         if FileManager.default.isReadableFile(atPath: path) {
-            if let contents = try? FileManager.default.contentsOfDirectory(atPath: path, withHiddenFiles: false) {
+            do {
+                let contents = try FileManager.default.contentsOfDirectory(atPath: path, withHiddenFiles: false)
+                
                 directoryContents.removeAll()
                 
                 let filesInPasteboard = Set(self.pasteboard.readObjects(asType: FileInfo.self).map({ $0.url }))
@@ -199,13 +201,21 @@ struct DirectoryView: View {
                     }
                     return true
                 }))
+                
+                self.directoryObserver = FileManager
+                    .default
+                    .observeDirectory(self.path.fileUrl, callback: self.loadDirectoryContents)
+            } catch {
+                Events.publishShowErrorAlertEvent(
+                    eventBus: eventBus,
+                    title: "Can't read contents of directory '\(self.path)'",
+                    error: error)
             }
-            
-            self.directoryObserver = FileManager
-                .default
-                .observeDirectory(self.path.fileUrl, callback: self.loadDirectoryContents)
         } else {
-            // TODO Show error: No access or file does not exist.
+            Events.publishShowAlertEvent(
+                eventBus: eventBus,
+                .init(severity: .warning,
+                      title: "The file \(path.lastPathComponent) doesn't exist or you have no access to it."))
             path = path.deletingLastPathComponent
         }
     }
@@ -313,7 +323,10 @@ struct DirectoryView: View {
                 }
                 
             } catch {
-                // TODO error handling
+                Events.publishShowErrorAlertEvent(
+                    eventBus: eventBus,
+                    title: "Can't paste files.",
+                    error: error)
             }
         }
     }
@@ -324,10 +337,17 @@ struct DirectoryView: View {
             primaryButton: .default(Text("Yes"), action: {
                 let fileManager = FileManager.default
                 
-                self.selectedFileInfos
-                    .forEach { fileInfo in
-                        try? fileManager.trashItem(at: fileInfo.url, resultingItemURL: nil)
-                    }
+                do {
+                    try self.selectedFileInfos
+                        .forEach { fileInfo in
+                            try fileManager.trashItem(at: fileInfo.url, resultingItemURL: nil)
+                        }
+                } catch {
+                    Events.publishShowErrorAlertEvent(
+                        eventBus: eventBus,
+                        title: "Error while moving files or directories to bin.",
+                        error: error)
+                }
                 
                 self.loadDirectoryContents()
             }), secondaryButton: .cancel())
@@ -340,10 +360,17 @@ struct DirectoryView: View {
             primaryButton: .default(Text("Yes"), action: {
                 let fileManager = FileManager.default
                 
-                self.selectedFileInfos
-                    .forEach { fileInfo in
-                        try? fileManager.removeItem(at: fileInfo.url)
-                    }
+                do {
+                    try self.selectedFileInfos
+                        .forEach { fileInfo in
+                            try fileManager.removeItem(at: fileInfo.url)
+                        }
+                } catch {
+                    Events.publishShowErrorAlertEvent(
+                        eventBus: eventBus,
+                        title: "Error while deleting files or directories.",
+                        error: error)
+                }
                 
                 self.loadDirectoryContents()
             }), secondaryButton: .cancel())
