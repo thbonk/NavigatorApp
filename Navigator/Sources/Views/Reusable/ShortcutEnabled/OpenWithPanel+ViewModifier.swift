@@ -67,14 +67,11 @@ struct OpenWithPanel: ViewModifier {
             let applicationUrls: [URL] = applicationUrls(for: selectedFiles.first!)
             
             if applicationUrls.isEmpty {
-                eventBus
-                    .publish(
-                        event: Events.ShowAlertEvent,
-                        message:
-                            ShowAlertMessage(
-                                alert: AlertView.Alert(
-                                    severity: .warning,
-                                    title: "No application found that can open the selected file.")))
+                Events.publishShowAlertEvent(
+                    eventBus: eventBus,
+                    AlertView.Alert(
+                        severity: .warning,
+                        title: "No application found that can open the selected file."))
             }
             
             let items = applicationUrls.map { url in
@@ -107,26 +104,24 @@ struct OpenWithPanel: ViewModifier {
     }
     
     private func validateSelectedFiles() -> Bool {
-        var alertMessage: ShowAlertMessage? = nil
+        var alert: AlertView.Alert? = nil
         
         if self.selectedFiles.isEmpty {
-            alertMessage = ShowAlertMessage(
-                alert: AlertView.Alert(
-                    severity: .warning,
-                    title: "No directory or file selected."))
+            alert = AlertView.Alert(
+                severity: .info,
+                title: "No directory or file selected.")
         } else if self.selectedFiles.count > 1 {
-            alertMessage = ShowAlertMessage(
-                alert: AlertView.Alert(
-                    severity: .warning,
-                    title: "More than one directory or file selected.",
-                    subtitle: "You can only open one file at a time."))
+            alert = AlertView.Alert(
+                severity: .info,
+                title: "More than one directory or file selected.",
+                subtitle: "You can only open one file at a time.")
         }
         
-        if alertMessage != nil {
-            eventBus.publish(event: Events.ShowAlertEvent, message: alertMessage!)
+        if let alert {
+            Events.publishShowAlertEvent(eventBus: eventBus, alert)
         }
         
-        return alertMessage == nil
+        return alert == nil
     }
 }
 

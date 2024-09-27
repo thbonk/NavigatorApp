@@ -119,10 +119,16 @@ struct SidebarView: View {
     }
     
     private func loadVolumesAsync() async {
-        if let volumes = try? FileManager.default.mountedVolumes() {
-            devices.removeAll()
+        do {
+            let volumes = try FileManager.default.mountedVolumes()
             
+            devices.removeAll()
             devices.append(contentsOf: volumes)
+        } catch {
+            Events.publishShowErrorAlertEvent(
+                eventBus: eventBus,
+                title: "Can't load mounted volumes",
+                error: error)
         }
     }
     
