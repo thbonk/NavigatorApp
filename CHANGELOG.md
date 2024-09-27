@@ -9,15 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Minimal viable scope for a Finder replacement.
 
 ### Fixed
 
+N/A
 
 ### Changed
 
+N/A
 
 ### Removed
 
+N/A
 
 ## Differences
 

@@ -27,59 +27,66 @@ struct DirectoryView: View {
     // MARK: - Public Properties
     
     var body: some View {
-        VStack {
-            Table(of: FileInfo.self,selection: $selectedFiles, sortOrder: $sortOrder, columnCustomization: $columnCustomization, columns: {
-                TableColumn("Name") { fileInfo in
-                    HStack {
-                        fileInfo.icon.resizable().frame(width: 24, height: 24)
-                        Text(fileInfo.name)
+        ShortcutEnabled {
+            VStack {
+                Table(of: FileInfo.self,selection: $selectedFiles, sortOrder: $sortOrder, columnCustomization: $columnCustomization, columns: {
+                    TableColumn("Name") { fileInfo in
+                        HStack {
+                            fileInfo.icon.resizable().frame(width: 24, height: 24)
+                            Text(fileInfo.name)
+                        }
+                    }.customizationID("name-column")
+                    
+                    TableColumn("Created At") { fileInfo in
+                        Text(fileInfo.createdAt)
+                    }.customizationID("created-at-column")
+                    
+                    TableColumn("Modified At") { fileInfo in
+                        Text(fileInfo.modifiedAt)
+                    }.customizationID("modified-at-column")
+                    
+                    TableColumn("Size") { fileInfo in
+                        Text(fileInfo.size)
+                    }.customizationID("size-column")
+                }, rows: {
+                    ForEach(self.directoryContents) { fileInfo in
+                        TableRow(fileInfo)
+                            .draggable(fileInfo)
                     }
-                }.customizationID("name-column")
+                })
+                .contextMenu(
+                    forSelectionType: String.self,
+                    menu: self.menuForItems(_:),
+                    primaryAction: self.openItem(_:))
+                .onChange(of: sortOrder, self.sortDirectoryContents(oldSortOrder:newSortOrder:))
                 
-                TableColumn("Created At") { fileInfo in
-                    Text(fileInfo.createdAt)
-                }.customizationID("created-at-column")
-                
-                TableColumn("Modified At") { fileInfo in
-                    Text(fileInfo.modifiedAt)
-                }.customizationID("modified-at-column")
-                
-                TableColumn("Size") { fileInfo in
-                    Text(fileInfo.size)
-                }.customizationID("size-column")
-            }, rows: {
-                ForEach(self.directoryContents) { fileInfo in
-                    TableRow(fileInfo)
-                        .draggable(fileInfo)
-                }
-            })
-            .contextMenu(
-                forSelectionType: String.self,
-                menu: self.menuForItems(_:),
-                primaryAction: self.openItem(_:))
-            .onChange(of: sortOrder, self.sortDirectoryContents(oldSortOrder:newSortOrder:))
-            
-            PathView(path: $path).padding([.horizontal, .bottom], 5)
-                .focusable(interactions: [.activate, .automatic, .edit])
+                PathView(path: $path).padding([.horizontal, .bottom], 5)
+                    .focusable(interactions: [.activate, .automatic, .edit])
+            }
+            .onAppear(perform: self.subscribeEvents)
+            .onDisappear(perform: self.unsubscribeEvents)
+            .onAppear(perform: self.registerCommands)
+            .onAppear(perform: self.loadDirectoryContents)
+            .onChange(of: path, self.loadDirectoryContents)
+            .onChange(of: selectedFiles, self.updateSelectedFiles)
+            .navigationTitle(path.removingPercentEncoding ?? path)
+            .alert(isPresented: $showQuestionAlert) {
+                Alert(
+                    title: questionAlertTitle,
+                    message: questionAlertMessage,
+                    primaryButton: questionAlertPrimaryButton,
+                    secondaryButton: questionAlertSecondaryButton)
+            }
         }
-        .onAppear(perform: self.subscribeEvents)
-        .onDisappear(perform: self.unsubscribeEvents)
-        .onAppear(perform: self.registerCommands)
-        .onAppear(perform: self.loadDirectoryContents)
-        .onChange(of: path, self.loadDirectoryContents)
-        .onChange(of: selectedFiles, self.updateSelectedFiles)
-        .navigationTitle(path.removingPercentEncoding ?? path)
-        .alert(isPresented: $showQuestionAlert) {
-            Alert(
-                title: questionAlertTitle,
-                message: questionAlertMessage,
-                primaryButton: questionAlertPrimaryButton,
-                secondaryButton: questionAlertSecondaryButton)
-        }
+        .openWithPanel(Shortcut("o", modifiers: [.command]), selectedFiles: $selectedFiles)
     }
     
     @Binding
-    public var path: String
+    public var path: String {
+        willSet {
+            self.selectedFiles.removeAll()
+        }
+    }
     
     
     // MARK: - Private Properties
@@ -249,7 +256,9 @@ struct DirectoryView: View {
                     if severalDirectoriesSelected {
                         openWindow(id: "navigator.view", value: tempPath)
                     } else {
-                        self.path = tempPath
+                        DispatchQueue.main.async {
+                            self.path = tempPath
+                        }
                     }
                 } else {
                     NSWorkspace.shared.open(path.appendingPathComponent(fileInfo.name).fileUrl)
@@ -258,7 +267,9 @@ struct DirectoryView: View {
     }
     
     private func goUp() {
-        self.path = self.path.deletingLastPathComponent
+        DispatchQueue.main.async {
+            self.path = self.path.deletingLastPathComponent
+        }
     }
     
     private func copySelectedFiles() {
