@@ -43,7 +43,9 @@ extension String {
     }
     
     var fileUrl: URL {
-        return URL(fileURLWithPath: self)
+        //return URL(fileURLWithPath: self.precomposedStringWithCanonicalMapping) //.standardized
+        let url = URL(string: "file://\(self)")!
+        return url
     }
     
     func appendingPathComponent(_ pathComponent: String) -> String {

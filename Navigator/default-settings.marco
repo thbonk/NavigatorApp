@@ -1,0 +1,32 @@
+{
+    shortcuts [
+        {
+            shortcut {
+                modifiers [ ".command" ]
+                key "b"
+            }
+            event "navigate-back"
+        }
+        {
+            shortcut {
+                modifiers [ ".command" ]
+                key ".upArrow"
+            }
+            event "navigate-to-parent"
+        }
+        {
+            shortcut {
+                modifiers [ ".command" ]
+                key "r"
+            }
+            event "reload-directory-contents"
+        }
+        {
+            shortcut {
+                modifiers [ ".shift", ".command" ]
+                key "i"
+            }
+            event "show-or-hide-hidden-files"
+        }
+    ]
+}

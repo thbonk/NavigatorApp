@@ -1,5 +1,5 @@
 {
-  "originHash" : "490ef1dce306d70c40a2e9bfd5af0113cec29a79344a512d465738e8c3a9787d",
+  "originHash" : "2b5d97612c7624121eff8c3eb5144e85384cc6e3601f86153ac91ddd23bf9ebb",
   "pins" : [
     {
       "identity" : "causality",
@@ -11,12 +11,21 @@
       }
     },
     {
-      "identity" : "floatingfilter",
+      "identity" : "dsfappearancemanager",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/CleanCocoa/FloatingFilter.git",
+      "location" : "https://github.com/dagronf/DSFAppearanceManager",
       "state" : {
-        "revision" : "853901ef2510b79e4e6c0e287c621f4e02a729d4",
-        "version" : "0.8.0"
+        "revision" : "e9add5fdf05fe50950d105c77963b7373ddb5ad4",
+        "version" : "3.5.1"
+      }
+    },
+    {
+      "identity" : "dsfquickactionbar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dagronf/DSFQuickActionBar.git",
+      "state" : {
+        "revision" : "7be7b3bd2cebb19ee119ba1f972ecce581de5aeb",
+        "version" : "6.2.0"
       }
     }
   ],
