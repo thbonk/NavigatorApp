@@ -59,15 +59,20 @@ extension FileManager {
             .default
             .contentsOfDirectory(at: path.fileUrl, includingPropertiesForKeys: properties, options: options)
             .map {
-                FileInfo(url: $0.path.precomposedStringWithCanonicalMapping.fileUrl, resourceValues: try $0.resourceValues(forKeys: propertiesSet))
+                let attributes = try self.attributesOfItem(at: $0)
+                
+                return FileInfo(url: $0.path.precomposedStringWithCanonicalMapping.fileUrl,
+                                resourceValues: try $0.resourceValues(forKeys: propertiesSet),
+                                attributes: attributes)
             }
             .sorted { $0.name < $1.name }
     }
     
     func fileInfo(from url: URL) throws -> FileInfo {
         let resourceValues = try url.resourceValues(forKeys: propertiesSet)
+        let attributes = try self.attributesOfItem(at: url)
         
-        return FileInfo(url: url, resourceValues: resourceValues)
+        return FileInfo(url: url, resourceValues: resourceValues, attributes: attributes)
     }
     
     func fileInfo(from path: String) throws -> FileInfo {

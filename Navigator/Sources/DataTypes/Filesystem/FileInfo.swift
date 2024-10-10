@@ -46,15 +46,17 @@ class FileInfo: FilesystemEntry {
     
     private var parent: String
     private var resourceValues: URLResourceValues
+    private var attributes: [FileAttributeKey : Any]
     
     
     // MARK: - Initialization
     
-    init(url: URL, resourceValues: URLResourceValues) {
+    init(url: URL, resourceValues: URLResourceValues, attributes: [FileAttributeKey : Any]) {
         self.url = url
         self.parent = self.url.path().deletingLastPathComponent
         self.name = self.url.lastPathComponent.decomposedStringWithCompatibilityMapping
         self.resourceValues = resourceValues
+        self.attributes = attributes
         
         super.init(path: self.url.path())
     }
@@ -64,7 +66,7 @@ class FileInfo: FilesystemEntry {
 extension FileInfo: NSCopying {
     
     func copy(with zone: NSZone? = nil) -> Any {
-        return FileInfo(url: self.url, resourceValues: self.resourceValues)
+        return FileInfo(url: self.url, resourceValues: self.resourceValues, attributes: self.attributes)
     }
 }
 
@@ -87,6 +89,36 @@ extension FileInfo {
         }
     }
     
+}
+
+
+// MARK: - Attribute Getters
+
+extension FileInfo {
+    
+    public var ownerAccountID: Int {
+        self.attributes[.ownerAccountID] as! Int
+    }
+    
+    public var groupOwnerAccountID: Int {
+        self.attributes[.groupOwnerAccountID] as! Int
+    }
+    
+    public var ownerAccountName: String {
+        self.attributes[.ownerAccountName] as! String
+    }
+    
+    public var groupOwnerAccountName: String {
+        self.attributes[.groupOwnerAccountName] as! String
+    }
+    
+    public var accessRights: UInt16 {
+        self.attributes[.accessRights] as! UInt16
+    }
+    
+    public var readableAccessRights: String {
+        self.attributes[.readableAccessRights] as! String
+    }
 }
 
 

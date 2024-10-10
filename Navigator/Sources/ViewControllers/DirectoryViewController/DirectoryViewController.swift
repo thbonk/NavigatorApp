@@ -116,6 +116,22 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
         return nil
     }
     
+    @MainActor
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if self.tableView!.selectedRow >= 0 && self.tableView!.selectedRowIndexes.count == 1 {
+            Events.selectedFileChanged(eventBus: self.eventBus!,
+                                       self.tableViewDataSource.directoryContents[self.tableView!.selectedRow])
+        } else {
+            var selectedFiles: [FileInfo] = []
+            
+            self.tableView!.selectedRowIndexes.forEach { index in
+                selectedFiles.append(self.tableViewDataSource.directoryContents[index])
+            }
+            
+            Events.selectedFilesChanged(eventBus: self.eventBus!, selectedFiles)
+        }
+    }
+    
     
     // MARK: - NSTableView Actions
     

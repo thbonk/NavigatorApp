@@ -749,13 +749,13 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="34" horizontalPageScroll="10" verticalLineScroll="34" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbq-YZ-yfA">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbq-YZ-yfA">
                                 <rect key="frame" x="0.0" y="0.0" width="130" height="600"/>
                                 <clipView key="contentView" id="egU-Qh-Tlb">
                                     <rect key="frame" x="1" y="1" width="128" height="598"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="sR1-kS-J2d" id="s38-1T-Mvf">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="sR1-kS-J2d" id="s38-1T-Mvf">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="598"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="10"/>
@@ -809,7 +809,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="XzF-KM-jy8">
-                                    <rect key="frame" x="1" y="118" width="170" height="16"/>
+                                    <rect key="frame" x="1" y="583" width="128" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Uww-Qw-4jO">
@@ -1082,27 +1082,13 @@
             </objects>
             <point key="canvasLocation" x="270" y="1426"/>
         </scene>
-        <!--View Controller-->
+        <!--Infobar View Controller-->
         <scene sceneID="V1w-YN-bja">
             <objects>
-                <viewController id="nUH-Zb-Oip" sceneMemberID="viewController">
+                <viewController id="nUH-Zb-Oip" customClass="InfobarViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="DOd-ck-WRN">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c3q-n1-Qx1">
-                                <rect key="frame" x="60" y="292" width="80" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Infobar View" id="bkJ-e0-aKe">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="c3q-n1-Qx1" firstAttribute="centerX" secondItem="DOd-ck-WRN" secondAttribute="centerX" id="OYr-rB-3R6"/>
-                            <constraint firstItem="c3q-n1-Qx1" firstAttribute="centerY" secondItem="DOd-ck-WRN" secondAttribute="centerY" id="TPN-Z6-fgP"/>
-                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="aCd-1d-fb5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

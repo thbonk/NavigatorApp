@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E93141242CB708D90055A238 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E93141232CB708D90055A238 /* SnapKit */; };
 		E96CCDE62CA9EFD1008E5481 /* Causality in Frameworks */ = {isa = PBXBuildFile; productRef = E96CCDE52CA9EFD1008E5481 /* Causality */; };
 		E96CCE7C2CADBB0F008E5481 /* DSFQuickActionBar in Frameworks */ = {isa = PBXBuildFile; productRef = E96CCE7B2CADBB0F008E5481 /* DSFQuickActionBar */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93141242CB708D90055A238 /* SnapKit in Frameworks */,
 				E96CCE7C2CADBB0F008E5481 /* DSFQuickActionBar in Frameworks */,
 				E96CCDE62CA9EFD1008E5481 /* Causality in Frameworks */,
 			);
@@ -107,6 +109,7 @@
 			packageProductDependencies = (
 				E96CCDE52CA9EFD1008E5481 /* Causality */,
 				E96CCE7B2CADBB0F008E5481 /* DSFQuickActionBar */,
+				E93141232CB708D90055A238 /* SnapKit */,
 			);
 			productName = Navigator;
 			productReference = E90B2CFA2CA94ECF00DAD1C3 /* Navigator.app */;
@@ -139,6 +142,7 @@
 			packageReferences = (
 				E96CCDE42CA9EFD1008E5481 /* XCRemoteSwiftPackageReference "Causality" */,
 				E96CCE7A2CADBB0F008E5481 /* XCRemoteSwiftPackageReference "DSFQuickActionBar" */,
+				E93141222CB708D90055A238 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E90B2CFB2CA94ECF00DAD1C3 /* Products */;
@@ -369,6 +373,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E93141222CB708D90055A238 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		E96CCDE42CA9EFD1008E5481 /* XCRemoteSwiftPackageReference "Causality" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dannys42/Causality.git";
@@ -388,6 +400,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E93141232CB708D90055A238 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E93141222CB708D90055A238 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		E96CCDE52CA9EFD1008E5481 /* Causality */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E96CCDE42CA9EFD1008E5481 /* XCRemoteSwiftPackageReference "Causality" */;
