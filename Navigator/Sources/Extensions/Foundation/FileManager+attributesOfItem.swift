@@ -51,7 +51,6 @@ extension FileManager {
         var fileStat = stat()
         if stat(path, &fileStat) == 0 {
             attributes[.accessRights] = fileStat.st_mode & 0o777  // File permissions as numeric (e.g., 0755)
-            print("\(type(of: fileStat.st_mode & 0o777))")
             attributes[.readableAccessRights] = permissionStringFromMode(fileStat.st_mode) // File permissions as string
         }
         

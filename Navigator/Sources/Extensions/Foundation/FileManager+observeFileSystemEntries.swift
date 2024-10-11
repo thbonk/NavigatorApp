@@ -54,7 +54,9 @@ private class FileSystemEntryObserver: Cancellable {
 
         self.source = DispatchSource.makeFileSystemObjectSource(fileDescriptor: self.fileDescriptor, eventMask: eventMask, queue: DispatchQueue.global())
         self.source.setEventHandler {
-            handler()
+            DispatchQueue.global().async {
+                handler()
+            }
         }
         self.source.resume()
     }

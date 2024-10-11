@@ -19,6 +19,7 @@
 //
 
 import AppKit
+import Combine
 
 class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     
@@ -30,14 +31,41 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     @objc private var outlineViewDataSource: SidebarViewOutlineDataSource!
     
     
+    // MARK: - Private Properties
+    
+    private var volumesChangedCancellable: Cancellable?
+    
+    
     // MARK: - NSViewController
     
     override func viewWillAppear() {
+        self.volumesChangedCancellable = FileManager.default.observeVolumes(
+            onMount: self.volumentMounted(_:), onUnmount: self.volumeWillUnmount(_:))
+        
         DispatchQueue.main.async {
             for category in self.outlineViewDataSource.categories {
                 self.outlineView.expandItem(category)
             }
         }
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        
+        self.volumesChangedCancellable?.cancel()
+    }
+    
+    
+    // MARK: - Event Handlers
+    
+    private func volumentMounted(_ volume: VolumeInfo) {
+        self.outlineViewDataSource.volumesCategory.volumes.append(volume)
+        self.outlineView.reloadData()
+    }
+    
+    private func volumeWillUnmount(_ url: URL) {
+        self.outlineViewDataSource.volumesCategory.volumes.removeAll { $0.url == url }
+        self.outlineView.reloadData()
     }
     
     

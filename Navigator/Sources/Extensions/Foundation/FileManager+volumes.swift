@@ -18,97 +18,113 @@
 //  limitations under the License.
 //
 
+import AppKit
 import Combine
-import DiskArbitration
 import Foundation
+
+fileprivate let resourceValueKeys: [URLResourceKey] = [
+    .nameKey,
+    .volumeIsLocalKey,
+    .volumeIsEjectableKey,
+    .volumeIsRemovableKey,
+    .volumeIsReadOnlyKey,
+    .volumeCreationDateKey,
+    .volumeTotalCapacityKey,
+    .volumeAvailableCapacityKey,
+    .effectiveIconKey,
+    .customIconKey
+]
 
 extension FileManager {
     
     func mountedVolumes() throws -> [VolumeInfo] {
         var result = [VolumeInfo]()
-        let resourceValueKeys: [URLResourceKey] = [
-            .nameKey,
-            .volumeIsLocalKey,
-            .volumeIsEjectableKey,
-            .volumeIsRemovableKey,
-            .volumeIsReadOnlyKey,
-            .volumeCreationDateKey,
-            .volumeTotalCapacityKey,
-            .volumeAvailableCapacityKey,
-            .effectiveIconKey,
-            .customIconKey
-            ]
         
         if let volumes = self.mountedVolumeURLs(
             includingResourceValuesForKeys: resourceValueKeys,
-            options: .skipHiddenVolumes) {
+            options: [.produceFileReferenceURLs]) {
             
-            try volumes.forEach { url in
-                let resourceValues = try url.resourceValues(forKeys: Set(resourceValueKeys))
-                result.append(
-                    VolumeInfo(
-                        url: url,
-                        name: resourceValues.name!,
-                        resourceValues: resourceValues)
-                )
-            }
+            result = try volumes
+                .filter { $0.path.hasPrefix("/Volumes") || $0.path == "/" }
+                .filter { self.fileExists(url: $0) }
+                .map { try self.volume(for: $0) }
+                /*.forEach { url in
+                    let resourceValues = try url.resourceValues(forKeys: Set(resourceValueKeys))
+                    
+                    result.append(
+                        VolumeInfo(
+                            url: url,
+                            name: resourceValues.name!,
+                            resourceValues: resourceValues))
+                }*/
         }
         
         return result
     }
     
-    func observeVolumes(onChange: @escaping ([VolumeInfo]) -> Void) -> Cancellable? {
-        return VolumeMonitor {
-            // TODO error handling
-            if let volumes = try? self.mountedVolumes() {
-                onChange(volumes)
-            }
-        }
+    func volume(for url: URL) throws -> VolumeInfo {
+        let resourceValues = try url.resourceValues(forKeys: Set(resourceValueKeys))
+        return VolumeInfo(url: url, name: resourceValues.name!, resourceValues: resourceValues)
+    }
+    
+    func observeVolumes(onMount: @escaping (VolumeInfo) -> Void,
+                        onUnmount: @escaping (URL) -> Void) -> Cancellable? {
+        
+        return VolumeObserver(onMount: onMount, onUnmount: onUnmount)
     }
     
 }
 
-fileprivate func invokeCallback(context: UnsafeMutableRawPointer?) {
-    guard
-        let context = context
-    else {
-        return
-    }
-    let volumeMonitor = Unmanaged<VolumeMonitor>.fromOpaque(context).takeUnretainedValue()
-    
-    volumeMonitor.callback()
-}
-
-fileprivate class VolumeMonitor: Cancellable {
+fileprivate class VolumeObserver: Cancellable {
     
     // MARK: - Private Properties
     
-    private var session: DASession!
-    fileprivate var callback: () -> Void
+    private var onMount: (VolumeInfo) -> Void
+    private var onUnmount: (URL) -> Void
     
     
     // MARK: - Initialization
     
-    init(callback: @escaping () -> Void) {
-        // Create a Disk Arbitration session
-        session = DASessionCreate(kCFAllocatorDefault)
-        self.callback = callback
+    init(onMount: @escaping (VolumeInfo) -> Void,
+         onUnmount: @escaping (URL) -> Void) {
         
-        // Register for volume mount events
-        DARegisterDiskAppearedCallback(session, nil, { _, context in
-            invokeCallback(context: context)
-        }, nil)
+        self.onMount = onMount
+        self.onUnmount = onUnmount
         
-        // Register for volume unmount events
-        DARegisterDiskDisappearedCallback(session, nil, { _, context in
-            invokeCallback(context: context)
-        }, nil)
-        
-        // Schedule the session in the run loop
-        DASessionScheduleWithRunLoop(session, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode.rawValue)
+        let notificationCenter = NSWorkspace.shared.notificationCenter
+        notificationCenter.addObserver(
+            self, selector: #selector(didMount(_:)), name: NSWorkspace.didMountNotification, object: nil)
+        notificationCenter.addObserver(
+            self, selector: #selector(willUnMount(_:)), name: NSWorkspace.willUnmountNotification, object: nil)
     }
     
+    
+    // MARK: - Cancellable
+    
     func cancel() {
-        DASessionUnscheduleFromRunLoop(session, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode.rawValue)
+        NSWorkspace.shared.notificationCenter.removeObserver(self)
     }
+    
+    
+    // MARK: - Handlers
+    
+    @objc private func didMount(_ notification: Notification) throws {
+        guard
+            let volumeURL = notification.userInfo?[NSWorkspace.volumeURLUserInfoKey] as? URL
+        else {
+            return
+        }
+        onMount(try FileManager.default.volume(for: volumeURL))
+    }
+    
+    @objc private func willUnMount(_ notification: Notification) {
+        guard
+            let volumeURL = notification.userInfo?[NSWorkspace.volumeURLUserInfoKey] as? URL
+        else {
+            return
+        }
+        
+        onUnmount(volumeURL)
+    }
+    
 }

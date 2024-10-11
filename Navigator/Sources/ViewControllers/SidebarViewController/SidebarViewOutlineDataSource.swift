@@ -34,23 +34,10 @@ class SidebarViewOutlineDataSource: NSObject, NSOutlineViewDataSource {
         self.categories.first(where: { type(of: $0) == SidebarVolumes.self }) as! SidebarVolumes
     }
     
-    
-    // MARK: - Private Properties
-    
-    private var volumesChangedCancellable: Cancellable?
-    
-    
-    // MARK: - Initialization
-    
-    deinit {
-        self.volumesChangedCancellable?.cancel()
-    }
-    
 
     // MARK: - NSObject
     
     override func awakeFromNib() {
-        self.volumesChangedCancellable = FileManager.default.observeVolumes(onChange: self.update(volumes:))
         // TODO error handling
         self.volumesCategory.volumes = (try? FileManager.default.mountedVolumes()) ?? []
     }
@@ -81,10 +68,4 @@ class SidebarViewOutlineDataSource: NSObject, NSOutlineViewDataSource {
         }
     }
     
-    
-    // MARK: - Private Methods (Volumes)
-    
-    private func update(volumes: [VolumeInfo]) {
-        volumesCategory.volumes = volumes
-    }
 }
