@@ -37,12 +37,13 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
     
     @objc private dynamic var path: URL?
     
-    private var fileOperationsQueue = FileOperationsQueue()
+    private var fileOperationsQueue: FileOperationsQueue!
     
     private var reloadDirectoryContentsSubscription: Commands.ReloadDirectoryContentsSubscription?
     private var showOrHideHiddenFilesSubscription: Commands.ShowOrHideHiddenFilesSubscription?
     private var pathChangedSubscription: Events.PathChangedSubscription?
     private var moveSelectedFilesToBinSubscription: Commands.MoveSelectedFilesToBinSubscription?
+    private var deleteSelectedFilesSubscription: Commands.DeleteSelectedFilesSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -84,10 +85,13 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
     override func viewWillAppear() {
         super.viewWillAppear()
         
+        self.fileOperationsQueue = FileOperationsQueue(eventBus: self.eventBus!)
+        
         self.reloadDirectoryContentsSubscription = self.eventBus!.subscribe(Commands.ReloadDirectoryContents, handler: self.reloadDirectoryContentsSubscription)
         self.showOrHideHiddenFilesSubscription = self.eventBus!.subscribe(Commands.ShowOrHideHiddenFiles, handler: self.showOrHideHiddenFiles)
         self.pathChangedSubscription = self.eventBus!.subscribe(Events.PathChanged, handler: self.pathChanged)
         self.moveSelectedFilesToBinSubscription = self.eventBus!.subscribe(Commands.MoveSelectedFilesToBin, handler: self.moveSelectedFilesToBin)
+        self.deleteSelectedFilesSubscription = self.eventBus!.subscribe(Commands.DeleteSelectedFiles, handler: self.deleteSelectedFiles)
         self.restoreColumnWidths()
     }
     
@@ -95,6 +99,8 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
         self.reloadDirectoryContentsSubscription?.unsubscribe()
         self.showOrHideHiddenFilesSubscription?.unsubscribe()
         self.pathChangedSubscription?.unsubscribe()
+        self.moveSelectedFilesToBinSubscription?.unsubscribe()
+        self.deleteSelectedFilesSubscription?.unsubscribe()
         self.storeColumnWidths()
         
         super.viewWillDisappear()
@@ -163,27 +169,34 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
     // MARK: - Event Handlers
     
     private func reloadDirectoryContentsSubscription(message: Causality.NoMessage) {
-        self.tableViewDataSource.reloadDirectoryContents()
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableViewDataSource.reloadDirectoryContents()
+            self.tableView.reloadData()
+        }
     }
     
     private func showOrHideHiddenFiles(command: Causality.NoMessage) {
-        var shouldShowHiddenFiles = UserDefaults.standard.bool(forKey: "shouldShowHiddenFiles")
-        shouldShowHiddenFiles.toggle()
-        UserDefaults.standard.set(shouldShowHiddenFiles, forKey: "shouldShowHiddenFiles")
-        self.tableViewDataSource.reloadDirectoryContents()
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            var shouldShowHiddenFiles = UserDefaults.standard.bool(forKey: "shouldShowHiddenFiles")
+            
+            shouldShowHiddenFiles.toggle()
+            UserDefaults.standard.set(shouldShowHiddenFiles, forKey: "shouldShowHiddenFiles")
+            self.tableViewDataSource.reloadDirectoryContents()
+            self.tableView.reloadData()
+        }
     }
     
     private func pathChanged(message: PathChangedMessage) {
-        self.directoryOberverCancellable?.cancel()
-        
-        self.path = message.path.fileUrl
-        if let path {
-            self.directoryOberverCancellable = FileManager.default.observeDirectory(path, handler: self.reloadDirectoryContents)
+        DispatchQueue.main.async {
+            self.directoryOberverCancellable?.cancel()
+            
+            self.path = message.path.fileUrl
+            if let path = self.path {
+                self.directoryOberverCancellable = FileManager.default.observeDirectory(path, handler: self.reloadDirectoryContents)
+            }
+            self.tableViewDataSource.path = message.path
+            self.tableView.reloadData()
         }
-        self.tableViewDataSource.path = message.path
-        self.tableView.reloadData()
     }
     
     private func reloadDirectoryContents() {
@@ -216,6 +229,37 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
                             }),
                             (title: "Yes", action: {
                                 self.fileOperationsQueue.enqueueMoveToBinOperations(
+                                    self.tableView
+                                        .selectedRowIndexes
+                                        .map { self.tableViewDataSource.directoryContents[$0] }
+                                )
+                            })
+                         ])
+    }
+    
+    private func deleteSelectedFiles(message: Causality.NoMessage) {
+        guard
+            self.tableView.hasFocus
+        else {
+            NSBeep()
+            return
+        }
+        
+        guard
+            self.tableView.selectedRowIndexes.count > 0
+        else {
+            return
+        }
+        
+        NSAlert.question(for: self.view.window!,
+                         messageText: "Do you really want to delete the selected files?",
+                         informativeText: "This operation can't be undone!",
+                         buttons: [
+                            (title: "No", action: {
+                                // Empty by design
+                            }),
+                            (title: "Yes", action: {
+                                self.fileOperationsQueue.enqueueDeleteOperations(
                                     self.tableView
                                         .selectedRowIndexes
                                         .map { self.tableViewDataSource.directoryContents[$0] }

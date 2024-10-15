@@ -147,7 +147,7 @@ import Causality
         }
         
         if let path = coder.decodeObject(of: NSString.self, forKey: "path"),
-           !path.isEqual(to: self.path) {
+           path.isEqual(to: self.path) {
             
             Commands.changePath(eventBus: self.eventBus, path.removingPercentEncoding!)
         }
@@ -164,7 +164,7 @@ extension ApplicationSettings {
                 .values
                 .first(where: { shortcut in
                     shortcut.key.key == .specialKey(key: specialKey)
-                    && shortcut.key.modifiers.subtracting(event.modifierFlags).isEmpty
+                    && shortcut.key.modifiers.symmetricDifference(event.modifierFlags.clean).isEmpty
                 })
         } else if let keyCode = event.characters?.lowercased() {
             return self
@@ -172,7 +172,7 @@ extension ApplicationSettings {
                 .values
                 .first(where: { shortcut in
                     shortcut.key.key == .character(character: keyCode)
-                    && shortcut.key.modifiers.subtracting(event.modifierFlags).isEmpty
+                    && shortcut.key.modifiers.symmetricDifference(event.modifierFlags.clean).isEmpty
                 })
         }
         

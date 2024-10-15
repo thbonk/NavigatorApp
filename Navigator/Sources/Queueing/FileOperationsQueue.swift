@@ -18,6 +18,7 @@
 //  limitations under the License.
 //
 
+import Causality
 import CoreFoundation
 import Foundation
 
@@ -33,12 +34,15 @@ import Foundation
     
     // MARK: - Private Properties
     
+    private var eventBus: Causality.Bus
     private var queue = OperationQueue()
     
     
     // MARK: - Initialization
     
-    override init() {
+    init(eventBus: Causality.Bus) {
+        self.eventBus = eventBus
+        
         super.init()
         
         self.queue.maxConcurrentOperationCount = 1
@@ -51,10 +55,26 @@ import Foundation
     
     public func enqueueMoveToBinOperations(_ fileInfos: [FileInfo]) {
         self.queue.addOperations(fileInfos.map { MoveToBinOperation($0) }, waitUntilFinished: false)
+        /*self.queue.addOperation {
+            DispatchQueue.main.async {
+                Commands.reloadDirectoryContents(eventBus: self.eventBus)
+            }
+        }*/
     }
     
     public func enqueueMoveToBinOperation(_ fileInfo: FileInfo) {
         self.enqueueMoveToBinOperations([fileInfo])
+    }
+    
+    public func enqueueDeleteOperations(_ fileInfos: [FileInfo]) {
+        self.queue.addOperations(fileInfos.map { DeleteOperation($0) }, waitUntilFinished: false)
+        self.queue.addOperation {
+            Commands.reloadDirectoryContents(eventBus: self.eventBus)
+        }
+    }
+    
+    public func enqueueDeleteOperation(_ fileInfo: FileInfo) {
+        self.enqueueDeleteOperations([fileInfo])
     }
 }
 
@@ -98,4 +118,39 @@ public class MoveToBinOperation: BlockOperation, FileOperation, @unchecked Senda
         }
     }
     
+}
+
+public class DeleteOperation: BlockOperation, FileOperation, @unchecked Sendable {
+    
+    // MARK: - Public Properties
+    
+    public var descripition: String {
+        "Delete \(fileInfo.name)"
+    }
+    
+    
+    // MARK: - Private Properties
+    
+    private let fileInfo: FileInfo
+    
+    
+    // MARK: - Initialization
+    
+    init(_ fileInfo: FileInfo) {
+        self.fileInfo = fileInfo
+        
+        super.init()
+        self.addExecutionBlock(self.delete)
+    }
+    
+    
+    // MARK: - Private Methods
+    
+    private func delete() {
+        do {
+            try FileManager.default.removeItem(at: fileInfo.url)
+        } catch {
+            // TODO error handling
+        }
+    }
 }

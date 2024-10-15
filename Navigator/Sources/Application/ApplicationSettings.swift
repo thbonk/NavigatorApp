@@ -61,6 +61,8 @@ class ApplicationSettings {
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "r")), event: "reload-directory-contents"),
         "move-selected-files-to-bin":
             Shortcut(key: ShortcutKey(modifiers: [ ], key: .specialKey(key: .delete)), event: "move-selected-files-to-bin"),
+        "delete-selected-files":
+            Shortcut(key: ShortcutKey(modifiers: [ .control ], key: .specialKey(key: .delete)), event: "delete-selected-files"),
     ]
     
     
