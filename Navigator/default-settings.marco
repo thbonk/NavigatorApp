@@ -3,6 +3,7 @@
         { shortcut { modifiers [ ".command" ] key "b" } event "navigate-back" }
         { shortcut { modifiers [ ".command" ] key ".upArrow" } event "navigate-to-parent" }
         { shortcut { modifiers [ ".command" ] key "r" } event "reload-directory-contents" }
+        { shortcut { modifiers [ ".option" ] key "r" } event "rename-selected-file" }
         { shortcut { modifiers [ ".shift" ".command" ] key "i" } event "show-or-hide-hidden-files" }
         { shortcut { modifiers [ ".shift" ".command" ] key "p" } event "show-action-bar" }
         { shortcut { modifiers [ ] key ".delete" } event "move-selected-files-to-bin" }

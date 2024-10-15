@@ -1,8 +1,8 @@
 //
-//  ReloadDirectoryContentsCommand.swift
+//  RenameSelectedFileCommand.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 04.10.24.
+//  Created by Thomas Bonk on 15.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +23,13 @@ import Foundation
 
 extension Commands {
     
-    typealias ReloadDirectoryContentsSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
+    typealias RenameSelectedFileSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
     
-    static let ReloadDirectoryContents = EventRegistry.shared.register(label: "reload-directory-contents", description: "Reload directory contents")
+    static let RenameSelectedFile = EventRegistry.shared.register(label: "rename-selected-file", description: "Rename selected file")
     
-    static func reloadDirectoryContents(eventBus: Causality.Bus) {
+    public static func renameSelectedFile(eventBus: Causality.Bus) {
         DispatchQueue.main.async {
-            eventBus.publish(event: Commands.ReloadDirectoryContents)
+            eventBus.publish(event: Commands.RenameSelectedFile)
         }
     }
-    
 }

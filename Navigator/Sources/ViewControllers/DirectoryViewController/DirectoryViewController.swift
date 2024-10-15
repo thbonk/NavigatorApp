@@ -22,7 +22,7 @@ import AppKit
 import Causality
 import Combine
 
-class DirectoryViewController: NSViewController, NSTableViewDelegate {
+class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -44,6 +44,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
     private var pathChangedSubscription: Events.PathChangedSubscription?
     private var moveSelectedFilesToBinSubscription: Commands.MoveSelectedFilesToBinSubscription?
     private var deleteSelectedFilesSubscription: Commands.DeleteSelectedFilesSubscription?
+    private var renameSelectedFileSubscription: Commands.RenameSelectedFileSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -92,6 +93,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
         self.pathChangedSubscription = self.eventBus!.subscribe(Events.PathChanged, handler: self.pathChanged)
         self.moveSelectedFilesToBinSubscription = self.eventBus!.subscribe(Commands.MoveSelectedFilesToBin, handler: self.moveSelectedFilesToBin)
         self.deleteSelectedFilesSubscription = self.eventBus!.subscribe(Commands.DeleteSelectedFiles, handler: self.deleteSelectedFiles)
+        self.renameSelectedFileSubscription = self.eventBus!.subscribe(Commands.RenameSelectedFile, handler: self.renameSelectedFile)
         self.restoreColumnWidths()
     }
     
@@ -118,9 +120,13 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
            row < self.tableViewDataSource.directoryContents.count {
             
             let fileInfo = self.tableViewDataSource.directoryContents[row]
-            let view = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
+            let view = tableView.makeView(withIdentifier: columnIdentifier, owner: self) as! NSTableCellView
             
             self.cellViewPopulators[columnIdentifier.rawValue]?(fileInfo, view)
+            
+            if columnIdentifier.rawValue == "name" {
+                view.textField?.delegate = self
+            }
             
             return view
         }
@@ -162,6 +168,27 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
             let fileInfo = self.tableViewDataSource.directoryContents[tableView.selectedRow]
             
             performAction(for: fileInfo)
+        }
+    }
+    
+    
+    // MARK: - NSTextFieldDelegate
+    
+    // NSTextFieldDelegate method called when the user finishes editing
+    func controlTextDidEndEditing(_ notification: Notification) {
+        if let textField = notification.object as? NSTextField {
+            let row = self.tableView.row(for: textField)
+            let fileInfo = self.tableViewDataSource.directoryContents[row]
+            let newPath = fileInfo.url.deletingLastPathComponent().appendingPathComponent(textField.stringValue)
+            
+            do {
+                try FileManager.default.moveItem(at: fileInfo.url, to: newPath)
+                Commands.reloadDirectoryContents(eventBus: self.eventBus!)
+            } catch let error {
+                Commands.showErrorAlert(window: self.view.window!,
+                                        title: "Can't rename file to \(newPath.lastPathComponent)",
+                                        error: error)
+            }
         }
     }
     
@@ -210,13 +237,13 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
         guard
             self.tableView.hasFocus
         else {
-            NSBeep()
             return
         }
         
         guard
             self.tableView.selectedRowIndexes.count > 0
         else {
+            NSBeep()
             return
         }
         
@@ -241,13 +268,13 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
         guard
             self.tableView.hasFocus
         else {
-            NSBeep()
             return
         }
         
         guard
             self.tableView.selectedRowIndexes.count > 0
         else {
+            NSBeep()
             return
         }
         
@@ -266,6 +293,29 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
                                 )
                             })
                          ])
+    }
+    
+    private func renameSelectedFile(message: Causality.NoMessage) {
+        guard
+            self.tableView.hasFocus
+        else {
+            return
+        }
+        
+        guard
+            self.tableView.selectedRow >= 0 && self.tableView.selectedRowIndexes.count == 1
+        else {
+            NSBeep()
+            return
+        }
+        
+        let a = self.tableView.view(atColumn: 0, row: self.tableView.selectedRow, makeIfNecessary: false)
+        
+        if let textField = (self.tableView.view(atColumn: 0, row: self.tableView.selectedRow, makeIfNecessary: false) as? NSTableCellView)?.textField {
+            self.view.window?.makeFirstResponder(textField)
+        } else {
+            NSBeep()
+        }
     }
     
     

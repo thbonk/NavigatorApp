@@ -166,7 +166,8 @@ extension ApplicationSettings {
                     shortcut.key.key == .specialKey(key: specialKey)
                     && shortcut.key.modifiers.symmetricDifference(event.modifierFlags.clean).isEmpty
                 })
-        } else if let keyCode = event.characters?.lowercased() {
+        } else if let keyCode = event.charactersIgnoringModifiers?.lowercased() {
+            
             return self
                 .shortcuts
                 .values

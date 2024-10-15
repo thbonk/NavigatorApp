@@ -843,8 +843,8 @@
         <scene sceneID="qTc-u1-api">
             <objects>
                 <viewController identifier="DirectoryViewControllerRestorationID" storyboardIdentifier="DirectoryViewController" id="wdM-ZT-ohV" userLabel="Directory View Controller" customClass="DirectoryViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" identifier="DirectoryView" id="dAm-5L-Wkc">
-                        <rect key="frame" x="0.0" y="0.0" width="548" height="530"/>
+                    <view key="view" identifier="DirectoryView" misplaced="YES" id="dAm-5L-Wkc">
+                        <rect key="frame" x="0.0" y="0.0" width="548" height="501"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Orv-JG-o85">
@@ -858,19 +858,19 @@
                                 </connections>
                             </pathControl>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNh-TO-Ftg">
-                                <rect key="frame" x="0.0" y="26" width="548" height="504"/>
+                                <rect key="frame" x="0.0" y="26" width="548" height="475"/>
                                 <clipView key="contentView" id="YSN-Mk-VYj">
-                                    <rect key="frame" x="1" y="1" width="546" height="502"/>
+                                    <rect key="frame" x="1" y="1" width="546" height="473"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" typeSelect="NO" autosaveName="DirectoryTableViewState" rowSizeStyle="automatic" headerView="uWi-b9-tog" viewBased="YES" id="Rb4-5P-Zgz" customClass="DirectoryTableView" customModule="Navigator" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="622" height="474"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="622" height="445"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="10"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="name" editable="NO" width="140" minWidth="40" maxWidth="1000" id="S1Z-Rd-hpP" userLabel="name">
+                                                <tableColumn identifier="name" width="140" minWidth="40" maxWidth="1000" id="S1Z-Rd-hpP" userLabel="name">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -894,7 +894,7 @@
                                                                 <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmP-HC-Wzl">
                                                                     <rect key="frame" x="25" y="0.0" width="113" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="gr7-3b-Lkt">
+                                                                    <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" usesSingleLineMode="YES" id="gr7-3b-Lkt">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1054,7 +1054,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="HFX-VU-llE">
-                                    <rect key="frame" x="1" y="487" width="546" height="16"/>
+                                    <rect key="frame" x="1" y="458" width="546" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="oUW-XH-Lzs">
