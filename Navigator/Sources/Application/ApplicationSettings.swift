@@ -59,6 +59,8 @@ class ApplicationSettings {
             Shortcut(key: ShortcutKey(modifiers: [.shift, .command], key: .character(character: "i")), event: "show-or-hide-hidden-files"),
         "reload-directory-contents":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "r")), event: "reload-directory-contents"),
+        "move-selected-files-to-bin":
+            Shortcut(key: ShortcutKey(modifiers: [ ], key: .specialKey(key: .delete)), event: "move-selected-files-to-bin"),
     ]
     
     

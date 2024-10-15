@@ -21,9 +21,11 @@
 import AppKit
 import Causality
 
-class NavigatorWindowController: NSWindowController, NSWindowDelegate {
+@objc class NavigatorWindowController: NSWindowController, NSWindowDelegate, NSWindowStateRestoration {
     
     // MARK: - Public Properties
+    
+    @objc public dynamic var identifier: String?
     
     public private(set) var path = NavigatorWindowController.initalPath {
         willSet {
@@ -55,12 +57,14 @@ class NavigatorWindowController: NSWindowController, NSWindowDelegate {
     
     // MARK: - Private Properties
     
+    private var actionBar: ActionBar!
     private var history = Stack<String>()
     private var navigatingBack = false
     
     private var changePathSubscription: Commands.ChangePathSubscription?
     private var navigateBackSubscription: Commands.NavigateBackSubscription?
     private var pathChangedSubscription: Events.PathChangedSubscription?
+    private var showActionBarSubscription: Commands.ShowActionBarSubscription?
     
     
     // MARK: - NSWindowController/NSWindowDelegate
@@ -70,9 +74,12 @@ class NavigatorWindowController: NSWindowController, NSWindowDelegate {
         
         self.window?.delegate = self
         
+        self.actionBar = ActionBar.create(with: self.eventBus)
+        
         self.changePathSubscription = self.eventBus.subscribe(Commands.ChangePath, handler: self.changePath)
         self.navigateBackSubscription = self.eventBus.subscribe(Commands.NavigateBack, handler: self.navigateBack)
         self.pathChangedSubscription = self.eventBus.subscribe(Events.PathChanged, handler: self.pathChanged)
+        self.showActionBarSubscription = self.eventBus.subscribe(Commands.ShowActionBar, handler: self.showActionBar)
     }
     
     override func showWindow(_ sender: Any?) {
@@ -84,6 +91,9 @@ class NavigatorWindowController: NSWindowController, NSWindowDelegate {
         self.changePathSubscription?.unsubscribe()
         self.navigateBackSubscription?.unsubscribe()
         self.pathChangedSubscription?.unsubscribe()
+        self.showActionBarSubscription?.unsubscribe()
+        
+        NSApp.windows.first { $0 == self.window }.map { $0.windowController! }?.dismissController(self)
     }
     
     override func keyDown(with event: NSEvent) {
@@ -114,6 +124,34 @@ class NavigatorWindowController: NSWindowController, NSWindowDelegate {
     private func pathChanged(message: PathChangedMessage) {
         self.window?.title = message.path.removingPercentEncoding!
     }
+    
+    private func showActionBar(message: Causality.NoMessage) {
+        self.actionBar.present(for: self.window!)
+    }
+    
+    
+    // MARK: - NSWindowStateRestoration
+    
+    func encodeState(with coder: NSCoder) {
+        if let frame = self.window?.frame {
+            coder.encode(NSString(string: NSStringFromRect(frame)), forKey: "window-frame")
+        }
+        
+        coder.encode(NSString(string: path), forKey: "path")
+    }
+    
+    func decodeState(with coder: NSCoder) {
+        if let rectString: NSString = coder.decodeObject(of: NSString.self, forKey: "window-frame") {
+            let frame = NSRectFromString(rectString as String)
+            self.window?.setFrame(frame, display: true)
+        }
+        
+        if let path = coder.decodeObject(of: NSString.self, forKey: "path"),
+           !path.isEqual(to: self.path) {
+            
+            Commands.changePath(eventBus: self.eventBus, path.removingPercentEncoding!)
+        }
+    }
 
 }
 
@@ -140,4 +178,5 @@ extension ApplicationSettings {
         
         return nil
     }
+    
 }

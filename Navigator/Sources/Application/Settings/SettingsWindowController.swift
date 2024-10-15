@@ -20,7 +20,12 @@
 
 import AppKit
 
-class SettingsWindowController: NSWindowController, NSWindowDelegate {
+@objc class SettingsWindowController: NSWindowController, NSWindowDelegate, NSWindowStateRestoration {
+    
+    // MARK: - Public Properties
+    
+    @objc public dynamic var identifier: String?
+    
     
     // MARK: - Private Properties
     
@@ -32,9 +37,32 @@ class SettingsWindowController: NSWindowController, NSWindowDelegate {
     // MARK: - NSWindowDelegate
     
     func windowShouldClose(_ sender: NSWindow) -> Bool {
-        // TODO error handling
+        do {
+            try self.settingsViewController?.save()
+            return true
+        } catch {
+            Commands.showErrorAlert(window: self.window!, title: "Error while saving settings.", error: error)
+        }
+        
+        return false
+    }
+    
+    
+    // MARK: - NSWindowStateRestoration
+    
+    func encodeState(with coder: NSCoder) {
         try? self.settingsViewController?.save()
-        return true
+        
+        if let frame = self.window?.frame {
+            coder.encode(NSString(string: NSStringFromRect(frame)), forKey: "window-frame")
+        }
+    }
+    
+    func decodeState(with coder: NSCoder) {
+        if let rectString: NSString = coder.decodeObject(of: NSString.self, forKey: "window-frame") {
+            let frame = NSRectFromString(rectString as String)
+            self.window?.setFrame(frame, display: true)
+        }
     }
     
 }

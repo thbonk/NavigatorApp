@@ -1,8 +1,8 @@
 //
-//  ShowOrHideHiddenFilesCommand.swift
+//  MoveSelectedFilesToBinCommand.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 04.10.24.
+//  Created by Thomas Bonk on 15.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,12 +23,12 @@ import Foundation
 
 extension Commands {
     
-    typealias ShowOrHideHiddenFilesSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
+    typealias MoveSelectedFilesToBinSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
     
-    static let ShowOrHideHiddenFiles = EventRegistry.shared.register(label: "show-or-hide-hidden-files", description: "Show or hide hidden files")
+    static let MoveSelectedFilesToBin = EventRegistry.shared.register(label: "move-selected-files-to-bin", description: "Move selected files to Bin")
     
-    static func showOrHideHiddenFiles(eventBus: Causality.Bus) {
-        eventBus.publish(event: Commands.ShowOrHideHiddenFiles)
+    static func moveSelectedFilesToBin(eventBus: Causality.Bus) {
+        eventBus.publish(event: Commands.MoveSelectedFilesToBin)
     }
     
 }

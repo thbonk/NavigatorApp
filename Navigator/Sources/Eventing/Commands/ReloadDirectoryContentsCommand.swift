@@ -25,7 +25,7 @@ extension Commands {
     
     typealias ReloadDirectoryContentsSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
     
-    static let ReloadDirectoryContents = EventRegistry.shared.register(label: "reload-directory-contents")
+    static let ReloadDirectoryContents = EventRegistry.shared.register(label: "reload-directory-contents", description: "Reload directory contents")
     
     static func reloadDirectoryContents(eventBus: Causality.Bus) {
         eventBus.publish(event: Commands.ReloadDirectoryContents)

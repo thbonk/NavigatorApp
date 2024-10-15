@@ -59,11 +59,15 @@ extension FileManager {
             .default
             .contentsOfDirectory(at: path.fileUrl, includingPropertiesForKeys: properties, options: options)
             .map {
-                let attributes = try self.attributesOfItem(at: $0)
-                
-                return FileInfo(url: $0.path.precomposedStringWithCanonicalMapping.fileUrl,
-                                resourceValues: try $0.resourceValues(forKeys: propertiesSet),
-                                attributes: attributes)
+                if self.fileExists(url: $0) {
+                    let attributes = try self.attributesOfItem(at: $0)
+                    
+                    return FileInfo(url: $0.path.precomposedStringWithCanonicalMapping.fileUrl,
+                                    resourceValues: try $0.resourceValues(forKeys: propertiesSet),
+                                    attributes: attributes)
+                } else {
+                    return FileInfo(url: $0.path.precomposedStringWithCanonicalMapping.fileUrl, resourceValues: URLResourceValues(), attributes: [:])
+                }
             }
             .sorted { $0.name < $1.name }
     }

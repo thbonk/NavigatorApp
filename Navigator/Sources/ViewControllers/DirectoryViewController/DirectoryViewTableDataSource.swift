@@ -59,7 +59,9 @@ import UniformTypeIdentifiers
                    objectValueFor tableColumn: NSTableColumn?,
                    row: Int) -> Any? {
         
-        if let columnIdentifier = tableColumn?.identifier {
+        if let columnIdentifier = tableColumn?.identifier,
+            row < self.directoryContents.count {
+            
             let fileInfo = self.directoryContents[row]
             let mirror = Mirror(reflecting: fileInfo)
             
@@ -182,14 +184,16 @@ import UniformTypeIdentifiers
                                 Back on the main thread, insert the newly created image file into the table view.
                             */
                             OperationQueue.main.addOperation {
-                                if error != nil {
-                                    // TODO error handling
-                                } else if draggingInfo.draggingSourceOperationMask.contains(.copy) {
-                                    // TODO error handling
-                                    try? FileManager.default.copyItem(at: fileURL, to: self.path!.fileUrl.appendingPathComponent(fileURL.lastPathComponent))
-                                } else if draggingInfo.draggingSourceOperationMask.contains(.move) {
-                                    // TODO error handling
-                                    try? FileManager.default.moveItem(at: fileURL, to: self.path!.fileUrl.appendingPathComponent(fileURL.lastPathComponent))
+                                do {
+                                    if error != nil {
+                                        throw error!
+                                    } else if draggingInfo.draggingSourceOperationMask.contains(.copy) {
+                                        try FileManager.default.copyItem(at: fileURL, to: self.path!.fileUrl.appendingPathComponent(fileURL.lastPathComponent))
+                                    } else if draggingInfo.draggingSourceOperationMask.contains(.move) {
+                                        try FileManager.default.moveItem(at: fileURL, to: self.path!.fileUrl.appendingPathComponent(fileURL.lastPathComponent))
+                                    }
+                                } catch {
+                                    Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error during Drag&Drop", error: error)
                                 }
 
                                 // Stop the progress indicator as we are done receiving this promised file.
@@ -232,12 +236,14 @@ import UniformTypeIdentifiers
                         if  let itemType = pasteboardItem.availableType(from: [.fileURL]),
                             let filePath = pasteboardItem.string(forType: itemType),
                             let url = URL(string: filePath) {
-                                if info.draggingSourceOperationMask.contains(.copy) {
-                                    // TODO error handling
-                                    try? FileManager.default.copyItem(at: url, to: self.path!.fileUrl.appendingPathComponent(url.lastPathComponent))
-                                } else if info.draggingSourceOperationMask.contains(.move) {
-                                    // TODO error handling
-                                    try? FileManager.default.moveItem(at: url, to: self.path!.fileUrl.appendingPathComponent(url.lastPathComponent))
+                                do {
+                                    if info.draggingSourceOperationMask.contains(.copy) {
+                                        try FileManager.default.copyItem(at: url, to: self.path!.fileUrl.appendingPathComponent(url.lastPathComponent))
+                                    } else if info.draggingSourceOperationMask.contains(.move) {
+                                        try FileManager.default.moveItem(at: url, to: self.path!.fileUrl.appendingPathComponent(url.lastPathComponent))
+                                    }
+                                } catch {
+                                    Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error during Drag&Drop", error: error)
                                 }
                             }
                     }
@@ -265,8 +271,7 @@ import UniformTypeIdentifiers
                     withHiddenFiles: UserDefaults.standard.bool(forKey: "shouldShowHiddenFiles"))
                 contents.append(contentsOf: cntnts)
             } catch {
-                // TODO error handling
-                LOGGER.error("Error while retrieving directory contents: \(error)")
+                Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while retrieving directory contents", error: error)
             }
         }
         
@@ -296,9 +301,7 @@ extension DirectoryViewTableDataSource: NSFilePromiseProviderDelegate {
             completionHandler(nil)
         } catch let error {
             OperationQueue.main.addOperation {
-                // TODO error handling
-                /*self.presentError(error, modalFor: self.view.window!,
-                                  delegate: nil, didPresent: nil, contextInfo: nil)*/
+                Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error during Drag&Drop", error: error)
             }
             completionHandler(error)
         }

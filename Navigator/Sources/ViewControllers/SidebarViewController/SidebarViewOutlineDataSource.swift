@@ -38,8 +38,11 @@ class SidebarViewOutlineDataSource: NSObject, NSOutlineViewDataSource {
     // MARK: - NSObject
     
     override func awakeFromNib() {
-        // TODO error handling
-        self.volumesCategory.volumes = (try? FileManager.default.mountedVolumes()) ?? []
+        do {
+            self.volumesCategory.volumes = try FileManager.default.mountedVolumes()
+        } catch {
+            Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while reading mounted volumes", error: error)
+        }
     }
 
     

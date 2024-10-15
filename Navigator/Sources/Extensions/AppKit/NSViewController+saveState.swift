@@ -1,8 +1,8 @@
 //
-//  ShowOrHideHiddenFilesCommand.swift
+//  NSViewController+saveState.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 04.10.24.
+//  Created by Thomas Bonk on 12.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,17 +18,15 @@
 //  limitations under the License.
 //
 
-import Causality
-import Foundation
+import AppKit
 
-extension Commands {
+extension NSViewController {
     
-    typealias ShowOrHideHiddenFilesSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
-    
-    static let ShowOrHideHiddenFiles = EventRegistry.shared.register(label: "show-or-hide-hidden-files", description: "Show or hide hidden files")
-    
-    static func showOrHideHiddenFiles(eventBus: Causality.Bus) {
-        eventBus.publish(event: Commands.ShowOrHideHiddenFiles)
+    public func saveState() {
+        if let window = self.view.window {
+            // Save the window frame
+            let frameString = NSStringFromRect(window.frame)
+            UserDefaults.standard.set(frameString, forKey: "\(type(of: self))_WindowFrame")
+        }
     }
-    
 }

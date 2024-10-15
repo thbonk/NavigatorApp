@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -697,6 +697,9 @@
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="NavigatorWindowController"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="5BD-jK-awk" kind="relationship" relationship="window.shadowedContentViewController" id="3pH-t8-5YM"/>
                     </connections>
@@ -840,7 +843,7 @@
         <scene sceneID="qTc-u1-api">
             <objects>
                 <viewController identifier="DirectoryViewControllerRestorationID" storyboardIdentifier="DirectoryViewController" id="wdM-ZT-ohV" userLabel="Directory View Controller" customClass="DirectoryViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="dAm-5L-Wkc">
+                    <view key="view" identifier="DirectoryView" id="dAm-5L-Wkc">
                         <rect key="frame" x="0.0" y="0.0" width="548" height="530"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1020,9 +1023,8 @@
                                                             <rect key="frame" x="516" y="5" width="97" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pcy-9E-g7v">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="97" height="16"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Pcy-9E-g7v">
+                                                                    <rect key="frame" x="0.0" y="1" width="97" height="16"/>
                                                                     <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="V64-YY-7Gg">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1030,6 +1032,11 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Pcy-9E-g7v" firstAttribute="leading" secondItem="eeP-TK-R5k" secondAttribute="leading" constant="2" id="6Jg-S2-R0m"/>
+                                                                <constraint firstItem="Pcy-9E-g7v" firstAttribute="centerX" secondItem="eeP-TK-R5k" secondAttribute="centerX" id="6ZT-BK-BLo"/>
+                                                                <constraint firstItem="Pcy-9E-g7v" firstAttribute="centerY" secondItem="eeP-TK-R5k" secondAttribute="centerY" id="GWr-Xn-SBT"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="Pcy-9E-g7v" id="1bC-ao-bIs"/>
                                                             </connections>
@@ -1085,8 +1092,8 @@
         <!--Infobar View Controller-->
         <scene sceneID="V1w-YN-bja">
             <objects>
-                <viewController id="nUH-Zb-Oip" customClass="InfobarViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="DOd-ck-WRN">
+                <viewController identifier="InfobarViewControllerRestorableID" storyboardIdentifier="InfobarViewController" id="nUH-Zb-Oip" customClass="InfobarViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" identifier="InfobarView" id="DOd-ck-WRN">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
@@ -1112,6 +1119,9 @@
                             <outlet property="delegate" destination="qNh-Se-Dy0" id="Qbw-Tr-lXg"/>
                         </connections>
                     </window>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="identifier" value="SettingsWindowController"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="dhm-2F-s3Y" kind="relationship" relationship="window.shadowedContentViewController" id="BdI-tS-3SF"/>
                     </connections>

@@ -1,8 +1,8 @@
 //
-//  ShowOrHideHiddenFilesCommand.swift
+//  ShowActionBarCommand.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 04.10.24.
+//  Created by Thomas Bonk on 14.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,12 +23,11 @@ import Foundation
 
 extension Commands {
     
-    typealias ShowOrHideHiddenFilesSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
+    typealias ShowActionBarSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
     
-    static let ShowOrHideHiddenFiles = EventRegistry.shared.register(label: "show-or-hide-hidden-files", description: "Show or hide hidden files")
+    static let ShowActionBar = EventRegistry.shared.register(label: "show-action-bar")
     
-    static func showOrHideHiddenFiles(eventBus: Causality.Bus) {
-        eventBus.publish(event: Commands.ShowOrHideHiddenFiles)
+    static func showActionBar(eventBus: Causality.Bus) {
+        eventBus.publish(event: Commands.ShowActionBar)
     }
-    
 }

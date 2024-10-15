@@ -1,8 +1,8 @@
 //
-//  ShowOrHideHiddenFilesCommand.swift
+//  NSWindowStateRestoration.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 04.10.24.
+//  Created by Thomas Bonk on 12.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,17 +18,29 @@
 //  limitations under the License.
 //
 
-import Causality
-import Foundation
+import AppKit
 
-extension Commands {
+protocol NSWindowStateRestoration: AnyObject {
+
+    // MARK: - Properties
     
-    typealias ShowOrHideHiddenFilesSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
+    var identifier: String? { get }
     
-    static let ShowOrHideHiddenFiles = EventRegistry.shared.register(label: "show-or-hide-hidden-files", description: "Show or hide hidden files")
     
-    static func showOrHideHiddenFiles(eventBus: Causality.Bus) {
-        eventBus.publish(event: Commands.ShowOrHideHiddenFiles)
-    }
+    // MARK: - Methods
+    
+    func encodeState(with: NSCoder)
+    
+    func decodeState(with: NSCoder)
+    
+}
+
+protocol NSViewStateRestoration: AnyObject {
+    
+    // MARK: - Methods
+    
+    func encodeState(with: NSCoder)
+    
+    func decodeState(with: NSCoder)
     
 }

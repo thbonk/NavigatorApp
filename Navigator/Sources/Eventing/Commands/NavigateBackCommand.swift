@@ -25,7 +25,7 @@ extension Commands {
     
     typealias NavigateBackSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
     
-    static let NavigateBack = EventRegistry.shared.register(label: "navigate-back")
+    static let NavigateBack = EventRegistry.shared.register(label: "navigate-back", description: "Navigate Back")
     
     static func navigateBack(eventBus: Causality.Bus) {
         eventBus.publish(event: Commands.ReloadDirectoryContents)

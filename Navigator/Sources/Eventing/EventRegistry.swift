@@ -23,6 +23,26 @@ import Foundation
 
 class EventRegistry {
     
+    struct ActionEvent: Hashable {
+        
+        // MARK: - Public Properties
+        
+        let label: String
+        let event: Causality.Event<Causality.NoMessage>
+        let description: String
+        
+        
+        // MARK: - Hashable
+        
+        static func == (lhs: EventRegistry.ActionEvent, rhs: EventRegistry.ActionEvent) -> Bool {
+            lhs.description == rhs.description
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(description)
+        }
+    }
+    
     // MARK: - Public Static Properties
     
     public static var shared: EventRegistry = {
@@ -30,9 +50,20 @@ class EventRegistry {
     }()
     
     
+    // MARK: - Public Properties
+    
+    public var actionEvents: [ActionEvent] {
+        return self.events
+            .keys
+            .filter { self.events[$0]?.description != nil }
+            .map { ActionEvent(label: $0, event: self.events[$0]!.event, description: self.events[$0]!.description!) }
+            .sorted(by: { $0.description < $1.description })
+    }
+    
+    
     // MARK: - Private Properties
     
-    private var events: [String : Causality.Event<Causality.NoMessage>] = [:]
+    private var events: [String : (event: Causality.Event<Causality.NoMessage>, description: String?)] = [:]
     
     
     // MARK: - Initialization
@@ -56,16 +87,16 @@ class EventRegistry {
         return Causality.Event<Message>(label: label)
     }
     
-    func register(label: String) -> Causality.Event<Causality.NoMessage> {
+    func register(label: String, description: String? = nil) -> Causality.Event<Causality.NoMessage> {
         let event = register(messageType: Causality.NoMessage.self, label: label)
         
-        self.events[label] = event
+        self.events[label] = (event: event, description: description)
         return event
     }
     
     func publish(eventBus: Causality.Bus, event: String) {
         if let evnt = self.events[event] {
-            eventBus.publish(event: evnt)
+            eventBus.publish(event: evnt.event)
         }
     }
 

@@ -37,9 +37,12 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
     
     @objc private dynamic var path: URL?
     
+    private var fileOperationsQueue = FileOperationsQueue()
+    
     private var reloadDirectoryContentsSubscription: Commands.ReloadDirectoryContentsSubscription?
     private var showOrHideHiddenFilesSubscription: Commands.ShowOrHideHiddenFilesSubscription?
     private var pathChangedSubscription: Events.PathChangedSubscription?
+    private var moveSelectedFilesToBinSubscription: Commands.MoveSelectedFilesToBinSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -84,6 +87,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
         self.reloadDirectoryContentsSubscription = self.eventBus!.subscribe(Commands.ReloadDirectoryContents, handler: self.reloadDirectoryContentsSubscription)
         self.showOrHideHiddenFilesSubscription = self.eventBus!.subscribe(Commands.ShowOrHideHiddenFiles, handler: self.showOrHideHiddenFiles)
         self.pathChangedSubscription = self.eventBus!.subscribe(Events.PathChanged, handler: self.pathChanged)
+        self.moveSelectedFilesToBinSubscription = self.eventBus!.subscribe(Commands.MoveSelectedFilesToBin, handler: self.moveSelectedFilesToBin)
         self.restoreColumnWidths()
     }
     
@@ -104,7 +108,9 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
                    viewFor tableColumn: NSTableColumn?,
                    row: Int) -> NSView? {
         
-        if let columnIdentifier = tableColumn?.identifier {
+        if let columnIdentifier = tableColumn?.identifier,
+           row < self.tableViewDataSource.directoryContents.count {
+            
             let fileInfo = self.tableViewDataSource.directoryContents[row]
             let view = tableView.makeView(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView
             
@@ -180,11 +186,42 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
         self.tableView.reloadData()
     }
     
-    public func reloadDirectoryContents() {
+    private func reloadDirectoryContents() {
         self.tableViewDataSource.reloadDirectoryContents()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+    
+    private func moveSelectedFilesToBin(message: Causality.NoMessage) {
+        guard
+            self.tableView.hasFocus
+        else {
+            NSBeep()
+            return
+        }
+        
+        guard
+            self.tableView.selectedRowIndexes.count > 0
+        else {
+            return
+        }
+        
+        NSAlert.question(for: self.view.window!,
+                         messageText: "Do you really want to move the selected files to the Bin?",
+                         informativeText: "You can always restore them later.",
+                         buttons: [
+                            (title: "No", action: {
+                                // Empty by design
+                            }),
+                            (title: "Yes", action: {
+                                self.fileOperationsQueue.enqueueMoveToBinOperations(
+                                    self.tableView
+                                        .selectedRowIndexes
+                                        .map { self.tableViewDataSource.directoryContents[$0] }
+                                )
+                            })
+                         ])
     }
     
     
@@ -310,15 +347,15 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate {
     }
     
     private class func populateCreationDate(_ fileInfo: FileInfo, _ view: NSTableCellView) {
-        view.textField?.stringValue = fileInfo.creationDate!
+        view.textField?.stringValue = fileInfo.creationDate ?? "?"
     }
     
     private class func populateModificationDate(_ fileInfo: FileInfo, _ view: NSTableCellView) {
-        view.textField?.stringValue = fileInfo.modificationDate!
+        view.textField?.stringValue = fileInfo.modificationDate ?? "?"
     }
     
     private class func populateAccessDate(_ fileInfo: FileInfo, _ view: NSTableCellView) {
-        view.textField?.stringValue = fileInfo.accessDate!
+        view.textField?.stringValue = fileInfo.accessDate ?? "?"
     }
     
     private class func populateFileSize(_ fileInfo: FileInfo, _ view: NSTableCellView) {
