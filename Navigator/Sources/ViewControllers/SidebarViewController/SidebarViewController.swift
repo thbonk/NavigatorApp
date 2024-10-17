@@ -34,7 +34,8 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     
     // MARK: - Private Properties
     
-    private var moveSelectedFilesToBinSubscription: Commands.MoveSelectedFilesToBinSubscription?
+    private var deleteFavoriteSubscription: Commands.DeleteFavoriteSubscription?
+    private var ejectVolumeSubscription: Commands.EjectVolumeSubscription?
     private var volumesChangedCancellable: Cancellable?
     
     
@@ -54,7 +55,8 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     }
     
     override func viewWillAppear() {
-        self.moveSelectedFilesToBinSubscription = self.eventBus!.subscribe(Commands.MoveSelectedFilesToBin, handler: self.removeFavorite)
+        self.deleteFavoriteSubscription = self.eventBus!.subscribe(Commands.DeleteFavorite, handler: self.deleteFavorite)
+        self.ejectVolumeSubscription = self.eventBus!.subscribe(Commands.EjectVolume, handler: self.ejectVolume)
         
         self.volumesChangedCancellable = FileManager.default.observeVolumes(
             onMount: self.volumentMounted(_:), onUnmount: self.volumeWillUnmount(_:))
@@ -69,7 +71,7 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         
-        self.moveSelectedFilesToBinSubscription?.unsubscribe()
+        self.deleteFavoriteSubscription?.unsubscribe()
         self.volumesChangedCancellable?.cancel()
     }
     
@@ -86,29 +88,77 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
         self.outlineView.reloadData()
     }
     
-    private func removeFavorite(_ message: Causality.NoMessage) {
-        guard
-            // TODO make hasFocus a property of NSView
-            self.view.window?.firstResponder == self.outlineView
-        else {
-            return
-        }
-        
-        guard
-            self.outlineView.selectedRow >= 0
-        else {
-            return
-        }
-        
-        guard
-            let item = self.outlineView.item(atRow: self.outlineView.selectedRow) as? FileInfo
-        else {
-            return
-        }
-        
+    private func deleteFavorite(_ message: Causality.NoMessage) {
         DispatchQueue.main.async {
-            self.outlineViewDataSource.favoritesCategory.favorites.removeAll { $0 == item }
-            self.outlineView.reloadData()
+            guard
+                // TODO make hasFocus a property of NSView
+                self.view.window?.firstResponder == self.outlineView
+            else {
+                NSBeep()
+                return
+            }
+            
+            guard
+                self.outlineView.selectedRow >= 0
+            else {
+                NSBeep()
+                return
+            }
+            
+            guard
+                let item = self.outlineView.item(atRow: self.outlineView.selectedRow) as? FileInfo
+            else {
+                NSBeep()
+                return
+            }
+        
+            do {
+                self.outlineViewDataSource.favoritesCategory.favorites.removeAll { $0 == item }
+                try self.outlineViewDataSource.favoritesCategory.save()
+                self.outlineView.reloadData()
+            } catch {
+                Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error when removing favorite", error: error)
+            }
+        }
+    }
+    
+    private func ejectVolume(_ message: Causality.NoMessage) {
+        DispatchQueue.main.async {
+            guard
+                // TODO make hasFocus a property of NSView
+                self.view.window?.firstResponder == self.outlineView
+            else {
+                NSBeep()
+                return
+            }
+            
+            guard
+                self.outlineView.selectedRow >= 0
+            else {
+                NSBeep()
+                return
+            }
+            
+            guard
+                let volume = self.outlineView.item(atRow: self.outlineView.selectedRow) as? VolumeInfo
+            else {
+                NSBeep()
+                return
+            }
+            
+            guard
+                volume.isEjectable
+            else {
+                NSBeep()
+                return
+            }
+        
+            do {
+                try NSWorkspace.shared.unmountAndEjectDevice(at: volume.url)
+                self.outlineView.reloadData()
+            } catch {
+                Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error ejecting volume", error: error)
+            }
         }
     }
     
@@ -163,5 +213,4 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
         
         return view
     }
-    
 }

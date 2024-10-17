@@ -8,5 +8,7 @@
         { shortcut { modifiers [ ".shift" ".command" ] key "p" } event "show-action-bar" }
         { shortcut { modifiers [ ] key ".delete" } event "move-selected-files-to-bin" }
         { shortcut { modifiers [ ".control" ] key ".delete" } event "delete-selected-files" }
+        { shortcut { modifiers [ ".command" ] key ".delete" } event "delete-favorite" }
+        { shortcut { modifiers [ ".option" ] key ".delete" } event "eject-volume" }
     ]
 }

@@ -65,6 +65,10 @@ class ApplicationSettings {
             Shortcut(key: ShortcutKey(modifiers: [ ], key: .specialKey(key: .delete)), event: "move-selected-files-to-bin"),
         "delete-selected-files":
             Shortcut(key: ShortcutKey(modifiers: [ .control ], key: .specialKey(key: .delete)), event: "delete-selected-files"),
+        "delete-favorite":
+            Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .specialKey(key: .delete)), event: "delete-favorite"),
+        "eject-volume":
+            Shortcut(key: ShortcutKey(modifiers: [ .option ], key: .specialKey(key: .delete)), event: "eject-volume"),
     ]
     
     
