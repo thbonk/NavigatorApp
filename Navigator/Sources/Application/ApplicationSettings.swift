@@ -69,6 +69,8 @@ class ApplicationSettings {
             Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .specialKey(key: .delete)), event: "delete-favorite"),
         "eject-volume":
             Shortcut(key: ShortcutKey(modifiers: [ .option ], key: .specialKey(key: .delete)), event: "eject-volume"),
+        "paste-files":
+            Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .character(character: "v")), event: "paste-files"),
     ]
     
     

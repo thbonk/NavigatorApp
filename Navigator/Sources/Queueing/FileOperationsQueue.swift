@@ -55,11 +55,6 @@ import Foundation
     
     public func enqueueMoveToBinOperations(_ fileInfos: [FileInfo]) {
         self.queue.addOperations(fileInfos.map { MoveToBinOperation($0) }, waitUntilFinished: false)
-        /*self.queue.addOperation {
-            DispatchQueue.main.async {
-                Commands.reloadDirectoryContents(eventBus: self.eventBus)
-            }
-        }*/
     }
     
     public func enqueueMoveToBinOperation(_ fileInfo: FileInfo) {
@@ -76,12 +71,59 @@ import Foundation
     public func enqueueDeleteOperation(_ fileInfo: FileInfo) {
         self.enqueueDeleteOperations([fileInfo])
     }
+    
+    public func enqeueCopyOperations(_ fileInfos: [FileInfo], to folderUrl: URL) {
+        self.queue.addOperations(fileInfos.map({
+            CopyOperation($0, destinationUrl: folderUrl.appendingPathComponent($0.url.lastPathComponent))
+        }), waitUntilFinished: false)
+    }
+    
+    public func enqeueCopyOperation(_ fileInfo: FileInfo, to folderUrl: URL) {
+        self.enqeueCopyOperations([fileInfo], to: folderUrl)
+    }
 }
 
 public protocol FileOperation {
     
     var descripition: String { get }
     
+}
+
+public class CopyOperation: BlockOperation, FileOperation, @unchecked Sendable {
+    
+    // MARK: - Public Properties
+    
+    public var descripition: String {
+        "Copy \(fileInfo.path) to \(destinationUrl.path)"
+    }
+    
+    
+    // MARK: - Private Properties
+    
+    private let fileInfo: FileInfo
+    private let destinationUrl: URL
+    
+    
+    // MARK: - Initialization
+    
+    init(_ fileInfo: FileInfo, destinationUrl: URL) {
+        self.fileInfo = fileInfo
+        self.destinationUrl = destinationUrl
+        
+        super.init()
+        self.addExecutionBlock(self.copyFile)
+    }
+    
+    
+    // MARK: - Private Methods
+    
+    private func copyFile() {
+        do {
+            try FileManager.default.copyItem(at: fileInfo.url, to: destinationUrl)
+        } catch {
+            // TODO error handling
+        }
+    }
 }
 
 public class MoveToBinOperation: BlockOperation, FileOperation, @unchecked Sendable {

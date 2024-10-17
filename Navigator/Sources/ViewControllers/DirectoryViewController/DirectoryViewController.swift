@@ -21,6 +21,7 @@
 import AppKit
 import Causality
 import Combine
+import UniformTypeIdentifiers
 
 class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFieldDelegate {
     
@@ -45,6 +46,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     private var moveSelectedFilesToBinSubscription: Commands.MoveSelectedFilesToBinSubscription?
     private var deleteSelectedFilesSubscription: Commands.DeleteSelectedFilesSubscription?
     private var renameSelectedFileSubscription: Commands.RenameSelectedFileSubscription?
+    private var pasteFilesSubscription: Commands.PasteFilesSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -94,6 +96,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.moveSelectedFilesToBinSubscription = self.eventBus!.subscribe(Commands.MoveSelectedFilesToBin, handler: self.moveSelectedFilesToBin)
         self.deleteSelectedFilesSubscription = self.eventBus!.subscribe(Commands.DeleteSelectedFiles, handler: self.deleteSelectedFiles)
         self.renameSelectedFileSubscription = self.eventBus!.subscribe(Commands.RenameSelectedFile, handler: self.renameSelectedFile)
+        self.pasteFilesSubscription = self.eventBus!.subscribe(Commands.PasteFiles, handler: self.pasteFiles)
         self.restoreColumnWidths()
     }
     
@@ -103,6 +106,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.pathChangedSubscription?.unsubscribe()
         self.moveSelectedFilesToBinSubscription?.unsubscribe()
         self.deleteSelectedFilesSubscription?.unsubscribe()
+        self.pasteFilesSubscription?.unsubscribe()
         self.storeColumnWidths()
         
         super.viewWillDisappear()
@@ -319,6 +323,31 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
             self.view.window?.makeFirstResponder(textField)
         } else {
             NSBeep()
+        }
+    }
+    
+    private func pasteFiles(message: Causality.NoMessage) {
+        // Check for the special type indicating a "cut" (move) operation
+        // TODO check how PathFinder provides the URL for cutting it
+        let isCutOperation = NSPasteboard.general.types?.contains(NSPasteboard.PasteboardType("com.apple.pasteboard.promisedMoveOperation")) ?? false
+                
+        if let paths = NSPasteboard.general.readObjects(forClasses: [NSString.self], options: [.urlReadingFileURLsOnly: true]) as? [NSString],
+           let currentPath = self.path {
+            do {
+                if isCutOperation {
+                    // TODO
+                } else {
+                    self
+                        .fileOperationsQueue
+                        .enqeueCopyOperations(
+                            try paths.map {
+                                try FileManager.default.fileInfo(from: URL(filePath: $0 as String))
+                            },
+                            to: currentPath)
+                }
+            } catch let error {
+                // TODO error handling
+            }
         }
     }
     
