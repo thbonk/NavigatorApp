@@ -181,6 +181,12 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
             let fileInfo = self.tableViewDataSource.directoryContents[row]
             let newPath = fileInfo.url.deletingLastPathComponent().appendingPathComponent(textField.stringValue)
             
+            guard
+                fileInfo.url != newPath
+            else {
+                return
+            }
+            
             do {
                 try FileManager.default.moveItem(at: fileInfo.url, to: newPath)
                 Commands.reloadDirectoryContents(eventBus: self.eventBus!)
@@ -308,8 +314,6 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
             NSBeep()
             return
         }
-        
-        let a = self.tableView.view(atColumn: 0, row: self.tableView.selectedRow, makeIfNecessary: false)
         
         if let textField = (self.tableView.view(atColumn: 0, row: self.tableView.selectedRow, makeIfNecessary: false) as? NSTableCellView)?.textField {
             self.view.window?.makeFirstResponder(textField)
