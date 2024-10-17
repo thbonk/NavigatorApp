@@ -41,6 +41,10 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     
     // MARK: - NSViewController
     
+    override func becomeFirstResponder() -> Bool {
+        return super.becomeFirstResponder()
+    }
+    
     override func viewDidLoad() {
         // Accept file promises from apps like Safari.
         self.outlineView.registerForDraggedTypes(

@@ -740,22 +740,14 @@
             <objects>
                 <customObject id="lwj-lA-i46" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController identifier="SidebarViewControllerRestorationID" storyboardIdentifier="SidebarViewController" id="H1L-S8-146" customClass="SidebarViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="cQj-uu-K0C">
+                    <view key="view" id="cQj-uu-K0C" customClass="NSFocusIndicatorView" customModule="Navigator" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="130" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-Vj-37t">
-                                <rect key="frame" x="23" y="292" width="84" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Sidebar View" id="jX8-2C-PFE">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbq-YZ-yfA">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="600"/>
+                                <rect key="frame" x="1" y="0.0" width="129" height="600"/>
                                 <clipView key="contentView" id="egU-Qh-Tlb">
-                                    <rect key="frame" x="1" y="1" width="128" height="598"/>
+                                    <rect key="frame" x="1" y="1" width="127" height="598"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="13" outlineTableColumn="sR1-kS-J2d" id="s38-1T-Mvf">
@@ -811,8 +803,8 @@
                                         </outlineView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="XzF-KM-jy8">
-                                    <rect key="frame" x="1" y="583" width="128" height="16"/>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="XzF-KM-jy8">
+                                    <rect key="frame" x="1" y="583" width="127" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Uww-Qw-4jO">
@@ -823,11 +815,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Bbq-YZ-yfA" secondAttribute="bottom" id="1A6-ec-RgM"/>
-                            <constraint firstItem="Bbq-YZ-yfA" firstAttribute="leading" secondItem="cQj-uu-K0C" secondAttribute="leading" id="4iJ-la-Emx"/>
+                            <constraint firstItem="Bbq-YZ-yfA" firstAttribute="leading" secondItem="cQj-uu-K0C" secondAttribute="leading" constant="1" id="4iJ-la-Emx"/>
                             <constraint firstAttribute="trailing" secondItem="Bbq-YZ-yfA" secondAttribute="trailing" id="C7y-Vo-hEs"/>
-                            <constraint firstItem="jJP-Vj-37t" firstAttribute="centerY" secondItem="cQj-uu-K0C" secondAttribute="centerY" id="Ofs-qj-MV3"/>
                             <constraint firstItem="Bbq-YZ-yfA" firstAttribute="top" secondItem="cQj-uu-K0C" secondAttribute="top" id="VTr-7n-qo7"/>
-                            <constraint firstItem="jJP-Vj-37t" firstAttribute="centerX" secondItem="cQj-uu-K0C" secondAttribute="centerX" id="tzp-QI-dI9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -843,12 +833,12 @@
         <scene sceneID="qTc-u1-api">
             <objects>
                 <viewController identifier="DirectoryViewControllerRestorationID" storyboardIdentifier="DirectoryViewController" id="wdM-ZT-ohV" userLabel="Directory View Controller" customClass="DirectoryViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" identifier="DirectoryView" misplaced="YES" id="dAm-5L-Wkc">
-                        <rect key="frame" x="0.0" y="0.0" width="548" height="501"/>
+                    <view key="view" identifier="DirectoryView" misplaced="YES" id="dAm-5L-Wkc" customClass="NSFocusIndicatorView" customModule="Navigator" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="549" height="298"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Orv-JG-o85">
-                                <rect key="frame" x="3" y="3" width="542" height="22"/>
+                                <rect key="frame" x="3" y="3" width="543" height="22"/>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="c1D-Nv-T0J">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file://localhost/Applications/"/>
@@ -858,13 +848,13 @@
                                 </connections>
                             </pathControl>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNh-TO-Ftg">
-                                <rect key="frame" x="0.0" y="26" width="548" height="475"/>
+                                <rect key="frame" x="1" y="26" width="548" height="272"/>
                                 <clipView key="contentView" id="YSN-Mk-VYj">
-                                    <rect key="frame" x="1" y="1" width="546" height="473"/>
+                                    <rect key="frame" x="1" y="1" width="546" height="270"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" typeSelect="NO" autosaveName="DirectoryTableViewState" rowSizeStyle="automatic" headerView="uWi-b9-tog" viewBased="YES" id="Rb4-5P-Zgz" customClass="DirectoryTableView" customModule="Navigator" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="622" height="445"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="622" height="242"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="10"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1054,7 +1044,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="HFX-VU-llE">
-                                    <rect key="frame" x="1" y="458" width="546" height="16"/>
+                                    <rect key="frame" x="1" y="255" width="546" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="oUW-XH-Lzs">
@@ -1069,7 +1059,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Orv-JG-o85" secondAttribute="bottom" constant="3" id="EKb-cE-pHa"/>
-                            <constraint firstItem="aNh-TO-Ftg" firstAttribute="leading" secondItem="dAm-5L-Wkc" secondAttribute="leading" id="Fhl-Jm-FM9"/>
+                            <constraint firstItem="aNh-TO-Ftg" firstAttribute="leading" secondItem="dAm-5L-Wkc" secondAttribute="leading" constant="1" id="Fhl-Jm-FM9"/>
                             <constraint firstItem="Orv-JG-o85" firstAttribute="top" secondItem="aNh-TO-Ftg" secondAttribute="bottom" constant="1" id="Fyb-5B-Vey"/>
                             <constraint firstItem="Orv-JG-o85" firstAttribute="leading" secondItem="dAm-5L-Wkc" secondAttribute="leading" constant="3" id="NEB-Hd-lSn"/>
                             <constraint firstAttribute="trailing" secondItem="Orv-JG-o85" secondAttribute="trailing" constant="3" id="QwT-Re-RVY"/>
@@ -1087,13 +1077,13 @@
                 <customObject id="k7o-HM-Kl2" customClass="DirectoryViewTableDataSource" customModule="Navigator" customModuleProvider="target"/>
                 <userDefaultsController representsSharedInstance="YES" id="wUf-tv-YkD"/>
             </objects>
-            <point key="canvasLocation" x="270" y="1426"/>
+            <point key="canvasLocation" x="270" y="1425.5"/>
         </scene>
         <!--Infobar View Controller-->
         <scene sceneID="V1w-YN-bja">
             <objects>
                 <viewController identifier="InfobarViewControllerRestorableID" storyboardIdentifier="InfobarViewController" id="nUH-Zb-Oip" customClass="InfobarViewController" customModule="Navigator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" identifier="InfobarView" id="DOd-ck-WRN">
+                    <view key="view" identifier="InfobarView" id="DOd-ck-WRN" customClass="NSFocusIndicatorView" customModule="Navigator" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
