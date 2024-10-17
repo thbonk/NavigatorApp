@@ -125,12 +125,10 @@ import UniformTypeIdentifiers
         }
         
         for item in items {
-            //var type = (kUTTypeFileURL as NSPasteboard.PasteboardType)
-            //var type = (UTType.fileURL as NSPasteboard.PasteboardType)
             let type = NSPasteboard.PasteboardType.fileURL
             
             if item.availableType(from: [type]) != nil {
-                // Drag source is coming from another app as a promised image file
+                // Drag source is coming from another app as a promised file URL
                 if NSEvent.modifierFlags.contains(.option) {
                     dragOperation = [.copy]
                 } else {
@@ -219,9 +217,7 @@ import UniformTypeIdentifiers
             Drop each dragged file to their new place.
         */
         // If possible, first handle the incoming dragged photos as file promises.
-        if handlePromisedDrops(draggingInfo: info, toRow: row) {
-            // Successfully processed the dragged items that were promised to us.
-        } else {
+        if !handlePromisedDrops(draggingInfo: info, toRow: row) {
             // Incoming drag was not propmised, so move in all the outside dragged items as URLs.
             self.progressIndicator?(true)
             
@@ -306,15 +302,6 @@ extension DirectoryViewTableDataSource: NSFilePromiseProviderDelegate {
             completionHandler(error)
         }
     }
-    
-    /*func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider,
-                             writePromiseTo url: URL) async throws {
-        <#code#>
-    }
-    
-    func filePromiseProvider(_ filePromiseProvider: NSFilePromiseProvider, writePromiseTo url: URL, completionHandler: @escaping ((any Error)?) -> Void) {
-        <#code#>
-    }*/
     
     // Utility function to return a PhotoItem object from the NSFilePromiseProvider.
     private func fileInfoFromFilePromiserProvider(filePromiseProvider: NSFilePromiseProvider) -> FileInfo? {

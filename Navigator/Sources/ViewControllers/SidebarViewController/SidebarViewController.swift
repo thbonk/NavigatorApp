@@ -19,6 +19,7 @@
 //
 
 import AppKit
+import Causality
 import Combine
 
 class SidebarViewController: NSViewController, NSOutlineViewDelegate {
@@ -33,12 +34,28 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     
     // MARK: - Private Properties
     
+    private var moveSelectedFilesToBinSubscription: Commands.MoveSelectedFilesToBinSubscription?
     private var volumesChangedCancellable: Cancellable?
     
     
     // MARK: - NSViewController
     
+    override func viewDidLoad() {
+        // Accept file promises from apps like Safari.
+        self.outlineView.registerForDraggedTypes(
+            NSFilePromiseReceiver.readableDraggedTypes.map { NSPasteboard.PasteboardType($0) })
+        
+        self.outlineView.registerForDraggedTypes([
+            .fileURL // Accept dragging of image file URLs from other apps.
+        ])
+        // Determine the kind of source drag originating from this app.
+        // Note, if you want to allow your app to drag items to the Finder's trash can, add ".delete".
+        self.outlineView.setDraggingSourceOperationMask([.copy], forLocal: false)
+    }
+    
     override func viewWillAppear() {
+        self.moveSelectedFilesToBinSubscription = self.eventBus!.subscribe(Commands.MoveSelectedFilesToBin, handler: self.removeFavorite)
+        
         self.volumesChangedCancellable = FileManager.default.observeVolumes(
             onMount: self.volumentMounted(_:), onUnmount: self.volumeWillUnmount(_:))
         
@@ -52,6 +69,7 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         
+        self.moveSelectedFilesToBinSubscription?.unsubscribe()
         self.volumesChangedCancellable?.cancel()
     }
     
@@ -66,6 +84,32 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
     private func volumeWillUnmount(_ url: URL) {
         self.outlineViewDataSource.volumesCategory.volumes.removeAll { $0.url == url }
         self.outlineView.reloadData()
+    }
+    
+    private func removeFavorite(_ message: Causality.NoMessage) {
+        guard
+            // TODO make hasFocus a property of NSView
+            self.view.window?.firstResponder == self.outlineView
+        else {
+            return
+        }
+        
+        guard
+            self.outlineView.selectedRow >= 0
+        else {
+            return
+        }
+        
+        guard
+            let item = self.outlineView.item(atRow: self.outlineView.selectedRow) as? FileInfo
+        else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.outlineViewDataSource.favoritesCategory.favorites.removeAll { $0 == item }
+            self.outlineView.reloadData()
+        }
     }
     
     
@@ -112,6 +156,9 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
         } else if let volumeInfo = item as? VolumeInfo {
             view.textField?.stringValue = volumeInfo.name
             view.imageView?.image = volumeInfo.icon
+        } else if let fileInfo = item as? FileInfo {
+            view.textField?.stringValue = fileInfo.name
+            view.imageView?.image = fileInfo.icon
         }
         
         return view

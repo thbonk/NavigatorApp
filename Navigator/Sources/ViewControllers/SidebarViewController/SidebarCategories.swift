@@ -41,7 +41,7 @@ class SidebarFavorites: SidebarCategory {
     
     // MARK: - Public Properties
     
-    public private(set) var favorites: [FileInfo] {
+    public var favorites: [FileInfo] {
         get {
             super.children as! [FileInfo]
         }
@@ -55,6 +55,27 @@ class SidebarFavorites: SidebarCategory {
     
     public init(favorites: [FileInfo] = []) {
         super.init(name: "Favorites", children: favorites)
+    }
+    
+    
+    // MARK: - Saving and Loading
+    
+    public func save() throws {
+        let data = try JSONEncoder().encode(self.favorites.map({ $0.url }))
+        
+        UserDefaults.standard.set(data, forKey: "favorite-urls")
+    }
+    
+    
+    public class func load() throws -> SidebarFavorites {
+        guard
+            let data = UserDefaults.standard.data(forKey: "favorite-urls")
+        else {
+            return .init()
+        }
+        
+        let urls = try JSONDecoder().decode([URL].self, from: data)
+        return try .init(favorites: urls.map { try FileManager.default.fileInfo(from: $0) })
     }
     
 }
