@@ -47,6 +47,26 @@ import Causality
         }
     }
     
+    override func reloadData() {
+        let selectedRows = self.selectedRowIndexes
+        let ds = self.dataSource as! DirectoryViewTableDataSource
+        let count = ds.directoryContents.count
+        var selectedFileInfos: [FileInfo?] = selectedRows
+            .map { $0 < count ? ds.directoryContents[$0] : nil }
+            .filter { $0 != nil }
+            
+        super.reloadData()
+            
+        if selectedFileInfos.count > 0 {
+            let indexes = selectedFileInfos
+                .map { ds.directoryContents.firstIndex(of: $0!) }
+                .filter { $0 != nil }
+                .map { $0! }
+            
+            self.selectRowIndexes(IndexSet(indexes), byExtendingSelection: false)
+        }
+    }
+    
     
     // MARK: - Private Methods
     
@@ -54,9 +74,9 @@ import Causality
         let ds = self.dataSource as! DirectoryViewTableDataSource
         
         if self.hasFocus,
-           let fileInfo = ds.directoryContents.first(where: { $0.name.localizedUppercase.hasPrefix(String(character).localizedUppercase) }) {
+           let fileInfo = ds.directoryContents
+            .first(where: { $0.name.localizedUppercase.hasPrefix(String(character).localizedUppercase) }) {
             
-            self.deselectAll(self)
             self.selectRowIndexes(IndexSet(integer: ds.directoryContents.firstIndex(of: fileInfo)!),
                                   byExtendingSelection: false)
         }
