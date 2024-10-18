@@ -40,9 +40,48 @@ import Causality
             if let sel = actionSelector {
                 self.actionTarget?.perform(sel, with: self)
             }
+        } else if let character = self.characterKeyPress(event) {
+            self.selectFirstRowWith(first: character)
         } else {
             super.keyDown(with: event)
         }
+    }
+    
+    
+    // MARK: - Private Methods
+    
+    private func selectFirstRowWith(first character: Character) {
+        let ds = self.dataSource as! DirectoryViewTableDataSource
+        
+        if self.hasFocus,
+           let fileInfo = ds.directoryContents.first(where: { $0.name.localizedUppercase.hasPrefix(String(character).localizedUppercase) }) {
+            
+            self.deselectAll(self)
+            self.selectRowIndexes(IndexSet(integer: ds.directoryContents.firstIndex(of: fileInfo)!),
+                                  byExtendingSelection: false)
+        }
+    }
+    
+    private func characterKeyPress(_ event: NSEvent) -> Character? {
+        guard
+            let characters = event.characters
+        else {
+            return nil
+        }
+        
+        guard
+            !characters.isEmpty
+        else {
+            return nil
+        }
+        
+        guard
+            event.modifierFlags.rawValue == 256
+        else {
+            return nil
+        }
+        
+        return characters.first
     }
     
 }

@@ -15,19 +15,19 @@ internal enum StoryboardScene {
   internal enum Main: StoryboardType {
     internal static let storyboardName = "Main"
 
-    internal static let initialScene = InitialSceneType<NavigatorWindowController>(storyboard: Self.self)
+    internal static let directoryViewController = SceneType<Navigator.DirectoryViewController>(storyboard: Self.self, identifier: "DirectoryViewController")
 
-    internal static let directoryViewController = SceneType<DirectoryViewController>(storyboard: Self.self, identifier: "DirectoryViewController")
+    internal static let infobarViewController = SceneType<Navigator.InfobarViewController>(storyboard: Self.self, identifier: "InfobarViewController")
 
-    internal static let mainViewController = SceneType<MainViewController>(storyboard: Self.self, identifier: "MainViewController")
+    internal static let mainViewController = SceneType<Navigator.MainViewController>(storyboard: Self.self, identifier: "MainViewController")
 
-    internal static let navigatorWindowController = SceneType<NavigatorWindowController>(storyboard: Self.self, identifier: "NavigatorWindowController")
+    internal static let navigatorWindowController = SceneType<Navigator.NavigatorWindowController>(storyboard: Self.self, identifier: "NavigatorWindowController")
 
-    internal static let settingsViewController = SceneType<SettingsViewController>(storyboard: Self.self, identifier: "SettingsViewController")
+    internal static let settingsViewController = SceneType<Navigator.SettingsViewController>(storyboard: Self.self, identifier: "SettingsViewController")
 
-    internal static let settingsWindowController = SceneType<SettingsWindowController>(storyboard: Self.self, identifier: "SettingsWindowController")
+    internal static let settingsWindowController = SceneType<Navigator.SettingsWindowController>(storyboard: Self.self, identifier: "SettingsWindowController")
 
-    internal static let sidebarViewController = SceneType<SidebarViewController>(storyboard: Self.self, identifier: "SidebarViewController")
+    internal static let sidebarViewController = SceneType<Navigator.SidebarViewController>(storyboard: Self.self, identifier: "SidebarViewController")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

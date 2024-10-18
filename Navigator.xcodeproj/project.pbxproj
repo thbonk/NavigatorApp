@@ -31,22 +31,11 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		E972E2FD2CAE77C200D43E2B /* Exceptions for "Navigator" folder in "Compile Sources" phase from "Navigator" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = E90B2CF62CA94ECF00DAD1C3 /* Sources */;
-			membershipExceptions = (
-				"default-settings.marco",
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E90B2CFC2CA94ECF00DAD1C3 /* Navigator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				E972E2FA2CAE75C300D43E2B /* Exceptions for "Navigator" folder in "Navigator" target */,
-				E972E2FD2CAE77C200D43E2B /* Exceptions for "Navigator" folder in "Compile Sources" phase from "Navigator" target */,
 			);
 			path = Navigator;
 			sourceTree = "<group>";
@@ -94,6 +83,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E90B2D092CA94ED000DAD1C3 /* Build configuration list for PBXNativeTarget "Navigator" */;
 			buildPhases = (
+				E9D5EF922CC2635F00EE1860 /* swiftgen */,
+				E931425E2CC261370055A238 /* Increment Build Number */,
 				E90B2CF62CA94ECF00DAD1C3 /* Sources */,
 				E90B2CF72CA94ECF00DAD1C3 /* Frameworks */,
 				E90B2CF82CA94ECF00DAD1C3 /* Resources */,
@@ -163,6 +154,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E931425E2CC261370055A238 /* Increment Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "agvtool next-version\n";
+		};
+		E9D5EF922CC2635F00EE1860 /* swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = swiftgen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "swiftgen\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E90B2CF62CA94ECF00DAD1C3 /* Sources */ = {
@@ -301,9 +331,10 @@
 				CODE_SIGN_ENTITLEMENTS = Navigator/Navigator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = GQE994U6EG;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -313,7 +344,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.thbonk.Navigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -329,9 +360,10 @@
 				CODE_SIGN_ENTITLEMENTS = Navigator/Navigator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = GQE994U6EG;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -341,7 +373,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.thbonk.Navigator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
