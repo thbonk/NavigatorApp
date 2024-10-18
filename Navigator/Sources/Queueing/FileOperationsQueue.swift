@@ -81,6 +81,16 @@ import Foundation
     public func enqeueCopyOperation(_ fileInfo: FileInfo, to folderUrl: URL) {
         self.enqeueCopyOperations([fileInfo], to: folderUrl)
     }
+    
+    public func enqeueCutOperations(_ fileInfos: [FileInfo], to folderUrl: URL) {
+        self.queue.addOperations(fileInfos.map({
+            CutOperation($0, destinationUrl: folderUrl.appendingPathComponent($0.url.lastPathComponent))
+        }), waitUntilFinished: false)
+    }
+    
+    public func enqeueCutOperation(_ fileInfo: FileInfo, to folderUrl: URL) {
+        self.enqeueCutOperations([fileInfo], to: folderUrl)
+    }
 }
 
 public protocol FileOperation {
@@ -120,6 +130,43 @@ public class CopyOperation: BlockOperation, FileOperation, @unchecked Sendable {
     private func copyFile() {
         do {
             try FileManager.default.copyItem(at: fileInfo.url, to: destinationUrl)
+        } catch {
+            // TODO error handling
+        }
+    }
+}
+
+public class CutOperation: BlockOperation, FileOperation, @unchecked Sendable {
+    
+    // MARK: - Public Properties
+    
+    public var descripition: String {
+        "Move \(fileInfo.path) to \(destinationUrl.path)"
+    }
+    
+    
+    // MARK: - Private Properties
+    
+    private let fileInfo: FileInfo
+    private let destinationUrl: URL
+    
+    
+    // MARK: - Initialization
+    
+    init(_ fileInfo: FileInfo, destinationUrl: URL) {
+        self.fileInfo = fileInfo
+        self.destinationUrl = destinationUrl
+        
+        super.init()
+        self.addExecutionBlock(self.cutFile)
+    }
+    
+    
+    // MARK: - Private Methods
+    
+    private func cutFile() {
+        do {
+            try FileManager.default.moveItem(at: fileInfo.url, to: destinationUrl)
         } catch {
             // TODO error handling
         }

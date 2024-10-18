@@ -11,5 +11,7 @@
         { shortcut { modifiers [ ".command" ] key ".delete" } event "delete-favorite" }
         { shortcut { modifiers [ ".option" ] key ".delete" } event "eject-volume" }
         { shortcut { modifiers [ ".command" ] key "v" } event "paste-files" }
+        { shortcut { modifiers [ ".command" ] key "c" } event "copy-files" }
+        { shortcut { modifiers [ ".command" ] key "x" } event "cut-files" }
     ]
 }

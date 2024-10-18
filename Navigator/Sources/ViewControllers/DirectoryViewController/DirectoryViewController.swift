@@ -47,6 +47,8 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     private var deleteSelectedFilesSubscription: Commands.DeleteSelectedFilesSubscription?
     private var renameSelectedFileSubscription: Commands.RenameSelectedFileSubscription?
     private var pasteFilesSubscription: Commands.PasteFilesSubscription?
+    private var copyFilesSubscription: Commands.CopyFilesSubscription?
+    private var cutFilesSubscription: Commands.CutFilesSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -97,6 +99,9 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.deleteSelectedFilesSubscription = self.eventBus!.subscribe(Commands.DeleteSelectedFiles, handler: self.deleteSelectedFiles)
         self.renameSelectedFileSubscription = self.eventBus!.subscribe(Commands.RenameSelectedFile, handler: self.renameSelectedFile)
         self.pasteFilesSubscription = self.eventBus!.subscribe(Commands.PasteFiles, handler: self.pasteFiles)
+        self.copyFilesSubscription = self.eventBus!.subscribe(Commands.CopyFiles, handler: self.copyFiles)
+        self.cutFilesSubscription = self.eventBus!.subscribe(Commands.CutFiles, handler: self.cutFiles)
+        
         self.restoreColumnWidths()
     }
     
@@ -107,6 +112,9 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.moveSelectedFilesToBinSubscription?.unsubscribe()
         self.deleteSelectedFilesSubscription?.unsubscribe()
         self.pasteFilesSubscription?.unsubscribe()
+        self.copyFilesSubscription?.unsubscribe()
+        self.cutFilesSubscription?.unsubscribe()
+        
         self.storeColumnWidths()
         
         super.viewWillDisappear()
@@ -329,13 +337,27 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     private func pasteFiles(message: Causality.NoMessage) {
         // Check for the special type indicating a "cut" (move) operation
         // TODO check how PathFinder provides the URL for cutting it
-        let isCutOperation = NSPasteboard.general.types?.contains(NSPasteboard.PasteboardType("com.apple.pasteboard.promisedMoveOperation")) ?? false
-                
-        if let paths = NSPasteboard.general.readObjects(forClasses: [NSString.self], options: [.urlReadingFileURLsOnly: true]) as? [NSString],
-           let currentPath = self.path {
+        let pasteboard = NSPasteboard.general
+        let isCutOperation = pasteboard.types?.contains(NSPasteboard.PasteboardType("com.apple.pasteboard.promisedMoveOperation")) ?? false
+             
+        var paths: [NSString]? = nil
+        
+        if let urls = pasteboard.readObjects(forClasses: [NSURL.self], options: [.urlReadingFileURLsOnly: true]) as? [NSURL] {
+            paths = urls.map { NSString(string: $0.path!) }
+        } else if let pathStrings = pasteboard.readObjects(forClasses: [NSString.self], options: [.urlReadingFileURLsOnly: true]) as? [NSString] {
+            paths = pathStrings
+        }
+        
+        if let paths, let currentPath = self.path {
             do {
                 if isCutOperation {
-                    // TODO
+                    self
+                        .fileOperationsQueue
+                        .enqeueCutOperations(
+                            try paths.map {
+                                try FileManager.default.fileInfo(from: URL(filePath: $0 as String))
+                            },
+                            to: currentPath)
                 } else {
                     self
                         .fileOperationsQueue
@@ -349,6 +371,42 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
                 // TODO error handling
             }
         }
+    }
+    
+    private func copyFiles(memssage: Causality.NoMessage) {
+        self.filesToPasteboard(isCut: false)
+    }
+    
+    private func cutFiles(memssage: Causality.NoMessage) {
+        self.filesToPasteboard(isCut: true)
+    }
+    
+    private func filesToPasteboard(isCut: Bool) {
+        guard
+            self.tableView.hasFocus
+        else {
+            return
+        }
+        
+        guard
+            self.tableView.selectedRowIndexes.count > 0
+        else {
+            NSBeep()
+            return
+        }
+        
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        
+        var pasteboardTypes: [NSPasteboard.PasteboardType] = [NSPasteboard.PasteboardType("public.file-url")]
+        if isCut {
+            pasteboardTypes.append(NSPasteboard.PasteboardType("com.apple.pasteboard.promisedMoveOperation"))
+        }
+        
+        pasteboard.declareTypes(pasteboardTypes, owner: self)
+        pasteboard.writeObjects(self.tableView.selectedRowIndexes.map {
+            self.tableViewDataSource.directoryContents[$0].url as NSURL
+        })
     }
     
     

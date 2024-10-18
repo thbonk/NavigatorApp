@@ -71,6 +71,10 @@ class ApplicationSettings {
             Shortcut(key: ShortcutKey(modifiers: [ .option ], key: .specialKey(key: .delete)), event: "eject-volume"),
         "paste-files":
             Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .character(character: "v")), event: "paste-files"),
+        "copy-files":
+            Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .character(character: "c")), event: "copy-files"),
+        "cut-files":
+            Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .character(character: "x")), event: "cut-files"),
     ]
     
     
