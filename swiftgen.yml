@@ -1,0 +1,14 @@
+input_dir: Navigator
+output_dir: Navigator/Sources/Generated/
+
+strings:
+  inputs: Base.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: Strings.swift
+
+ib:
+  inputs: Base.lproj/Main.storyboard
+  outputs:
+    - templateName: scenes-swift5
+      output: Storyboard.swift
