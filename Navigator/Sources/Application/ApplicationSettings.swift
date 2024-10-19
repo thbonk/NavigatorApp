@@ -19,6 +19,7 @@
 //
 
 import AppKit
+import Magnet
 
 class ApplicationSettings {
     
@@ -70,6 +71,7 @@ class ApplicationSettings {
     // MARK: - Public Properties
     
     public private(set) var openWindowOnStartup = true
+    public private(set) var bringToFrontDoubleTapKey: KeyCombo = KeyCombo(doubledCocoaModifiers: .command)!
     
     public private(set) var shortcuts: [String : Shortcut] = [
         "navigate-back":
@@ -112,6 +114,13 @@ class ApplicationSettings {
         let outerObject = document.value as! MarcoObject
         
         self.openWindowOnStartup = outerObject["open_window_on_start"]?.asBool ?? true
+        
+        if let doubleTapKey = outerObject["bring_to_front_double_tap_key"]?.asString,
+           let modifier = parseModifier(doubleTapKey) {
+
+            self.bringToFrontDoubleTapKey = KeyCombo(doubledCocoaModifiers: modifier)!
+        }
+        
         retrieveShortcuts(from: outerObject["shortcuts"] as! MarcoArray)
     }
     

@@ -21,6 +21,7 @@
 import AppKit
 import Causality
 import Combine
+import Magnet
 import os
 
 public let LOGGER = Logger()
@@ -66,11 +67,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         DispatchQueue.main.async {
+            let hotKey = HotKey(identifier: "Bring Navigator to front",
+                            keyCombo: ApplicationSettings.shared.bringToFrontDoubleTapKey,
+                            target: self,
+                            action: #selector(self.bringApplicationToFront))
+            hotKey.register()
+            
             do {
                 try self.restoreWindows()
             } catch {
                 if NSApp.windows.count == 0 {
-                    self.newWindow(self)
+                    if ApplicationSettings.shared.openWindowOnStartup {
+                        self.newWindow(self)
+                    }
                 }
             }
         }
@@ -120,6 +129,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.settingsWindowController = StoryboardScene.Main.settingsWindowController.instantiate()
         self.settingsWindowController?.showWindow(self)
         self.settingsWindowController?.window?.makeKeyAndOrderFront(self)
+    }
+    
+    @IBAction
+    func bringApplicationToFront(_ sender: Any) {
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     

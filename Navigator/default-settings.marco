@@ -1,5 +1,6 @@
 {
     open_window_on_start false
+    bring_to_front_double_tap_key ".command"
     
     shortcuts [
         { shortcut { modifiers [ ".command" ] key "b" } event "navigate-back" }
