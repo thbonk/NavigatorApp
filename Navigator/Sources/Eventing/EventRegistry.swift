@@ -56,7 +56,21 @@ class EventRegistry {
         return self.events
             .keys
             .filter { self.events[$0]?.description != nil }
-            .map { ActionEvent(label: $0, event: self.events[$0]!.event, description: self.events[$0]!.description!) }
+            .map {
+                var description: String!
+                
+                if let shortcut = ApplicationSettings.shared.shortcuts[$0],
+                   !shortcut.key.description.isEmpty {
+                    description = "\(self.events[$0]!.description!) (\(shortcut.key.description))"
+                } else {
+                    description = self.events[$0]!.description!
+                }
+                
+                return ActionEvent(
+                    label: $0,
+                    event: self.events[$0]!.event,
+                    description: description)
+            }
             .sorted(by: { $0.description < $1.description })
     }
     

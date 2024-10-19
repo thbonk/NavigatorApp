@@ -24,7 +24,7 @@ class ApplicationSettings {
     
     // MARK: - Public Structs
     
-    struct ShortcutKey {
+    struct ShortcutKey: CustomStringConvertible {
         
         enum ShortcutKeyType {
             case specialKey(key: NSEvent.SpecialKey)
@@ -33,6 +33,25 @@ class ApplicationSettings {
         
         let modifiers: NSEvent.ModifierFlags
         let key: ShortcutKeyType
+        
+        var description: String {
+            var str: [String] = []
+            
+            if self.modifiers != [] {
+                str.append(self.modifiers.description)
+            }
+            
+            switch key {
+            case .specialKey(let key):
+                str.append(key.description)
+                break
+                
+            case .character(let character):
+                str.append(character.localizedUppercase)
+            }
+            
+            return str.joined(separator: " ")
+        }
     }
     
     struct Shortcut {

@@ -158,8 +158,11 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
             }
         
             do {
+                Commands.changePath(eventBus: self.eventBus!, "/Volumes")
                 try NSWorkspace.shared.unmountAndEjectDevice(at: volume.url)
-                self.outlineView.reloadData()
+                DispatchQueue.main.async {
+                    self.outlineView.reloadData()
+                }
             } catch {
                 Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error ejecting volume", error: error)
             }

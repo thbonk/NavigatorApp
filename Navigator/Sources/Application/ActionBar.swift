@@ -76,7 +76,7 @@ class ActionBar: NSObject, DSFQuickActionBarContentSource {
     }
     
     func quickActionBar(_ quickActionBar: DSFQuickActionBar, didSelectItem item: AnyHashable) {
-
+        // Empty by design
     }
     
     func quickActionBar(_ quickActionBar: DSFQuickActionBar, didActivateItem item: AnyHashable) {

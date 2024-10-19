@@ -267,7 +267,9 @@ import UniformTypeIdentifiers
                     withHiddenFiles: UserDefaults.standard.bool(forKey: "shouldShowHiddenFiles"))
                 contents.append(contentsOf: cntnts)
             } catch {
-                Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while retrieving directory contents", error: error)
+                DispatchQueue.main.async {
+                    Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while retrieving directory contents", error: error)
+                }
             }
         }
         

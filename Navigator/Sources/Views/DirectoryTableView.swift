@@ -51,7 +51,7 @@ import Causality
         let selectedRows = self.selectedRowIndexes
         let ds = self.dataSource as! DirectoryViewTableDataSource
         let count = ds.directoryContents.count
-        var selectedFileInfos: [FileInfo?] = selectedRows
+        let selectedFileInfos: [FileInfo?] = selectedRows
             .map { $0 < count ? ds.directoryContents[$0] : nil }
             .filter { $0 != nil }
             
