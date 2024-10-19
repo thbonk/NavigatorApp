@@ -1,0 +1,20 @@
+{
+    open_window_on_start false
+    bring_to_front_double_tap_key ".command"
+    
+    shortcuts [
+        { shortcut { modifiers [ ".command" ] key "b" } event "navigate-back" }
+        { shortcut { modifiers [ ".command" ] key ".upArrow" } event "navigate-to-parent" }
+        { shortcut { modifiers [ ".command" ] key "r" } event "reload-directory-contents" }
+        { shortcut { modifiers [ ".option" ] key "r" } event "rename-selected-file" }
+        { shortcut { modifiers [ ".shift" ".command" ] key "i" } event "show-or-hide-hidden-files" }
+        { shortcut { modifiers [ ".shift" ".command" ] key "p" } event "show-action-bar" }
+        { shortcut { modifiers [ ] key ".delete" } event "move-selected-files-to-bin" }
+        { shortcut { modifiers [ ".control" ] key ".delete" } event "delete-selected-files" }
+        { shortcut { modifiers [ ".command" ] key ".delete" } event "delete-favorite" }
+        { shortcut { modifiers [ ".option" ] key ".delete" } event "eject-volume" }
+        { shortcut { modifiers [ ".command" ] key "v" } event "paste-files" }
+        { shortcut { modifiers [ ".command" ] key "c" } event "copy-files" }
+        { shortcut { modifiers [ ".command" ] key "x" } event "cut-files" }
+    ]
+}
