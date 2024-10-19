@@ -57,7 +57,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         EventRegistry.initialize()
         
         self.showAlertSubscription = AppDelegate.globalEventBus.subscribe(Commands.ShowAlert, handler: self.showAlert)
-            //.subscribe(Commands.ShowAlert, handler: self.showAlert)
         
         initializeSettingsFile()
         self.settingsFileObserver = FileManager.default.observeFileForChanges(
@@ -90,6 +89,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let windowController = StoryboardScene.Main.navigatorWindowController.instantiate()
 
         windowController.showWindow(self)
+    }
+    
+    @IBAction
+    func newTab(_ sender: Any) {
+        // Step 1: Get the focused window (key window)
+        guard let currentWindow = NSApp.keyWindow else {
+            // no focused window
+            return
+        }
+
+        // Step 2: Create a new window or window controller
+        let windowController = StoryboardScene.Main.navigatorWindowController.instantiate()
+        guard let window = windowController.window else {
+            return
+        }
+
+        // Step 3: Add the new window as a tab to the focused window
+        currentWindow.addTabbedWindow(window, ordered: .above)
+        window.makeKeyAndOrderFront(self)  // Optionally make the new tab active
     }
     
     @IBAction
@@ -212,9 +230,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func restoreWindows() throws {
         guard
-            let windowStates = UserDefaults.standard.dictionary(forKey: "window-states")
+            let windowStates = UserDefaults.standard.dictionary(forKey: "window-states"),
+            windowStates.keys.count > 0
         else {
-            newWindow(self)
+            if ApplicationSettings.shared.openWindowOnStartup {
+                newWindow(self)
+            }
+            
             return
         }
         

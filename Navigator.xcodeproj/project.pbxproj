@@ -10,6 +10,7 @@
 		E93141242CB708D90055A238 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E93141232CB708D90055A238 /* SnapKit */; };
 		E96CCDE62CA9EFD1008E5481 /* Causality in Frameworks */ = {isa = PBXBuildFile; productRef = E96CCDE52CA9EFD1008E5481 /* Causality */; };
 		E96CCE7C2CADBB0F008E5481 /* DSFQuickActionBar in Frameworks */ = {isa = PBXBuildFile; productRef = E96CCE7B2CADBB0F008E5481 /* DSFQuickActionBar */; };
+		E9D519942CC3B55000EE1860 /* Magnet in Frameworks */ = {isa = PBXBuildFile; productRef = E9D519932CC3B55000EE1860 /* Magnet */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E972E2FA2CAE75C300D43E2B /* Exceptions for "Navigator" folder in "Navigator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Info.plist,
 				Vendor/MarcoKit/LICENSE,
 				Vendor/MarcoKit/README.md,
 			);
@@ -49,6 +51,7 @@
 			files = (
 				E93141242CB708D90055A238 /* SnapKit in Frameworks */,
 				E96CCE7C2CADBB0F008E5481 /* DSFQuickActionBar in Frameworks */,
+				E9D519942CC3B55000EE1860 /* Magnet in Frameworks */,
 				E96CCDE62CA9EFD1008E5481 /* Causality in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +104,7 @@
 				E96CCDE52CA9EFD1008E5481 /* Causality */,
 				E96CCE7B2CADBB0F008E5481 /* DSFQuickActionBar */,
 				E93141232CB708D90055A238 /* SnapKit */,
+				E9D519932CC3B55000EE1860 /* Magnet */,
 			);
 			productName = Navigator;
 			productReference = E90B2CFA2CA94ECF00DAD1C3 /* Navigator.app */;
@@ -134,6 +138,7 @@
 				E96CCDE42CA9EFD1008E5481 /* XCRemoteSwiftPackageReference "Causality" */,
 				E96CCE7A2CADBB0F008E5481 /* XCRemoteSwiftPackageReference "DSFQuickActionBar" */,
 				E93141222CB708D90055A238 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E9D519922CC3B55000EE1860 /* XCRemoteSwiftPackageReference "Magnet" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E90B2CFB2CA94ECF00DAD1C3 /* Products */;
@@ -333,11 +338,12 @@
 				CODE_SIGN_ENTITLEMENTS = Navigator/Navigator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 62;
 				DEVELOPMENT_TEAM = GQE994U6EG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Navigator/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -362,11 +368,12 @@
 				CODE_SIGN_ENTITLEMENTS = Navigator/Navigator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 48;
+				CURRENT_PROJECT_VERSION = 62;
 				DEVELOPMENT_TEAM = GQE994U6EG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Navigator/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -431,6 +438,14 @@
 				minimumVersion = 6.2.0;
 			};
 		};
+		E9D519922CC3B55000EE1860 /* XCRemoteSwiftPackageReference "Magnet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Clipy/Magnet.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -448,6 +463,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E96CCE7A2CADBB0F008E5481 /* XCRemoteSwiftPackageReference "DSFQuickActionBar" */;
 			productName = DSFQuickActionBar;
+		};
+		E9D519932CC3B55000EE1860 /* Magnet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9D519922CC3B55000EE1860 /* XCRemoteSwiftPackageReference "Magnet" */;
+			productName = Magnet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

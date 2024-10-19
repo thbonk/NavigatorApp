@@ -69,7 +69,9 @@ class ApplicationSettings {
     
     // MARK: - Public Properties
     
-    var shortcuts: [String : Shortcut] = [
+    public private(set) var openWindowOnStartup = true
+    
+    public private(set) var shortcuts: [String : Shortcut] = [
         "navigate-back":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "b")), event: "navigate-back"),
         "navigate-to-parent":
@@ -109,6 +111,7 @@ class ApplicationSettings {
     public func retrieveSettings(from document: MarcoDocument) {
         let outerObject = document.value as! MarcoObject
         
+        self.openWindowOnStartup = outerObject["open_window_on_start"]?.asBool ?? true
         retrieveShortcuts(from: outerObject["shortcuts"] as! MarcoArray)
     }
     
