@@ -101,3 +101,25 @@ class SidebarVolumes: SidebarCategory {
     }
     
 }
+
+class SidebarFileshares: SidebarCategory {
+    
+    // MARK: - Public Properties
+    
+    public var fileshares: [FileshareInfo] {
+        get {
+            super.children as! [FileshareInfo]
+        }
+        set {
+            super.children = newValue
+        }
+    }
+    
+    
+    // MARK: - Initialization
+    
+    public init(fileshares: [FileshareInfo] = []) {
+        super.init(name: "Fileshares", children: fileshares)
+    }
+    
+}

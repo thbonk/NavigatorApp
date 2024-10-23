@@ -1,8 +1,8 @@
 //
-//  FilesystemEntry.swift
+//  FileshareFoundEvent.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 21.09.24.
+//  Created by Thomas Bonk on 20.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,20 +18,24 @@
 //  limitations under the License.
 //
 
+import Causality
 import Foundation
 
-public class FilesystemEntry: NSObject, Identifiable {
+struct FileshareFoundMessage {
     
-    // MARK: - Public Properties
+    // MARK: - Properties
     
-    let path: String
+    public let service: NetService
     
-    public var id: String { path }
+}
+
+extension Events {
     
+    typealias FileshareFoundSubscription = Causality.EventSubscription<Causality.Event<FileshareFoundMessage>, FileshareFoundMessage>
     
-    // MARK: - Initialisation
+    static let FileshareFound = EventRegistry.shared.register(messageType: FileshareFoundMessage.self, label: "fileshare-found")
     
-    init(path: String) {
-        self.path = path
+    static func fileshareFound(eventBus: Causality.Bus, _ service: NetService) {
+        eventBus.publish(event: Events.FileshareFound, message: FileshareFoundMessage(service: service))
     }
 }

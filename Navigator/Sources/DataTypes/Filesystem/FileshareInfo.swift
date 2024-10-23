@@ -1,8 +1,8 @@
 //
-//  FilesystemEntry.swift
+//  FileshareInfo.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 21.09.24.
+//  Created by Thomas Bonk on 20.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,18 +20,21 @@
 
 import Foundation
 
-public class FilesystemEntry: NSObject, Identifiable {
+class FileshareInfo: FilesystemEntry {
     
     // MARK: - Public Properties
     
-    let path: String
+    let url: URL
+    let hostname: String
     
-    public var id: String { path }
     
+    // MARK: - Initialization
     
-    // MARK: - Initialisation
-    
-    init(path: String) {
-        self.path = path
+    init(url: URL, hostname: String) {
+        
+        self.url = url
+        self.hostname = hostname
+        
+        super.init(path: hostname)
     }
 }

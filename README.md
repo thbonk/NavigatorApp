@@ -2,6 +2,15 @@
 
 Finder replacement for macOS.
 
+## Icons
+
+### FileshareIcon
+
+Smooth Leopard Icons 
+
+made by Susumu Yoshida (Copyright © 2009 McDo DESIGN.com)
+http://www.mcdodesign.com/
+
 ## Dependencies
 
 ### Apple Sample Code

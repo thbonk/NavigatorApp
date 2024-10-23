@@ -12,3 +12,10 @@ ib:
   outputs:
     - templateName: scenes-swift5
       output: Storyboard.swift
+
+xcassets:
+  inputs:
+    - Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: Assets.swift

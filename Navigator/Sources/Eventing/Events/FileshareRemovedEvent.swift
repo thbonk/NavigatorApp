@@ -1,8 +1,8 @@
 //
-//  FilesystemEntry.swift
+//  FileshareRemovedEvent.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 21.09.24.
+//  Created by Thomas Bonk on 20.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,20 +18,24 @@
 //  limitations under the License.
 //
 
+import Causality
 import Foundation
 
-public class FilesystemEntry: NSObject, Identifiable {
+struct FileshareRemovedMessage {
     
-    // MARK: - Public Properties
+    // MARK: - Properties
     
-    let path: String
+    public let service: NetService
     
-    public var id: String { path }
+}
+
+extension Events {
     
+    typealias FileshareRemovedSubscription = Causality.EventSubscription<Causality.Event<FileshareRemovedMessage>, FileshareRemovedMessage>
     
-    // MARK: - Initialisation
+    static let FileshareRemoved = EventRegistry.shared.register(messageType: FileshareRemovedMessage.self, label: "fileshare-removed")
     
-    init(path: String) {
-        self.path = path
+    static func fileshareRemoved(eventBus: Causality.Bus, _ service: NetService) {
+        eventBus.publish(event: Events.FileshareRemoved, message: FileshareRemovedMessage(service: service))
     }
 }

@@ -46,17 +46,9 @@ extension FileManager {
             
             result = try volumes
                 .filter { $0.path.hasPrefix("/Volumes") || $0.path == "/" }
+                .filter { !$0.path.hasPrefix("/Volumes/com.apple.TimeMachine") }
                 .filter { self.fileExists(url: $0) }
                 .map { try self.volume(for: $0) }
-                /*.forEach { url in
-                    let resourceValues = try url.resourceValues(forKeys: Set(resourceValueKeys))
-                    
-                    result.append(
-                        VolumeInfo(
-                            url: url,
-                            name: resourceValues.name!,
-                            resourceValues: resourceValues))
-                }*/
         }
         
         return result

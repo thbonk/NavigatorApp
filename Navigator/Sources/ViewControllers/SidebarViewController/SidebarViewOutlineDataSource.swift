@@ -28,7 +28,8 @@ class SidebarViewOutlineDataSource: NSObject, NSOutlineViewDataSource {
     
     public private(set) var categories: [SidebarCategory] = [
         SidebarFavorites(),
-        SidebarVolumes()
+        SidebarVolumes(),
+        SidebarFileshares()
     ]
     
     public var favoritesCategory: SidebarFavorites {
@@ -37,6 +38,10 @@ class SidebarViewOutlineDataSource: NSObject, NSOutlineViewDataSource {
     
     public var volumesCategory: SidebarVolumes {
         self.categories.first(where: { type(of: $0) == SidebarVolumes.self }) as! SidebarVolumes
+    }
+    
+    public var filesharesCategory: SidebarFileshares {
+        self.categories.first(where: { type(of: $0) == SidebarFileshares.self }) as! SidebarFileshares
     }
     
 
@@ -56,7 +61,7 @@ class SidebarViewOutlineDataSource: NSObject, NSOutlineViewDataSource {
     
     @MainActor
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return (item is SidebarFavorites) || (item is SidebarVolumes)
+        return (item is SidebarFavorites) || (item is SidebarVolumes) || (item is SidebarFileshares)
     }
     
     @MainActor

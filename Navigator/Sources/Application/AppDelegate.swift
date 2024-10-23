@@ -62,7 +62,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         initializeSettingsFile()
         self.settingsFileObserver = FileManager.default.observeFileForChanges(
             AppDelegate.ApplicationSettingsFile, handler: self.settingsFileChanged)
-        loadSettings()
+        
+        self.loadSettings()
     }
     
     func applicationWillFinishLaunching(_ notification: Notification) {
@@ -82,6 +83,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     }
                 }
             }
+        }
+        
+        DispatchQueue.main.async {
+            FileshareBrowser.shared.start(eventBus: AppDelegate.globalEventBus)
         }
     }
 
@@ -133,7 +138,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction
     func bringApplicationToFront(_ sender: Any) {
-        NSApp.activate(ignoringOtherApps: true)
+        DispatchQueue.main.async {
+            NSApp.activate(ignoringOtherApps: true)
+        }
     }
     
     
@@ -151,8 +158,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: - Private Methods
     
     private func settingsFileChanged() {
-        loadSettings()
-        
+        self.loadSettings()
     }
     
     private func loadSettings() {
