@@ -78,8 +78,10 @@ class ApplicationSettings {
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "b")), event: "navigate-back"),
         "navigate-to-parent":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .specialKey(key: .upArrow)), event: "navigate-to-parent"),
+        "show-file-infos":
+            Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "i")), event: "show-file-infos"),
         "show-or-hide-hidden-files":
-            Shortcut(key: ShortcutKey(modifiers: [.shift, .command], key: .character(character: "i")), event: "show-or-hide-hidden-files"),
+            Shortcut(key: ShortcutKey(modifiers: [.shift, .command], key: .character(character: "h")), event: "show-or-hide-hidden-files"),
         "reload-directory-contents":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "r")), event: "reload-directory-contents"),
         "rename-selected-file":

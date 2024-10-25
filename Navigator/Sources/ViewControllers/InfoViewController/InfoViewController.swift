@@ -1,5 +1,5 @@
 //
-//  InfobarViewController.swift
+//  InfoViewController.swift
 //  Navigator
 //
 //  Created by Thomas Bonk on 08.10.24.
@@ -23,7 +23,12 @@ import Causality
 import SnapKit
 import SwiftUI
 
-class InfobarViewController: NSViewController {
+class InfoViewController: NSViewController {
+    
+    // MARK: - Private Properties
+    
+    public var fileInfo: FileInfo!
+    
     
     // MARK: - Private Properties
     
@@ -33,7 +38,7 @@ class InfobarViewController: NSViewController {
     // MARK: - NSViewController
     
     override func viewWillAppear() {
-        self.infoView = HostingInfoView(eventBus: self.eventBus!)
+        self.infoView = HostingInfoView(fileInfo: fileInfo)
         self.view.addSubview(self.infoView)
         
         self.infoView.snp.makeConstraints { (constraints) -> Void in
@@ -42,10 +47,6 @@ class InfobarViewController: NSViewController {
             constraints.bottom.equalTo(self.view).offset(1)
             constraints.right.equalTo(self.view).offset(1)
         }
-    }
-    
-    override func viewWillDisappear() {
-
     }
     
 }

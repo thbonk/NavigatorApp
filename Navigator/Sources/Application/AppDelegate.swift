@@ -31,13 +31,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - Static Properties
     
-    public static let ApplicationSupportDirectory: URL = {
-        let applicationSupportDirectory = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-        return applicationSupportDirectory.appendingPathComponent(Bundle.main.bundleIdentifier!)
+    public static let ApplicationConfigDirectory: URL = {
+        let applicationConfigDirectory = FileManager.default.userHomeDirectoryPath.appendingPathComponent(".config/Navigator")
+        return applicationConfigDirectory.fileUrl
     }()
     
     public static let ApplicationSettingsFile: URL = {
-        let applicationSettingFile = AppDelegate.ApplicationSupportDirectory.appendingPathComponent("settings.marco")
+        let applicationSettingFile = AppDelegate.ApplicationConfigDirectory.appendingPathComponent("settings.lua")
         return applicationSettingFile
     }()
     
@@ -45,6 +45,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     // MARK: - Private Properties
+    
+    private var bringToFrontHotKey: HotKey!
     
     private var showAlertSubscription: Commands.ShowAlertSubscription!
     
@@ -58,21 +60,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         EventRegistry.initialize()
         
         self.showAlertSubscription = AppDelegate.globalEventBus.subscribe(Commands.ShowAlert, handler: self.showAlert)
-        
-        initializeSettingsFile()
-        self.settingsFileObserver = FileManager.default.observeFileForChanges(
-            AppDelegate.ApplicationSettingsFile, handler: self.settingsFileChanged)
-        
-        self.loadSettings()
     }
     
     func applicationWillFinishLaunching(_ notification: Notification) {
+        /* TODO Refactor settings to use Lua as configuration lamguage
+        self.initializeSettingsFile()
+        self.settingsFileObserver = FileManager.default.observeFileForChanges(
+            AppDelegate.ApplicationSettingsFile, handler: self.settingsFileChanged)
+        self.loadSettings()*/
+        
         DispatchQueue.main.async {
-            let hotKey = HotKey(identifier: "Bring Navigator to front",
+            self.bringToFrontHotKey = HotKey(identifier: "Bring Navigator to front",
                             keyCombo: ApplicationSettings.shared.bringToFrontDoubleTapKey,
                             target: self,
                             action: #selector(self.bringApplicationToFront))
-            hotKey.register()
+            self.bringToFrontHotKey.register()
             
             do {
                 try self.restoreWindows()
@@ -92,7 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         self.settingsFileObserver?.cancel()
-        storeWindows()
+        self.storeWindows()
     }
     
     
@@ -126,6 +128,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction
     func showSettings(_ sender: Any) {
+        /* TODO use an external text editor to open the settings
         if let settingsWindowController {
             settingsWindowController.window?.makeKeyAndOrderFront(self)
             return
@@ -133,13 +136,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.settingsWindowController = StoryboardScene.Main.settingsWindowController.instantiate()
         self.settingsWindowController?.showWindow(self)
-        self.settingsWindowController?.window?.makeKeyAndOrderFront(self)
+        self.settingsWindowController?.window?.makeKeyAndOrderFront(self)*/
     }
     
     @IBAction
     func bringApplicationToFront(_ sender: Any) {
+        if NSApp.windows.isEmpty {
+            DispatchQueue.main.async {
+                self.newWindow(self)
+            }
+        }
+        
         DispatchQueue.main.async {
-            NSApp.activate(ignoringOtherApps: true)
+            if let window = NSApp.windows.first {
+                window.makeKeyAndOrderFront(self)
+            }
+            NSApp.activate()
         }
     }
     
@@ -177,15 +189,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             let fileManager = FileManager.default
             
-            if fileManager.isDirectory(url: AppDelegate.ApplicationSupportDirectory) {
+            if fileManager.fileExists(url: AppDelegate.ApplicationConfigDirectory) && fileManager.isDirectory(url: AppDelegate.ApplicationConfigDirectory) {
                 if !fileManager.fileExists(url: AppDelegate.ApplicationSettingsFile) {
-                    try copyDefaultSettingsFile()
+                    try self.copyDefaultSettingsFile()
                 }
             } else {
-                try fileManager.removeItem(at: AppDelegate.ApplicationSupportDirectory)
-                try fileManager.createDirectory(at: AppDelegate.ApplicationSupportDirectory, withIntermediateDirectories: true)
+                try fileManager.removeItem(at: AppDelegate.ApplicationConfigDirectory)
+                try fileManager.createDirectory(at: AppDelegate.ApplicationConfigDirectory, withIntermediateDirectories: true)
                 
-                try copyDefaultSettingsFile()
+                try self.copyDefaultSettingsFile()
             }
         } catch let error {
             Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while initializing settings file. Using the default settings.", error: error)
@@ -197,7 +209,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let defaultFileUrl = Bundle.main.url(forResource: "default-settings.marco", withExtension: "")
         try FileManager.default.copyItem(
             at: defaultFileUrl!,
-            to: AppDelegate.ApplicationSupportDirectory.appendingPathComponent("settings.marco"))
+            to: AppDelegate.ApplicationConfigDirectory.appendingPathComponent("settings.marco"))
     }
     
     private func storeWindows() {
@@ -244,7 +256,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         for subview in view.subviews {
-            storeViewState(view: subview, with: coder)
+            self.storeViewState(view: subview, with: coder)
         }
     }
     
