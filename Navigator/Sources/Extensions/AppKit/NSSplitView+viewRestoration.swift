@@ -31,25 +31,32 @@ extension NSSplitView: NSViewStateRestoration {
     // MARK: - Methods
     
     func encodeState(with coder: NSCoder) {
-        let splitPaneWidths = self.arrangedSubviews.map({ $0.frame }).map({ NSStringFromRect($0) })
+        var dividerPositions = [CGFloat]()
         
-        if let json = try? NSSplitView.jsonEncoder.encode(splitPaneWidths) {
-            coder.encode(json, forKey: "splitPaneWidths")
+        for index in 0..<(self.arrangedSubviews.count - 1) {
+            if self.isVertical {
+                dividerPositions.append(self.arrangedSubviews[index].frame.width)
+            } else {
+                dividerPositions.append(self.arrangedSubviews[index].frame.height)
+            }
+        }
+        
+        if let json = try? NSSplitView.jsonEncoder.encode(dividerPositions) {
+            coder.encode(json, forKey: "dividerPositions")
         }
     }
     
     func decodeState(with coder: NSCoder) {
-        if let splitPaneWidthsData = coder.decodeObject(forKey: "splitPaneWidths") as? Data,
-           let splitPaneWidths = try? NSSplitView.jsonDecoder.decode([String].self, from: splitPaneWidthsData),
-           splitPaneWidths.count <= self.arrangedSubviews.count {
-            
-            for (index, frame) in splitPaneWidths.enumerated() {
-                DispatchQueue.main.async {
-                    //self.arrangedSubviews[index].frame = NSRectFromString(frame)
-                    self.arrangedSubviews[index].setFrameSize(NSRectFromString(frame).size)
+        if let dividerPositionsData = coder.decodeObject(forKey: "dividerPositions") as? Data,
+           let dividerPositions = try? NSSplitView.jsonDecoder.decode([CGFloat].self, from: dividerPositionsData),
+           dividerPositions.count < self.arrangedSubviews.count {
+               
+               DispatchQueue.main.async {
+                    for (index, position) in dividerPositions.enumerated() {
+                        self.setPosition(position, ofDividerAt: index)
+                    }
                     self.layout()
-                }
-            }
+               }
         }
     }
     

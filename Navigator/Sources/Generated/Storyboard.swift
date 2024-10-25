@@ -17,15 +17,9 @@ internal enum StoryboardScene {
 
     internal static let directoryViewController = SceneType<Navigator.DirectoryViewController>(storyboard: Self.self, identifier: "DirectoryViewController")
 
-    internal static let infobarViewController = SceneType<Navigator.InfobarViewController>(storyboard: Self.self, identifier: "InfobarViewController")
-
     internal static let mainViewController = SceneType<Navigator.MainViewController>(storyboard: Self.self, identifier: "MainViewController")
 
     internal static let navigatorWindowController = SceneType<Navigator.NavigatorWindowController>(storyboard: Self.self, identifier: "NavigatorWindowController")
-
-    internal static let settingsViewController = SceneType<Navigator.SettingsViewController>(storyboard: Self.self, identifier: "SettingsViewController")
-
-    internal static let settingsWindowController = SceneType<Navigator.SettingsWindowController>(storyboard: Self.self, identifier: "SettingsWindowController")
 
     internal static let sidebarViewController = SceneType<Navigator.SidebarViewController>(storyboard: Self.self, identifier: "SidebarViewController")
   }

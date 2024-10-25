@@ -49,6 +49,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     private var pasteFilesSubscription: Commands.PasteFilesSubscription?
     private var copyFilesSubscription: Commands.CopyFilesSubscription?
     private var cutFilesSubscription: Commands.CutFilesSubscription?
+    private var showFileInfosSubscription: Commands.ShowFileInfosSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -101,6 +102,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.pasteFilesSubscription = self.eventBus!.subscribe(Commands.PasteFiles, handler: self.pasteFiles)
         self.copyFilesSubscription = self.eventBus!.subscribe(Commands.CopyFiles, handler: self.copyFiles)
         self.cutFilesSubscription = self.eventBus!.subscribe(Commands.CutFiles, handler: self.cutFiles)
+        self.showFileInfosSubscription = self.eventBus!.subscribe(Commands.ShowFileInfos, handler: self.showFileInfos)
         
         self.restoreColumnWidths()
     }
@@ -407,6 +409,21 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         pasteboard.writeObjects(self.tableView.selectedRowIndexes.map {
             self.tableViewDataSource.directoryContents[$0].url as NSURL
         })
+    }
+    
+    private func showFileInfos(memssage: Causality.NoMessage) {
+        guard
+            self.tableView.selectedRowIndexes.count > 0
+        else {
+            NSBeep()
+            return
+        }
+        
+        self.tableView.selectedRowIndexes.forEach {
+            let fileInfo = self.tableViewDataSource.directoryContents[$0]
+            
+            InfoViewWindowController.create(fileInfo: fileInfo)
+        }
     }
     
     
