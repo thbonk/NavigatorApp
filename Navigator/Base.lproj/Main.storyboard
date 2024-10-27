@@ -841,7 +841,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Orv-JG-o85">
-                                <rect key="frame" x="3" y="3" width="463" height="22"/>
+                                <rect key="frame" x="3" y="3" width="423" height="22"/>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="c1D-Nv-T0J">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file://localhost/Applications/"/>
@@ -851,13 +851,13 @@
                                 </connections>
                             </pathControl>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNh-TO-Ftg">
-                                <rect key="frame" x="1" y="26" width="468" height="40"/>
+                                <rect key="frame" x="1" y="26" width="428" height="185"/>
                                 <clipView key="contentView" id="YSN-Mk-VYj">
-                                    <rect key="frame" x="1" y="1" width="466" height="38"/>
+                                    <rect key="frame" x="1" y="1" width="426" height="183"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" typeSelect="NO" autosaveName="DirectoryTableViewState" rowSizeStyle="automatic" headerView="uWi-b9-tog" viewBased="YES" id="Rb4-5P-Zgz" customClass="DirectoryTableView" customModule="Navigator" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="622" height="10"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="622" height="155"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="10"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1047,11 +1047,11 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="HFX-VU-llE">
-                                    <rect key="frame" x="1" y="23" width="466" height="16"/>
+                                    <rect key="frame" x="1" y="168" width="426" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="oUW-XH-Lzs">
-                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oUW-XH-Lzs">
+                                    <rect key="frame" x="451" y="29" width="16" height="10"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" wantsLayer="YES" id="uWi-b9-tog">

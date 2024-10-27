@@ -18,9 +18,50 @@
 //  limitations under the License.
 //
 
-import Cocoa
+import AppKit
+import Causality
 
 class MainViewController: NSSplitViewController {
     
+    // MARK: - Private Properties
+    
+    private var toggleSidebarSubscription: Commands.ToggleSidebarSubscription?
+    
+    
+    // MARK: - NSViewController
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        self.toggleSidebarSubscription = self.eventBus!.subscribe(Commands.ToggleSidebar, handler: self.toggleSidebar)
+    }
+    
+    override func viewWillDisappear() {
+        self.toggleSidebarSubscription?.unsubscribe()
+    }
+    
+    
+    // MARK: - Action Handlers
+    
+    @IBAction
+    @objc private func showOrHideSidebar(sender: Any) {
+        guard
+            let primaryItem = splitViewItems.first
+        else {
+            return
+        }
+        
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0.25 // Customize animation duration
+            primaryItem.animator().isCollapsed.toggle()
+        }
+    }
+    
+    
+    // MARK: - Event Handlers
+    
+    private func toggleSidebar(message: Causality.NoMessage) {
+        self.showOrHideSidebar(sender: self)
+    }
 }
 

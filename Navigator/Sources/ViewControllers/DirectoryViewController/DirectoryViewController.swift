@@ -411,7 +411,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         })
     }
     
-    private func showFileInfos(memssage: Causality.NoMessage) {
+    private func showFileInfos(message: Causality.NoMessage) {
         guard
             self.tableView.selectedRowIndexes.count > 0
         else {
