@@ -20,7 +20,9 @@
 
 import AppKit
 
-extension NSEvent.ModifierFlags: @retroactive CustomStringConvertible {
+extension NSEvent.ModifierFlags: @retroactive CaseIterable, @retroactive CustomStringConvertible {
+    
+    // MARK: - Public Properties
     
     public var description: String {
         var symbols: [String] = []
@@ -47,4 +49,38 @@ extension NSEvent.ModifierFlags: @retroactive CustomStringConvertible {
         return symbols.joined(separator: "+")
     }
     
+    
+    // MARK: - CaseIterable
+    
+    public static var allCases: [NSEvent.ModifierFlags] {
+        return [.command, .option, .control, .shift, .capsLock, .function]
+    }
+    
+    
+    // MARK: - Public Static Methods
+    
+    public static func name(_ modifierFlag: NSEvent.ModifierFlags) -> String? {
+        switch modifierFlag {
+        case .command:
+            return "command"
+            
+        case .option:
+            return "option"
+            
+        case .control:
+            return "control"
+            
+        case .shift:
+            return "shift"
+            
+        case .capsLock:
+            return "capsLock"
+            
+        case .function:
+            return "function"
+            
+        default:
+            return nil
+        }
+    }
 }

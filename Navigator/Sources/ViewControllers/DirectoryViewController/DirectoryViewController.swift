@@ -419,10 +419,13 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
             return
         }
         
+        var relativeWindow = self.view.window
         self.tableView.selectedRowIndexes.forEach {
             let fileInfo = self.tableViewDataSource.directoryContents[$0]
             
-            InfoViewWindowController.create(fileInfo: fileInfo)
+            relativeWindow = InfoViewWindowController
+                .create(fileInfo: fileInfo, relativeTo: relativeWindow)
+                .window
         }
     }
     

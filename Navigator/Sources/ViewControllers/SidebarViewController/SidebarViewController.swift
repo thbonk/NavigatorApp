@@ -245,7 +245,7 @@ class SidebarViewController: NSViewController, NSOutlineViewDelegate {
             view.textField?.stringValue = fileInfo.name
             view.imageView?.image = fileInfo.icon
         } else if let fileshareInfo = item as? FileshareInfo {
-            view.textField?.stringValue = fileshareInfo.hostname
+            view.textField?.stringValue = "\(fileshareInfo.hostname) (\(fileshareInfo.url.scheme!))"
             view.imageView?.image = Asset.fileshareIcon.image
         }
         

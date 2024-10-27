@@ -23,6 +23,7 @@ import Causality
 import Combine
 import Magnet
 import os
+import SwiftyLua
 
 public let LOGGER = Logger()
 
@@ -62,13 +63,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.showAlertSubscription = AppDelegate.globalEventBus.subscribe(Commands.ShowAlert, handler: self.showAlert)
     }
     
-    func applicationWillFinishLaunching(_ notification: Notification) {      
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        do {
+            try ApplicationSettings.initializeSettingsFile()
+            self.settingsFileObserver = FileManager.default.observeFileForChanges(
+                AppDelegate.ApplicationSettingsFile, handler: self.settingsFileChanged)
+            self.loadSettings()
+        } catch {
+            fatalError("Failed to initialize settings file: \(error). Please file a bug report at https://github.com/thbonk/NavigatorApp/issues.")
+        }
+        
         DispatchQueue.main.async {
-            self.bringToFrontHotKey = HotKey(identifier: "Bring Navigator to front",
-                            keyCombo: ApplicationSettings.shared.bringToFrontDoubleTapKey,
-                            target: self,
-                            action: #selector(self.bringApplicationToFront))
-            self.bringToFrontHotKey.register()
+            self.setupHotKeys()
             
             do {
                 try self.restoreWindows()
@@ -122,6 +128,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction
     func showSettings(_ sender: Any) {
+        NSWorkspace.shared.open(
+            [AppDelegate.ApplicationSettingsFile],
+            withApplicationAt: ApplicationSettings.shared.editor,
+            configuration: NSWorkspace.OpenConfiguration())
         /* TODO use an external text editor to open the settings
         if let settingsWindowController {
             settingsWindowController.window?.makeKeyAndOrderFront(self)
@@ -163,16 +173,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // MARK: - Private Methods
     
+    private func setupHotKeys() {
+        self.bringToFrontHotKey = HotKey(identifier: "Bring Navigator to front",
+                        keyCombo: ApplicationSettings.shared.bringToFrontDoubleTapKey,
+                        target: self,
+                        action: #selector(self.bringApplicationToFront))
+        self.bringToFrontHotKey.register()
+    }
+    
+    private func deregisterHotKeys() {
+        self.bringToFrontHotKey.unregister()
+    }
+    
     private func settingsFileChanged() {
-        self.loadSettings()
+        DispatchQueue.main.async {
+            self.deregisterHotKeys()
+            self.loadSettings()
+            self.setupHotKeys()
+        }
     }
     
     private func loadSettings() {
         do {
-            let code = try String(contentsOf: AppDelegate.ApplicationSettingsFile, encoding: .utf8)
-            let document = try Marco.parse(code)
-            
-            ApplicationSettings.shared.retrieveSettings(from: document)
+            try ApplicationSettings.shared.loadSettings()
             Events.settingsChanged(eventBus: AppDelegate.globalEventBus)
         } catch {
             Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while loading settings", error: error)
