@@ -50,6 +50,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     private var copyFilesSubscription: Commands.CopyFilesSubscription?
     private var cutFilesSubscription: Commands.CutFilesSubscription?
     private var showFileInfosSubscription: Commands.ShowFileInfosSubscription?
+    private var navigateToParentSubscription: Commands.NavigateToParentSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -103,6 +104,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.copyFilesSubscription = self.eventBus!.subscribe(Commands.CopyFiles, handler: self.copyFiles)
         self.cutFilesSubscription = self.eventBus!.subscribe(Commands.CutFiles, handler: self.cutFiles)
         self.showFileInfosSubscription = self.eventBus!.subscribe(Commands.ShowFileInfos, handler: self.showFileInfos)
+        self.navigateToParentSubscription = self.eventBus!.subscribe(Commands.NavigateToParent, handler: self.navigateToParent)
         
         self.restoreColumnWidths()
     }
@@ -113,9 +115,12 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.pathChangedSubscription?.unsubscribe()
         self.moveSelectedFilesToBinSubscription?.unsubscribe()
         self.deleteSelectedFilesSubscription?.unsubscribe()
+        self.renameSelectedFileSubscription?.unsubscribe()
         self.pasteFilesSubscription?.unsubscribe()
         self.copyFilesSubscription?.unsubscribe()
         self.cutFilesSubscription?.unsubscribe()
+        self.showFileInfosSubscription?.unsubscribe()
+        self.navigateToParentSubscription?.unsubscribe()
         
         self.storeColumnWidths()
         
@@ -426,6 +431,16 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
             relativeWindow = InfoViewWindowController
                 .create(fileInfo: fileInfo, relativeTo: relativeWindow)
                 .window
+        }
+    }
+    
+    private func navigateToParent(message: Causality.NoMessage) {
+        if self.path!.path != "/",
+            let parentPath = self.path?.deletingLastPathComponent() {
+            
+            DispatchQueue.main.async {
+                Commands.changePath(eventBus: self.eventBus!, parentPath.path)
+            }
         }
     }
     

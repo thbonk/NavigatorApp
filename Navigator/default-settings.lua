@@ -85,8 +85,8 @@ applicationSettings:setShortcutForEvent(Events.navigateBack, {
 });
 
 applicationSettings:setShortcutForEvent(Events.navigateToParent, {
-    modifiers = { ModifierFlags.command },
-    specialKey = SpecialKey.upArrow
+    modifiers = { ModifierFlags.option },
+    key = "p"
 });
 
 applicationSettings:setShortcutForEvent(Events.reloadDirectoryContents, {

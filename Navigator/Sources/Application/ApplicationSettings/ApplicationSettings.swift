@@ -80,7 +80,7 @@ class ApplicationSettings: CustomTypeImplementation {
         "navigate-back":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "b")), event: "navigate-back"),
         "navigate-to-parent":
-            Shortcut(key: ShortcutKey(modifiers: [.command], key: .specialKey(key: .upArrow)), event: "navigate-to-parent"),
+            Shortcut(key: ShortcutKey(modifiers: [.option], key: .character(character: "p")), event: "navigate-to-parent"),
         "show-file-infos":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "i")), event: "show-file-infos"),
         "show-action-bar":
