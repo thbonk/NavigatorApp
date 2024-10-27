@@ -45,10 +45,10 @@ class SettingsViewController: NSViewController {
     // MARK - Public Methods
     
     public func save() throws {
-        let code = self.textView.string
+        /*let code = self.textView.string
         
         _ = try Marco.parse(code)
-        try code.write(to: AppDelegate.ApplicationSettingsFile, atomically: true, encoding: .utf8)
+        try code.write(to: AppDelegate.ApplicationSettingsFile, atomically: true, encoding: .utf8)*/
     }
     
 }

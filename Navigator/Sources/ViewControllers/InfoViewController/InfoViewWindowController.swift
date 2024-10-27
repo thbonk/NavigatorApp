@@ -24,14 +24,19 @@ class InfoViewWindowController: NSWindowController {
     
     // MARK: - Initialization
     
-    public class func create(fileInfo: FileInfo) {
+    public class func create(fileInfo: FileInfo, relativeTo window: NSWindow? = nil) -> InfoViewWindowController {
         let controller = InfoViewWindowController(window: createWindow(title: fileInfo.name))
         let infoViewController = InfoViewController()
         
         infoViewController.fileInfo = fileInfo
         controller.contentViewController = infoViewController
-        
+
         controller.showWindow(self)
+        let x = window?.frame.origin.x ?? 0
+        let y = window?.frame.origin.y ?? 0
+        controller.window?.setFrame(NSRect(x: x + 10, y: y + 10, width: 300, height: 600), display: true)
+        
+        return controller
     }
     
     override init(window: NSWindow?) {
@@ -53,6 +58,7 @@ class InfoViewWindowController: NSWindowController {
         
         window.title = title
         window.isReleasedWhenClosed = true
+        window.titlebarAppearsTransparent = true
         
         return window
     }
