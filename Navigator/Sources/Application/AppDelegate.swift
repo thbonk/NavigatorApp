@@ -62,13 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.showAlertSubscription = AppDelegate.globalEventBus.subscribe(Commands.ShowAlert, handler: self.showAlert)
     }
     
-    func applicationWillFinishLaunching(_ notification: Notification) {
-        /* TODO Refactor settings to use Lua as configuration lamguage
-        self.initializeSettingsFile()
-        self.settingsFileObserver = FileManager.default.observeFileForChanges(
-            AppDelegate.ApplicationSettingsFile, handler: self.settingsFileChanged)
-        self.loadSettings()*/
-        
+    func applicationWillFinishLaunching(_ notification: Notification) {      
         DispatchQueue.main.async {
             self.bringToFrontHotKey = HotKey(identifier: "Bring Navigator to front",
                             keyCombo: ApplicationSettings.shared.bringToFrontDoubleTapKey,
