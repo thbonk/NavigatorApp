@@ -63,6 +63,7 @@ Events contains constants for predefined event names
   Events.pasteFiles
   Events.copyFiles
   Events.cutFiles
+  Events.toggleSidebar
 ]]--
 
 -- new() always returns the same instance of the application settings
@@ -84,8 +85,8 @@ applicationSettings:setShortcutForEvent(Events.navigateBack, {
 });
 
 applicationSettings:setShortcutForEvent(Events.navigateToParent, {
-    modifiers = { ModifierFlags.command },
-    specialKey = SpecialKey.upArrow
+    modifiers = { ModifierFlags.option },
+    key = "p"
 });
 
 applicationSettings:setShortcutForEvent(Events.reloadDirectoryContents, {
@@ -141,4 +142,9 @@ applicationSettings:setShortcutForEvent(Events.copyFiles, {
 applicationSettings:setShortcutForEvent(Events.cutFiles, {
     modifiers = { ModifierFlags.command },
     key = "x"
+});
+
+applicationSettings:setShortcutForEvent(Events.toggleSidebar, {
+    modifiers = { ModifierFlags.command },
+    key = "s"
 });

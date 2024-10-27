@@ -80,7 +80,7 @@ class ApplicationSettings: CustomTypeImplementation {
         "navigate-back":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "b")), event: "navigate-back"),
         "navigate-to-parent":
-            Shortcut(key: ShortcutKey(modifiers: [.command], key: .specialKey(key: .upArrow)), event: "navigate-to-parent"),
+            Shortcut(key: ShortcutKey(modifiers: [.option], key: .character(character: "p")), event: "navigate-to-parent"),
         "show-file-infos":
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "i")), event: "show-file-infos"),
         "show-action-bar":
@@ -105,6 +105,8 @@ class ApplicationSettings: CustomTypeImplementation {
             Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .character(character: "c")), event: "copy-files"),
         "cut-files":
             Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .character(character: "x")), event: "cut-files"),
+        "toggle-sidebar":
+            Shortcut(key: ShortcutKey(modifiers: [ .command ], key: .character(character: "s")), event: "toggle-sidebar"),
     ]
     
     

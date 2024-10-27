@@ -1,8 +1,8 @@
 //
-//  NavigateBackCommand.swift
+//  ToggleSiebarCommand.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 04.10.24.
+//  Created by Thomas Bonk on 27.10.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,12 +23,12 @@ import Foundation
 
 extension Commands {
     
-    typealias NavigateBackSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
+    typealias ToggleSidebarSubscription = Causality.EventSubscription<Causality.Event<Causality.NoMessage>, Causality.NoMessage>
     
-    static let NavigateBack = EventRegistry.shared.register(label: "navigate-back", description: "Navigate Back")
+    static let ToggleSidebar = EventRegistry.shared.register(label: "toggle-sidebar", description: "Show or hide the Sidebar")
     
-    static func navigateBack(eventBus: Causality.Bus) {
-        eventBus.publish(event: Commands.NavigateBack)
+    static func toggleSidebar(eventBus: Causality.Bus) {
+        eventBus.publish(event: Commands.ToggleSidebar)
     }
     
 }
