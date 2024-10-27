@@ -152,10 +152,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         DispatchQueue.main.async {
-            if let window = NSApp.windows.first {
-                window.makeKeyAndOrderFront(self)
+            DispatchQueue.main.async {
+                if let window = NSApp.windows.first {
+                    window.makeKeyAndOrderFront(self)
+                }
             }
-            NSApp.activate()
+            DispatchQueue.main.async {
+                // Make the app key and frontmost
+                NSApplication.shared.activate(ignoringOtherApps: true)
+            }
+            DispatchQueue.main.async {
+                // Also request the frontmost position in the macOS system
+                NSRunningApplication.current.activate(options: [.activateAllWindows])
+            }
         }
     }
     
