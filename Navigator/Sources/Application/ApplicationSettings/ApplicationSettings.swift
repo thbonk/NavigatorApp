@@ -85,6 +85,8 @@ class ApplicationSettings: CustomTypeImplementation {
             Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "i")), event: "show-file-infos"),
         "show-action-bar":
             Shortcut(key: ShortcutKey(modifiers: [.shift, .command], key: .character(character: "p")), event: "show-action-bar"),
+        "show-application-bar":
+            Shortcut(key: ShortcutKey(modifiers: [.command], key: .character(character: "o")), event: "show-application-bar"),
         "show-or-hide-hidden-files":
             Shortcut(key: ShortcutKey(modifiers: [.shift, .command], key: .character(character: "h")), event: "show-or-hide-hidden-files"),
         "reload-directory-contents":
