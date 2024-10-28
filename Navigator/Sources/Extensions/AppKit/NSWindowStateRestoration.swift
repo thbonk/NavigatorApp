@@ -44,3 +44,13 @@ protocol NSViewStateRestoration: AnyObject {
     func decodeState(with: NSCoder)
     
 }
+
+protocol NSViewControllerRestoration: AnyObject {
+    
+    // MARK: - Methods
+    
+    func encodeState(with: NSCoder)
+    
+    func decodeState(with: NSCoder)
+    
+}

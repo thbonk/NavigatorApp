@@ -138,6 +138,10 @@ import Causality
         }
         
         coder.encode(NSString(string: path), forKey: "path")
+        
+        if let controllerRestoration = self.contentViewController as? NSViewControllerRestoration {
+            controllerRestoration.encodeState(with: coder)
+        }
     }
     
     func decodeState(with coder: NSCoder) {
@@ -150,6 +154,10 @@ import Causality
            path.isEqual(to: self.path) {
             
             Commands.changePath(eventBus: self.eventBus, path.removingPercentEncoding!)
+        }
+        
+        if let controllerRestoration = self.contentViewController as? NSViewControllerRestoration {
+            controllerRestoration.decodeState(with: coder)
         }
     }
 

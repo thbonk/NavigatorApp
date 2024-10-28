@@ -75,6 +75,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.async {
             self.setupHotKeys()
             
+            /*do {
+                try self.restoreWindows()
+            } catch {
+                if NSApp.windows.count == 0 {
+                    if ApplicationSettings.shared.openWindowOnStartup {
+                        self.newWindow(self)
+                    }
+                }
+            }*/
+        }
+        
+        DispatchQueue.main.async {
+            FileshareBrowser.shared.start(eventBus: AppDelegate.globalEventBus)
+        }
+    }
+    
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        DispatchQueue.main.async {
             do {
                 try self.restoreWindows()
             } catch {
@@ -84,10 +102,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     }
                 }
             }
-        }
-        
-        DispatchQueue.main.async {
-            FileshareBrowser.shared.start(eventBus: AppDelegate.globalEventBus)
         }
     }
 
@@ -131,15 +145,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             [AppDelegate.ApplicationSettingsFile],
             withApplicationAt: ApplicationSettings.shared.editor,
             configuration: NSWorkspace.OpenConfiguration())
-        /* TODO use an external text editor to open the settings
-        if let settingsWindowController {
-            settingsWindowController.window?.makeKeyAndOrderFront(self)
-            return
-        }
-        
-        self.settingsWindowController = StoryboardScene.Main.settingsWindowController.instantiate()
-        self.settingsWindowController?.showWindow(self)
-        self.settingsWindowController?.window?.makeKeyAndOrderFront(self)*/
     }
     
     @IBAction

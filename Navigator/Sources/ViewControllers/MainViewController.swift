@@ -21,7 +21,7 @@
 import AppKit
 import Causality
 
-class MainViewController: NSSplitViewController {
+class MainViewController: NSSplitViewController, NSViewControllerRestoration {
     
     // MARK: - Private Properties
     
@@ -38,6 +38,34 @@ class MainViewController: NSSplitViewController {
     
     override func viewWillDisappear() {
         self.toggleSidebarSubscription?.unsubscribe()
+    }
+    
+    
+    // MARK: - NSViewControllerRestoration
+    
+    func encodeState(with coder: NSCoder) {
+        guard
+            let primaryItem = splitViewItems.first
+        else {
+            return
+        }
+        
+        coder.encode(primaryItem.isCollapsed, forKey: "sidebarIsCollapsed")
+    }
+    
+    func decodeState(with coder: NSCoder) {
+        guard
+            let primaryItem = splitViewItems.first
+        else {
+            return
+        }
+        
+        let sidebarIsCollapsed = coder.decodeBool(forKey: "sidebarIsCollapsed")
+        
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0 // Customize animation duration
+            primaryItem.animator().isCollapsed = sidebarIsCollapsed
+        }
     }
     
     
