@@ -31,10 +31,11 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     @IBOutlet private var tableViewDataSource: DirectoryViewTableDataSource!
     @IBOutlet private var pathControl: NSPathControl!
     
-    private var progressIndicator: NSProgressIndicator!
-    
     
     // MARK: - Private Properties
+    
+    private var applicationBar: ApplicationBar!
+    private var progressIndicator: NSProgressIndicator!
     
     @objc private dynamic var path: URL?
     
@@ -51,6 +52,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     private var cutFilesSubscription: Commands.CutFilesSubscription?
     private var showFileInfosSubscription: Commands.ShowFileInfosSubscription?
     private var navigateToParentSubscription: Commands.NavigateToParentSubscription?
+    private var showApplicationBarSubscription: Commands.ShowApplicationBarSubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -92,6 +94,8 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     override func viewWillAppear() {
         super.viewWillAppear()
         
+        self.applicationBar = ApplicationBar.create(with: self.view.window!)
+        
         self.fileOperationsQueue = FileOperationsQueue(eventBus: self.eventBus!)
         
         self.reloadDirectoryContentsSubscription = self.eventBus!.subscribe(Commands.ReloadDirectoryContents, handler: self.reloadDirectoryContentsSubscription)
@@ -105,6 +109,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.cutFilesSubscription = self.eventBus!.subscribe(Commands.CutFiles, handler: self.cutFiles)
         self.showFileInfosSubscription = self.eventBus!.subscribe(Commands.ShowFileInfos, handler: self.showFileInfos)
         self.navigateToParentSubscription = self.eventBus!.subscribe(Commands.NavigateToParent, handler: self.navigateToParent)
+        self.showApplicationBarSubscription = self.eventBus!.subscribe(Commands.ShowApplicationBar, handler: self.showApplicationBar)
         
         self.restoreColumnWidths()
     }
@@ -121,6 +126,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.cutFilesSubscription?.unsubscribe()
         self.showFileInfosSubscription?.unsubscribe()
         self.navigateToParentSubscription?.unsubscribe()
+        self.showApplicationBarSubscription?.unsubscribe()
         
         self.storeColumnWidths()
         
@@ -442,6 +448,20 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
                 Commands.changePath(eventBus: self.eventBus!, parentPath.path)
             }
         }
+    }
+    
+    private func showApplicationBar(message: Causality.NoMessage) {
+        guard
+            self.tableView.selectedRowIndexes.count > 0
+        else {
+            NSBeep()
+            return
+        }
+        
+        let urls = self.tableView.selectedRowIndexes
+            .map { self.tableViewDataSource.directoryContents[$0].url }
+        
+        self.applicationBar.present(for: urls)
     }
     
     

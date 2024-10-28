@@ -60,7 +60,12 @@ class ActionBar: NSObject, DSFQuickActionBarContentSource {
             
             task.complete(with: items)
         } else {
-            let items = EventRegistry.shared.actionEvents.filter { $0.description.lowercased().localizedCaseInsensitiveContains(task.searchTerm) }
+            let items = EventRegistry.shared.actionEvents
+                .filter {
+                    $0.description
+                        .lowercased()
+                        .localizedCaseInsensitiveContains(task.searchTerm.lowercased())
+                }
             
             task.complete(with: items)
         }

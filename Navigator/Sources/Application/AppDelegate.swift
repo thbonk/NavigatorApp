@@ -51,7 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var showAlertSubscription: Commands.ShowAlertSubscription!
     
-    private var settingsWindowController: SettingsWindowController? = nil
     private var settingsFileObserver: Cancellable?
     
 

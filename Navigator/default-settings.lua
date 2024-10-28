@@ -109,6 +109,11 @@ applicationSettings:setShortcutForEvent(Events.showActionBar, {
     key = "p"
 });
 
+applicationSettings:setShortcutForEvent(Events.showApplicationBar, {
+    modifiers = { ModifierFlags.command },
+    key = "o"
+});
+
 applicationSettings:setShortcutForEvent(Events.moveSelectedFilesToBin, {
     modifiers = {  },
     specialKey = SpecialKey.delete
