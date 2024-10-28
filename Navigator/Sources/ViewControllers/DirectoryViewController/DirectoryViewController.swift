@@ -98,7 +98,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         
         self.fileOperationsQueue = FileOperationsQueue(eventBus: self.eventBus!)
         
-        self.reloadDirectoryContentsSubscription = self.eventBus!.subscribe(Commands.ReloadDirectoryContents, handler: self.reloadDirectoryContentsSubscription)
+        self.reloadDirectoryContentsSubscription = self.eventBus!.subscribe(Commands.ReloadDirectoryContents, handler: self.reloadDirectoryContents)
         self.showOrHideHiddenFilesSubscription = self.eventBus!.subscribe(Commands.ShowOrHideHiddenFiles, handler: self.showOrHideHiddenFiles)
         self.pathChangedSubscription = self.eventBus!.subscribe(Events.PathChanged, handler: self.pathChanged)
         self.moveSelectedFilesToBinSubscription = self.eventBus!.subscribe(Commands.MoveSelectedFilesToBin, handler: self.moveSelectedFilesToBin)
@@ -207,7 +207,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
             let newPath = fileInfo.url.deletingLastPathComponent().appendingPathComponent(textField.stringValue)
             
             guard
-                fileInfo.url != newPath
+                fileInfo.url.standardizedFileURL != newPath.standardizedFileURL
             else {
                 return
             }
@@ -226,7 +226,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     
     // MARK: - Event Handlers
     
-    private func reloadDirectoryContentsSubscription(message: Causality.NoMessage) {
+    private func reloadDirectoryContents(message: Causality.NoMessage) {
         DispatchQueue.main.async {
             self.tableViewDataSource.reloadDirectoryContents()
             self.tableView.reloadData()
