@@ -115,7 +115,7 @@ applicationSettings:setShortcutForEvent(Events.showApplicationBar, {
 });
 
 applicationSettings:setShortcutForEvent(Events.moveSelectedFilesToBin, {
-    modifiers = {  },
+    modifiers = { ModifierFlags.function },
     specialKey = SpecialKey.delete
 });
 

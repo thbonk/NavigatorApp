@@ -172,6 +172,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    @IBAction
+    @objc private func newDirectory(sender: Any) {
+        guard
+            let eventbus = eventBusFromKeyWindow()
+        else {
+            return
+        }
+        
+        Commands.createNewFilesystemEntry(eventBus: eventbus, true)
+    }
+    
+    @IBAction
+    @objc private func newFile(sender: Any) {
+        guard
+            let eventbus = eventBusFromKeyWindow()
+        else {
+            return
+        }
+        
+        Commands.createNewFilesystemEntry(eventBus: eventbus, false)
+    }
+    
+    private func eventBusFromKeyWindow() -> Causality.Bus? {
+        guard
+            let window = NSApp.keyWindow
+        else {
+            return nil
+        }
+        
+        guard
+            let navigatorWindowController = window.windowController as? NavigatorWindowController
+        else {
+            return nil
+        }
+        
+        return navigatorWindowController.eventBus
+    }
+    
     
     // MARK: - Event Handlers
     
