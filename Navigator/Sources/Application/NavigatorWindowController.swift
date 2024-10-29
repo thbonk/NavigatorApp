@@ -67,19 +67,31 @@ import Causality
     private var showActionBarSubscription: Commands.ShowActionBarSubscription?
     
     
-    // MARK: - NSWindowController/NSWindowDelegate
+    // MARK: - Initialization
     
-    override func windowDidLoad() {
-        super.windowDidLoad()
-        
-        self.window?.delegate = self
-        
-        self.actionBar = ActionBar.create(with: self.eventBus)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
         
         self.changePathSubscription = self.eventBus.subscribe(Commands.ChangePath, handler: self.changePath)
         self.navigateBackSubscription = self.eventBus.subscribe(Commands.NavigateBack, handler: self.navigateBack)
         self.pathChangedSubscription = self.eventBus.subscribe(Events.PathChanged, handler: self.pathChanged)
         self.showActionBarSubscription = self.eventBus.subscribe(Commands.ShowActionBar, handler: self.showActionBar)
+    }
+    
+    deinit {
+        self.changePathSubscription?.unsubscribe()
+        self.navigateBackSubscription?.unsubscribe()
+        self.pathChangedSubscription?.unsubscribe()
+        self.showActionBarSubscription?.unsubscribe()
+    }
+    
+    // MARK: - NSWindowController/NSWindowDelegate
+    
+    override func windowDidLoad() {
+        super.windowDidLoad()
+    
+        self.window?.delegate = self
+        self.actionBar = ActionBar.create(with: self.eventBus)
     }
     
     override func showWindow(_ sender: Any?) {
@@ -88,12 +100,7 @@ import Causality
     }
     
     func windowWillClose(_ notification: Notification) {
-        self.changePathSubscription?.unsubscribe()
-        self.navigateBackSubscription?.unsubscribe()
-        self.pathChangedSubscription?.unsubscribe()
-        self.showActionBarSubscription?.unsubscribe()
-        
-        NSApp.windows.first { $0 == self.window }.map { $0.windowController! }?.dismissController(self)
+        self.window!.windowController!.dismissController(self)
     }
     
     override func keyDown(with event: NSEvent) {

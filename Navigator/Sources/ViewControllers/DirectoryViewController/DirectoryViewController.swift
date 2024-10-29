@@ -62,7 +62,10 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         "creationDate": populateCreationDate,
         "modificationDate": populateModificationDate,
         "accessDate": populateAccessDate,
-        "fileSize": populateFileSize
+        "fileSize": populateFileSize,
+        "owner": populateOwner,
+        "group": populateGroup,
+        "permissions": populatePermissions
     ]
         
     
@@ -659,4 +662,15 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         view.textField?.stringValue = fileInfo.fileSize
     }
     
+    private class func populateOwner(_ fileInfo: FileInfo, _ view: NSTableCellView) {
+        view.textField?.stringValue = fileInfo.ownerAccountName
+    }
+    
+    private class func populateGroup(_ fileInfo: FileInfo, _ view: NSTableCellView) {
+        view.textField?.stringValue = fileInfo.groupOwnerAccountName
+    }
+    
+    private class func populatePermissions(_ fileInfo: FileInfo, _ view: NSTableCellView) {
+        view.textField?.stringValue = fileInfo.readableAccessRights
+    }
 }
