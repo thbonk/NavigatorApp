@@ -94,7 +94,7 @@ class ApplicationSettings: CustomTypeImplementation {
         "rename-selected-file":
             Shortcut(key: ShortcutKey(modifiers: [.option], key: .character(character: "r")), event: "rename-selected-file"),
         "move-selected-files-to-bin":
-            Shortcut(key: ShortcutKey(modifiers: [ ], key: .specialKey(key: .delete)), event: "move-selected-files-to-bin"),
+            Shortcut(key: ShortcutKey(modifiers: [.function], key: .specialKey(key: .delete)), event: "move-selected-files-to-bin"),
         "delete-selected-files":
             Shortcut(key: ShortcutKey(modifiers: [ .control ], key: .specialKey(key: .delete)), event: "delete-selected-files"),
         "delete-favorite":

@@ -53,6 +53,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     private var showFileInfosSubscription: Commands.ShowFileInfosSubscription?
     private var navigateToParentSubscription: Commands.NavigateToParentSubscription?
     private var showApplicationBarSubscription: Commands.ShowApplicationBarSubscription?
+    private var createNewFilesystemEntrySubscription: Commands.CreateNewFilesystemEntrySubscription?
     
     private var directoryOberverCancellable: Cancellable?
     
@@ -110,6 +111,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.showFileInfosSubscription = self.eventBus!.subscribe(Commands.ShowFileInfos, handler: self.showFileInfos)
         self.navigateToParentSubscription = self.eventBus!.subscribe(Commands.NavigateToParent, handler: self.navigateToParent)
         self.showApplicationBarSubscription = self.eventBus!.subscribe(Commands.ShowApplicationBar, handler: self.showApplicationBar)
+        self.createNewFilesystemEntrySubscription = self.eventBus!.subscribe(Commands.CreateNewFilesystemEntry, handler: self.createNewFilesystemEntry)
         
         self.restoreColumnWidths()
     }
@@ -127,6 +129,7 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
         self.showFileInfosSubscription?.unsubscribe()
         self.navigateToParentSubscription?.unsubscribe()
         self.showApplicationBarSubscription?.unsubscribe()
+        self.createNewFilesystemEntrySubscription?.unsubscribe()
         
         self.storeColumnWidths()
         
@@ -462,6 +465,60 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
             .map { self.tableViewDataSource.directoryContents[$0].url }
         
         self.applicationBar.present(for: urls)
+    }
+    
+    private func createNewFilesystemEntry(message: CreateNewFilesystemEntryMessage) {
+        guard
+            let newFileentryPath = self.askForFileentryName(directory: message.directory)
+        else {
+            return
+        }
+        
+        do {
+            if message.directory {
+                try FileManager.default.createDirectory(at: URL(filePath: newFileentryPath), withIntermediateDirectories: true)
+            } else {
+                FileManager.default.createFile(atPath: newFileentryPath, contents: Data())
+            }
+        } catch {
+            Commands.showErrorAlert(window: self.view.window!,
+                                    title: "Error while creating new \(message.directory ? "directory" : "file")",
+                                    error: error)
+        }
+    }
+    
+    func askForFileentryName(directory: Bool) -> String? {
+        // Create the alert
+        let alert = NSAlert()
+        alert.messageText = "Create New \(directory ? "Directory" : "File")"
+        alert.informativeText = "Please enter the \(directory ? "directory" : "file") name:"
+        alert.alertStyle = .informational
+        
+        // Create a text field and add it to the alert
+        let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+        alert.accessoryView = textField
+        
+        // Add buttons to the alert
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        
+        // Show the alert and capture the response
+        var finished = false
+        while !finished {
+            let response = alert.runModal()
+            if response == .alertFirstButtonReturn {
+                let filename = textField.stringValue
+                let newFileentryPath = self.path!.appendingPathComponent(filename).path
+                
+                if !FileManager.default.fileExists(atPath: newFileentryPath) {
+                    finished = true
+                    return newFileentryPath
+                }
+            } else {
+                finished = true
+                return nil
+            }
+        }
     }
     
     

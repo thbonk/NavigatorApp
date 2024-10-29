@@ -40,7 +40,8 @@ import Causality
             if let sel = actionSelector {
                 self.actionTarget?.perform(sel, with: self)
             }
-        } else if let character = self.characterKeyPress(event) {
+        } else if let character = self.characterKeyPress(event),
+                  character.isLetter || character.isNumber {
             self.selectFirstRowWith(first: character)
         } else {
             super.keyDown(with: event)

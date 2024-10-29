@@ -63,7 +63,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="New window" keyEquivalent="n" id="Was-JA-tGl">
+                                        <menuItem title="New window" keyEquivalent="n" id="Was-JA-tGl" userLabel="New Window">
                                             <connections>
                                                 <action selector="newWindow:" target="Voe-Tx-rLC" id="Y6h-lL-8Ay"/>
                                             </connections>
@@ -73,23 +73,15 @@
                                                 <action selector="newTab:" target="Voe-Tx-rLC" id="azQ-QA-mT5"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
+                                        <menuItem title="New Directory" keyEquivalent="d" id="oms-gG-0Cy" userLabel="New Directory">
                                             <connections>
-                                                <action selector="openDocument:" target="Ady-hI-5gd" id="bVn-NM-KNZ"/>
+                                                <action selector="newDirectoryWithSender:" target="Voe-Tx-rLC" id="gAj-ub-auj"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Open Recent" id="tXI-mr-wws">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="oas-Oc-fiZ">
-                                                <items>
-                                                    <menuItem title="Clear Menu" id="vNY-rz-j42">
-                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                        <connections>
-                                                            <action selector="clearRecentDocuments:" target="Ady-hI-5gd" id="Daa-9d-B3U"/>
-                                                        </connections>
-                                                    </menuItem>
-                                                </items>
-                                            </menu>
+                                        <menuItem title="New File" keyEquivalent="f" id="mFY-jI-TQE" userLabel="New File">
+                                            <connections>
+                                                <action selector="newFileWithSender:" target="Voe-Tx-rLC" id="5ZR-KT-hlZ"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="m54-Is-iLE"/>
                                         <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
@@ -110,18 +102,6 @@
                                         <menuItem title="Revert to Saved" keyEquivalent="r" id="KaW-ft-85H">
                                             <connections>
                                                 <action selector="revertDocumentToSaved:" target="Ady-hI-5gd" id="iJ3-Pv-kwq"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                                        <menuItem title="Page Setup…" keyEquivalent="P" id="qIS-W8-SiK">
-                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" command="YES"/>
-                                            <connections>
-                                                <action selector="runPageLayout:" target="Ady-hI-5gd" id="Din-rz-gC5"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Print…" keyEquivalent="p" id="aTl-1u-JFS">
-                                            <connections>
-                                                <action selector="print:" target="Ady-hI-5gd" id="qaZ-4w-aoO"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -773,7 +753,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="4pS-lH-YcW">
-                                                            <rect key="frame" x="18" y="5" width="111" height="17"/>
+                                                            <rect key="frame" x="8" y="5" width="111" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ArK-b4-07R">
@@ -781,7 +761,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="27b-of-mrh"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2su-ch-sug">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2su-ch-sug">
                                                                     <rect key="frame" x="25" y="0.0" width="86" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="r14-uV-suG">
@@ -841,7 +821,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Orv-JG-o85">
-                                <rect key="frame" x="3" y="3" width="423" height="22"/>
+                                <rect key="frame" x="3" y="3" width="403" height="22"/>
                                 <pathCell key="cell" selectable="YES" editable="YES" alignment="left" id="c1D-Nv-T0J">
                                     <font key="font" metaFont="system"/>
                                     <url key="url" string="file://localhost/Applications/"/>
@@ -851,13 +831,13 @@
                                 </connections>
                             </pathControl>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNh-TO-Ftg">
-                                <rect key="frame" x="1" y="26" width="428" height="185"/>
+                                <rect key="frame" x="1" y="26" width="408" height="127"/>
                                 <clipView key="contentView" id="YSN-Mk-VYj">
-                                    <rect key="frame" x="1" y="1" width="426" height="183"/>
+                                    <rect key="frame" x="1" y="1" width="406" height="125"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" typeSelect="NO" autosaveName="DirectoryTableViewState" rowSizeStyle="automatic" headerView="uWi-b9-tog" viewBased="YES" id="Rb4-5P-Zgz" customClass="DirectoryTableView" customModule="Navigator" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="622" height="155"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="622" height="97"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="10"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -876,7 +856,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Qvi-q2-eRx">
-                                                            <rect key="frame" x="18" y="5" width="138" height="17"/>
+                                                            <rect key="frame" x="8" y="5" width="138" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gz8-lr-kXG">
@@ -884,7 +864,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <imageCell key="cell" controlSize="large" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="ib7-QT-JUJ"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmP-HC-Wzl">
+                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hmP-HC-Wzl">
                                                                     <rect key="frame" x="25" y="0.0" width="113" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Table View Cell" usesSingleLineMode="YES" id="gr7-3b-Lkt">
@@ -917,10 +897,10 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="tPW-LI-CQ2">
-                                                            <rect key="frame" x="173" y="5" width="102" height="17"/>
+                                                            <rect key="frame" x="163" y="5" width="102" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71q-tZ-NfY">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71q-tZ-NfY">
                                                                     <rect key="frame" x="0.0" y="0.0" width="102" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="jaL-dk-trb">
@@ -949,10 +929,10 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="kSc-0k-uc0">
-                                                            <rect key="frame" x="292" y="5" width="100" height="17"/>
+                                                            <rect key="frame" x="282" y="5" width="100" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwM-ZD-5fl">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uwM-ZD-5fl">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="HX5-8P-GIE">
@@ -981,10 +961,10 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="BgH-iE-TUt">
-                                                            <rect key="frame" x="409" y="5" width="100" height="17"/>
+                                                            <rect key="frame" x="399" y="5" width="100" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d80-Fp-Tgp">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d80-Fp-Tgp">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                                     <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="mZB-BN-rgb">
@@ -1013,10 +993,10 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="eeP-TK-R5k">
-                                                            <rect key="frame" x="526" y="5" width="97" height="17"/>
+                                                            <rect key="frame" x="516" y="5" width="97" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Pcy-9E-g7v">
+                                                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Pcy-9E-g7v">
                                                                     <rect key="frame" x="0.0" y="1" width="97" height="16"/>
                                                                     <textFieldCell key="cell" controlSize="large" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="V64-YY-7Gg">
                                                                         <font key="font" metaFont="system"/>
@@ -1047,7 +1027,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="HFX-VU-llE">
-                                    <rect key="frame" x="1" y="168" width="426" height="16"/>
+                                    <rect key="frame" x="1" y="110" width="406" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="oUW-XH-Lzs">
