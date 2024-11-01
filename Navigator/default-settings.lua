@@ -1,5 +1,10 @@
 -- Settings for Navigator
 
+-- If you have installed Lua in a different folder, uncommuent the
+-- following lines and adjust the path in custom_path.
+-- custom_path = "/opt/homebrew/Cellar/lua/5.4.7/share/?.lua;/opt/homebrew/Cellar/lua/5.4.7/share/?/init.lua;/opt/homebrew/Cellar/lua/5.4.7/lib/?.lua;/opt/homebrew/Cellar/lua/5.4.7/lib/?/init.lua";
+-- package.path = custom_path .. ";" .. package.path;
+
 --[[ The following structs with constants are predefined:
 
 SpecialKey contains code for keys like function keys, delete etc.

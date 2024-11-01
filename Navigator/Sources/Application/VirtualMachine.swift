@@ -38,7 +38,7 @@ class VirtualMachine {
     // MARK: - Initialization
     
     private  init() {
-        luaVM = LuaVM()
+        luaVM = LuaVM(openLibs: true)
         self.initialize()
     }
     
