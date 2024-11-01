@@ -64,6 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         do {
+            VirtualMachine.shared.registerExtension(type: ApplicationSettings.self)
             try ApplicationSettings.initializeSettingsFile()
             self.settingsFileObserver = FileManager.default.observeFileForChanges(
                 AppDelegate.ApplicationSettingsFile, handler: self.settingsFileChanged)

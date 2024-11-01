@@ -22,7 +22,7 @@ import AppKit
 import Magnet
 import SwiftyLua
 
-class ApplicationSettings: CustomTypeImplementation {
+class ApplicationSettings: CustomExtension {
     
     // MARK: - Public Structs
     
@@ -112,7 +112,40 @@ class ApplicationSettings: CustomTypeImplementation {
     ]
     
     
-    // MARK: - CustomTypeImplementation
+    // MARK: - CustomExtension
+    
+    static func variables(_ luaVM: SwiftyLua.LuaVM) throws {
+        // SpecialKey
+        let specialKey = luaVM.vm.createTable()
+        NSEvent.SpecialKey.allCases.forEach { key in
+            specialKey[NSEvent.SpecialKey.name(key)!] = key.rawValue
+        }
+        luaVM.vm.globals["SpecialKey"] = specialKey
+        
+        
+        // ModifierFlags
+        let modifierFlags = luaVM.vm.createTable()
+        NSEvent.ModifierFlags.allCases.forEach { flag in
+            modifierFlags[NSEvent.ModifierFlags.name(flag)!] = Int64(flag.rawValue)
+        }
+        luaVM.vm.globals["ModifierFlags"] = modifierFlags
+        
+        
+        // Events
+        let events = luaVM.vm.createTable()
+        ApplicationSettings.shared.shortcuts.keys.sorted().forEach { eventName in
+            events[eventName.camelcased()] = eventName
+        }
+        luaVM.vm.globals["Events"] = events
+        
+        
+        // Protect the constants
+        try luaVM.execute(string: """
+            SpecialKey = protect(SpecialKey);
+            ModifierFlags = protect(ModifierFlags);
+            Events = protect(Events);
+        """)
+    }
     
     static func descriptor(_ vm: SwiftyLua.LuaVM) -> SwiftyLua.CustomTypeDescriptor {
         return CustomTypeDescriptor(
@@ -243,49 +276,7 @@ class ApplicationSettings: CustomTypeImplementation {
     // MARK: - Initialization
     
     private init() {
-        do {
-            try initializeConstants()
-            try initializeApplicationSettingsObject()
-        } catch {
-            fatalError("Error while initializing application settings for the Lua VM: \(error). Please file a bug report at https://github.com/thbonk/NavigatorApp/issues")
-        }
-        
-        func initializeApplicationSettingsObject() throws {
-            VirtualMachine.shared.luaVM.registerCustomType(type: ApplicationSettings.self)
-        }
-        
-        func initializeConstants() throws {
-            // SpecialKey
-            let specialKey = VirtualMachine.shared.luaVM.vm.createTable()
-            NSEvent.SpecialKey.allCases.forEach { key in
-                specialKey[NSEvent.SpecialKey.name(key)!] = key.rawValue
-            }
-            VirtualMachine.shared.luaVM.vm.globals["SpecialKey"] = specialKey
-            
-            
-            // ModifierFlags
-            let modifierFlags = VirtualMachine.shared.luaVM.vm.createTable()
-            NSEvent.ModifierFlags.allCases.forEach { flag in
-                modifierFlags[NSEvent.ModifierFlags.name(flag)!] = Int64(flag.rawValue)
-            }
-            VirtualMachine.shared.luaVM.vm.globals["ModifierFlags"] = modifierFlags
-            
-            
-            // Events
-            let events = VirtualMachine.shared.luaVM.vm.createTable()
-            self.shortcuts.keys.sorted().forEach { eventName in
-                events[eventName.camelcased()] = eventName
-            }
-            VirtualMachine.shared.luaVM.vm.globals["Events"] = events
-            
-            
-            // Protect the constants
-            try VirtualMachine.shared.luaVM.execute(string: """
-                SpecialKey = protect(SpecialKey);
-                ModifierFlags = protect(ModifierFlags);
-                Events = protect(Events);
-            """)
-        }
+        // Empty by design
     }
     
     public class func initializeSettingsFile() throws {

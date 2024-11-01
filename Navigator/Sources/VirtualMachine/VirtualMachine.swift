@@ -43,6 +43,18 @@ class VirtualMachine {
     }
     
     
+    // MARK: - Registering Custom Extensions
+    
+    public func registerExtension<T: CustomExtension>(type: T.Type, library: Table? = nil) {
+        do {
+            self.luaVM.registerCustomType(type: type, library: library)
+            try T.variables(self.luaVM)
+        } catch {
+            fatalError("Error while registering custom extension \(T.self): \(error). Please file a bug report at https://github.com/thbonk/NavigatorApp/issues")
+        }
+    }
+    
+    
     // MARK: - Private Methods
     
     private func initialize() {
