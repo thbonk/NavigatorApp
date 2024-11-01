@@ -1,9 +1,11 @@
 -- Settings for Navigator
 
--- If you have installed Lua in a different folder, uncommuent the
--- following lines and adjust the path in custom_path.
--- custom_path = "/opt/homebrew/Cellar/lua/5.4.7/share/?.lua;/opt/homebrew/Cellar/lua/5.4.7/share/?/init.lua;/opt/homebrew/Cellar/lua/5.4.7/lib/?.lua;/opt/homebrew/Cellar/lua/5.4.7/lib/?/init.lua";
--- package.path = custom_path .. ";" .. package.path;
+-- If you have installed Lua in a different folder, uncomment the
+-- following lines and adjust the paths.
+-- lua_path = "<Output of luarocks path>";
+-- lua_cpath = "<Output of luarocks path>"
+-- package.path = lua_path .. ";" .. package.path;
+-- package.cpath = lua_cpath .. ";" .. package.cpath;
 
 --[[ The following structs with constants are predefined:
 

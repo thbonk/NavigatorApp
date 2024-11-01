@@ -48,7 +48,6 @@ class VirtualMachine {
     private func initialize() {
         do {
             let libraryUrl = Bundle.main.url(forResource: "navigator_base_library", withExtension: "lua")!
-            
             try self.luaVM.execute(url: libraryUrl)
         } catch {
             fatalError("Error while initializing Lua VM: \(error). Please file a bug report at https://github.com/thbonk/NavigatorApp/issues")
