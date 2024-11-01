@@ -49,10 +49,10 @@ extension Commands {
             
             showAlert(window: window,
                       NSAlert
-                .create()
-                .withMessageText(title)
-                .withInformativeText(error.localizedDescription)
-                .withAlertStyle(.critical))
+                        .create()
+                        .withMessageText(title)
+                        .withInformativeText(error.localizedDescription)
+                        .withAlertStyle(.critical))
         }
     }
 }

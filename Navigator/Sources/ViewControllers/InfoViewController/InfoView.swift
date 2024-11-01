@@ -30,14 +30,26 @@ struct InfoView: View {
             ScrollView {
                 preview()
                 info()
-                attributes()
+                accessRights()
             }
         }
         .padding()
+        .onAppear(perform: self.populateDependingProperties)
+        .onChange(of: ownerId, self.changeOwner)
+        .onChange(of: groupId, self.changeGroup)
+        .onChange(of: permissions, self.changeAccessRights)
+        .onChange(of: fileInfo, self.changeFileInfo)
     }
     
+    @State
     var fileInfo: FileInfo
     
+    
+    // MARK: - Initialization
+    
+    public init(fileInfo: FileInfo) {
+        self.fileInfo = fileInfo
+    }
     
     // MARK: - Private Properties
     
@@ -45,11 +57,16 @@ struct InfoView: View {
     private var previewExapnded: Bool = true
     @AppStorage("infoview-dg-info-expanded")
     private var infoExapnded: Bool = true
-    @AppStorage("infoview-dg-attributes-expanded")
-    private var attributesExapnded: Bool = true
+    @AppStorage("infoview-dg-access-rights-expanded")
+    private var accessRightsExpanded: Bool = true
     
     @State
-    private var selectedFilesChangedSubscription: Events.SelectedFilesChangedSubscription?
+    private var ownerId: UInt32?
+    @State
+    private var groupId: UInt32?
+    @State
+    private var permissions: UInt16?
+    
     
     // MARK: - Disclosure Groups
     
@@ -66,65 +83,254 @@ struct InfoView: View {
     
     @ViewBuilder private func info() -> some View {
         DisclosureGroup("Info", isExpanded: $infoExapnded) {
-            HStack {
-                Grid(alignment: .leading) {
-                    GridRow {
-                        Text("Name:").bold()
-                        Text(fileInfo.name)
-                    }
-                    GridRow {
-                        Text("Path:").bold()
-                        Text(fileInfo.path)
-                    }
-                    GridRow {
-                        Text("Size:").bold()
-                        Text(fileInfo.fileSize)
-                    }
+            LazyVGrid(columns: [.init(alignment: .topTrailing), .init(alignment: .topLeading)]) {
+                Text("Name:").bold()
+                Text(fileInfo.name)
+                
+                Text("Path:").bold()
+                Text(fileInfo.path)
+                
+                Text("Size:").bold()
+                Text(fileInfo.fileSize)
+                
+                Text("Created at:").bold()
+                Text(fileInfo.creationDate ?? "")
+                
+                Text("Modified at:").bold()
+                Text(fileInfo.modificationDate ?? "")
+                
+                Text("Accessed at:").bold()
+                Text(fileInfo.accessDate ?? "")
                     
-                    GridRow {
-                        Text("Created at:").bold()
-                        Text(fileInfo.creationDate ?? "")
-                    }.padding(.top, 16)
-                    GridRow {
-                        Text("Modified at:").bold()
-                        Text(fileInfo.modificationDate ?? "")
-                    }
-                    GridRow {
-                        Text("Accessed at:").bold()
-                        Text(fileInfo.accessDate ?? "")
-                    }
-                }
-                .padding(.leading, 16)
-                
-                Spacer()
+                Text("Owner:").bold()
+                Text("\(fileInfo.ownerAccountName) (\(fileInfo.ownerAccountID))")
+            
+                Text("Group:").bold()
+                Text("\(fileInfo.groupOwnerAccountName) (\(fileInfo.groupOwnerAccountID))")
+            
+                Text("Permissions:").bold()
+                Text("\(fileInfo.readableAccessRights) (\(fileInfo.accessRights))")
             }
         }
     }
     
-    @ViewBuilder private func attributes() -> some View {
-        DisclosureGroup("Attributes", isExpanded: $attributesExapnded) {
-            HStack {
-                Grid(alignment: .leading) {
-                    GridRow {
-                        Text("Owner:").bold()
-                        Text("\(fileInfo.ownerAccountName) (\(fileInfo.ownerAccountID))")
+    @ViewBuilder private func accessRights() -> some View {
+        DisclosureGroup("Access Rights", isExpanded: $accessRightsExpanded) {
+            LazyVGrid(columns: [.init(alignment: .trailing), .init(alignment: .leading)]) {
+                Text("Owner:").bold()
+                Picker(selection: $ownerId) {
+                    ForEach(UserInfo.shared.allUsers) { user in
+                        Text("\(user.name) (\(user.id))")
+                            .tag(user.id)
                     }
-                    GridRow {
-                        Text("Group:").bold()
-                        Text("\(fileInfo.groupOwnerAccountName) (\(fileInfo.groupOwnerAccountID))")
-                    }
-                    GridRow {
-                        Text("Permissions:").bold()
-                        Text("\(fileInfo.readableAccessRights) (\(fileInfo.accessRights))")
-                    }
+                } label: {
+                    EmptyView()
                 }
-                .padding(.leading, 16)
+
+                Text("Group:").bold()
+                Picker(selection: $groupId) {
+                    ForEach(UserInfo.shared.allGroups) { group in
+                        Text("\(group.name) (\(group.id))")
+                            .tag(group.id)
+                    }
+                } label: {
+                    EmptyView()
+                }
                 
-                Spacer()
+                Text("Owner:").bold()
+                BitManipulationView(titles: ["r", "w", "x"], bits: [8, 7, 6], value: $permissions)
+                
+                Text("Group:").bold()
+                BitManipulationView(titles: ["r", "w", "x"], bits: [5, 4, 3], value: $permissions)
+                
+                Text("Others:").bold()
+                BitManipulationView(titles: ["r", "w", "x"], bits: [2, 1, 0], value: $permissions)
             }
         }
     }
     
+    
+    // MARK: - Private Properties
+    
+    private func changeOwner(oldOwner: UInt32?, newOwner: UInt32?) {
+        guard
+            let oldOwner, let newOwner, oldOwner != newOwner
+        else {
+            return
+        }
+        
+        do {
+            try FileManager.default.setAttributes([.ownerAccountID: newOwner], ofItemAtPath: self.fileInfo.url.path)
+        } catch {
+            Commands.showErrorAlert(window: nil,
+                                    title: "Can't change owner of file \(self.fileInfo.name)",
+                                    error: error)
+        }
+        
+        do {
+            self.fileInfo = try FileManager.default.fileInfo(from: self.fileInfo.url)
+        } catch {
+            Commands.showErrorAlert(window: nil,
+                                    title: "Error while getting file info for \(self.fileInfo.name)",
+                                    error: error)
+        }
+    }
+    
+    private func changeGroup(oldGroup: UInt32?, newGroup: UInt32?) {
+        guard
+            let oldGroup, let newGroup, oldGroup != newGroup
+        else {
+            return
+        }
+        
+        do {
+            try FileManager.default.setAttributes([.groupOwnerAccountID: newGroup], ofItemAtPath: self.fileInfo.url.path)
+        } catch {
+            Commands.showErrorAlert(window: nil,
+                                    title: "Can't change group of file \(self.fileInfo.name)",
+                                    error: error)
+        }
+        
+        do {
+            self.fileInfo = try FileManager.default.fileInfo(from: self.fileInfo.url)
+        } catch {
+            Commands.showErrorAlert(window: nil,
+                                    title: "Error while getting file info for \(self.fileInfo.name)",
+                                    error: error)
+        }
+    }
+    
+    private func changeAccessRights(oldValue: UInt16?, newValue: UInt16?) {
+        guard
+            let oldValue, let newValue, oldValue != newValue
+        else {
+            return
+        }
+        
+        do {
+            try FileManager.default.changeAccessRights(of: self.fileInfo, to: newValue)
+        } catch {
+            Commands.showErrorAlert(window: nil,
+                                    title: "Can't change access rights of file \(self.fileInfo.name)",
+                                    error: error)
+        }
+        
+        do {
+            self.fileInfo = try FileManager.default.fileInfo(from: self.fileInfo.url)
+        } catch {
+            Commands.showErrorAlert(window: nil,
+                                    title: "Error while getting file info for \(self.fileInfo.name)",
+                                    error: error)
+        }
+    }
+    
+    private func changeFileInfo(old: FileInfo, new: FileInfo) {
+        DispatchQueue.main.async {
+            self.populateDependingProperties()
+        }
+    }
+    
+    private func populateDependingProperties() {
+        self.ownerId = UserInfo.shared.allUsers.first(where: { user in
+            user.id == self.fileInfo.ownerAccountID
+        })?.id
+        self.groupId = UserInfo.shared.allGroups.first(where: { group in
+            group.id == self.fileInfo.groupOwnerAccountID
+        })?.id
+        self.permissions = self.fileInfo.accessRights
+    }
+    
+}
+
+struct BitManipulationView: View {
+    
+    // MARK: - Public Properties
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(0..<titles.count) { index in
+                Button(titles[index], action: { self.toggle(bit: self.bits[index]) })
+                    //.frame(width: 32, height: 32)
+                    .buttonStyle(BitManipulationButtonStyle(backgroundColor: self.color(for: bits[index])))
+                    .padding([.leading, .trailing], 0)
+            }
+        }
+    }
+    
+    let titles: [String]
+    let bits: [Int]
+    
+    @Binding
+    var value: UInt16?
+    
+    
+    // MARK: Private Methods
+    
+    private func toggle(bit: Int) {
+        guard let _ = value else { return }
+        
+        if (self.value! & (1 << bit)) != 0 {
+            self.value! &= ~(1 << bit)
+        } else {
+            self.value! |= (1 << bit)
+        }
+    }
+    
+    private func color(for bit: Int) -> Color {
+        guard let _ = value else { return .clear }
+        
+        if (self.value! & (1 << bit)) != 0 {
+            return .accentColor
+        }
+        
+        return .clear
+    }
+    
+}
+
+extension Color {
+    /// Returns `true` if the color is "light"; `false` otherwise.
+    func isLightColor() -> Bool {
+        //NSColor(cgColor: self.cgColor!)
+        guard
+            let cgColor = self.cgColor
+        else {
+            return false
+        }
+        
+        guard
+            let color = NSColor(cgColor: cgColor)
+        else {
+            return false
+        }
+        
+        var white: CGFloat = 0
+        color.getWhite(&white, alpha: nil)
+        
+        // A threshold of 0.7 is a general standard for distinguishing light vs. dark colors
+        return white > 0.7
+    }
+}
+
+struct BitManipulationButtonStyle: ButtonStyle {
+    var backgroundColor: Color
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    func makeBody(configuration: Configuration) -> some View {
+        let borderColor = colorScheme == .light ? Color.gray : Color.gray.opacity(0.8)
+        
+        return configuration.label
+            .frame(width: 24, height: 24)
+            .background(backgroundColor)
+            .foregroundColor(.white)
+            .clipShape(Rectangle())
+            .overlay(
+                Rectangle().stroke(borderColor, lineWidth: 2)
+            )
+            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+            .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
+    }
 }
 
 class HostingInfoView: NSHostingView<InfoView> {

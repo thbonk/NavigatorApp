@@ -663,14 +663,14 @@ class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFiel
     }
     
     private class func populateOwner(_ fileInfo: FileInfo, _ view: NSTableCellView) {
-        view.textField?.stringValue = fileInfo.ownerAccountName
+        view.textField?.stringValue = "\(fileInfo.ownerAccountName) (\(fileInfo.ownerAccountID))"
     }
     
     private class func populateGroup(_ fileInfo: FileInfo, _ view: NSTableCellView) {
-        view.textField?.stringValue = fileInfo.groupOwnerAccountName
+        view.textField?.stringValue = "\(fileInfo.groupOwnerAccountName) (\(fileInfo.groupOwnerAccountID))"
     }
     
     private class func populatePermissions(_ fileInfo: FileInfo, _ view: NSTableCellView) {
-        view.textField?.stringValue = fileInfo.readableAccessRights
+        view.textField?.stringValue = "\(fileInfo.readableAccessRights) (\(fileInfo.accessRights))"
     }
 }

@@ -248,7 +248,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             try ApplicationSettings.shared.loadSettings()
             Events.settingsChanged(eventBus: AppDelegate.globalEventBus)
-        } catch {
+        } catch let error {
             Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while loading settings", error: error)
         }
     }
