@@ -21,8 +21,8 @@
 import Foundation
 import SwiftyLua
 
-protocol CustomExtension: CustomTypeImplementation {
+protocol CustomExtension {
     
-    /// return the descriptor for the custom type.
-    static func variables(_ vm: LuaVM) throws
+    /// Register variables
+    static func `extension`(_ vm: LuaVirtualMachine) throws
 }

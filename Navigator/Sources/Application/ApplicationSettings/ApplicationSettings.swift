@@ -65,7 +65,7 @@ class ApplicationSettings: CustomExtension {
     // MARK: - Public Static Properties
     
     static var shared: ApplicationSettings = {
-        let lua = VirtualMachine.shared
+        let lua = LuaVirtualMachine.shared
         return ApplicationSettings()
     }()
     
@@ -114,96 +114,94 @@ class ApplicationSettings: CustomExtension {
     
     // MARK: - CustomExtension
     
-    static func variables(_ luaVM: SwiftyLua.LuaVM) throws {
+    static func `extension`(_ luaVM: LuaVirtualMachine) throws {
+        try Self.registerConstants(luaVM)
+        try Self.registerApplicationObject(luaVM)
+    }
+    
+    private static func registerConstants(_ luaVM: LuaVirtualMachine) throws {
         // SpecialKey
-        let specialKey = luaVM.vm.createTable()
+        let specialKey = try! luaVM.createTable()
         NSEvent.SpecialKey.allCases.forEach { key in
             specialKey[NSEvent.SpecialKey.name(key)!] = key.rawValue
         }
-        luaVM.vm.globals["SpecialKey"] = specialKey
+        luaVM.globals["SpecialKey"] = specialKey
         
         
         // ModifierFlags
-        let modifierFlags = luaVM.vm.createTable()
+        let modifierFlags = try! luaVM.createTable()
         NSEvent.ModifierFlags.allCases.forEach { flag in
             modifierFlags[NSEvent.ModifierFlags.name(flag)!] = Int64(flag.rawValue)
         }
-        luaVM.vm.globals["ModifierFlags"] = modifierFlags
+        luaVM.globals["ModifierFlags"] = modifierFlags
         
         
         // Events
-        let events = luaVM.vm.createTable()
+        let events = try! luaVM.createTable()
         ApplicationSettings.shared.shortcuts.keys.sorted().forEach { eventName in
             events[eventName.camelcased()] = eventName
         }
-        luaVM.vm.globals["Events"] = events
+        luaVM.globals["Events"] = events
         
         
         // Protect the constants
-        try luaVM.execute(string: """
-            SpecialKey = protect(SpecialKey);
-            ModifierFlags = protect(ModifierFlags);
-            Events = protect(Events);
-        """)
+        try luaVM.protect("SpecialKey")
+        try luaVM.protect("ModifierFlags")
+        try luaVM.protect("Events")
     }
     
-    static func descriptor(_ vm: SwiftyLua.LuaVM) -> SwiftyLua.CustomTypeDescriptor {
-        return CustomTypeDescriptor(
-          constructor: ConstructorDescriptor { (args: Arguments) -> SwiftReturnValue in
-              return .value(vm.toReference(ApplicationSettings.shared))
-          },
-          functions: [],
-          methods: [
-            MethodDescriptor("setOpenWindowOnStart", parameters: [Bool.arg], fn: setOpenWindowOnStart),
-            MethodDescriptor("getOpenWindowOnStart", fn: getOpenWindowOnStart),
-            MethodDescriptor("setBringToFrontDoubleTapKey", parameters: [Int.arg], fn: setBringToFrontDoubleTapKey),
-            MethodDescriptor("getBringToFrontDoubleTapKey", fn: getBringToFrontDoubleTapKey),
-            MethodDescriptor("setEditor", parameters: [String.arg], fn: setEditor),
-            MethodDescriptor("getEditor", fn: getEditor),
-            MethodDescriptor("setShortcutForEvent", parameters: [String.arg, Table.arg], fn: setShortcutForEvent),
-            MethodDescriptor("getShortcutForEvent", fn: getShortcutForEvent),
-          ]
-        )
+    private static func registerApplicationObject(_ luaVM: LuaVirtualMachine) throws {
+        let applicationSettingsObject = try! luaVM.createTable()
+        luaVM.globals["ApplicationSettings"] = applicationSettingsObject
         
-        func setOpenWindowOnStart(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
-            settings.openWindowOnStartup = args.boolean
+        applicationSettingsObject["setOpenWindowOnStart"] = try luaVM.createFunction([Bool.arg], fn: setOpenWindowOnStart)
+        applicationSettingsObject["getOpenWindowOnStart"] = try luaVM.createFunction(fn: getOpenWindowOnStart)
+        applicationSettingsObject["setBringToFrontDoubleTapKey"] = try luaVM.createFunction([Int.arg], fn: setBringToFrontDoubleTapKey)
+        applicationSettingsObject["getBringToFrontDoubleTapKey"] = try luaVM.createFunction(fn: getBringToFrontDoubleTapKey)
+        applicationSettingsObject["setEditor"] = try luaVM.createFunction([String.arg], fn: setEditor)
+        applicationSettingsObject["getEditor"] = try luaVM.createFunction(fn: getEditor)
+        applicationSettingsObject["setShortcutForEvent"] = try luaVM.createFunction([String.arg, Table.arg], fn: setShortcutForEvent)
+        applicationSettingsObject["getShortcutForEvent"] = try luaVM.createFunction(fn: setShortcutForEvent)
+        
+        try luaVM.protect("ApplicationSettings")
+        
+        func setOpenWindowOnStart(args: Arguments) -> SwiftReturnValue {
+            ApplicationSettings.shared.openWindowOnStartup = args.boolean
             
             return .nothing
         }
         
-        func getOpenWindowOnStart(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
-            return .value(settings.openWindowOnStartup)
+        func getOpenWindowOnStart(args: Arguments) -> SwiftReturnValue {
+            return .value(ApplicationSettings.shared.openWindowOnStartup)
         }
         
-        func setBringToFrontDoubleTapKey(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
+        func setBringToFrontDoubleTapKey(args: Arguments) -> SwiftReturnValue {
+            let settings = ApplicationSettings.shared
             settings.bringToFrontDoubleTapKey = KeyCombo(doubledCocoaModifiers: NSEvent.ModifierFlags(rawValue: UInt(args.number.toInteger())))!
             
             return .nothing
         }
         
-        func getBringToFrontDoubleTapKey(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
+        func getBringToFrontDoubleTapKey(args: Arguments) -> SwiftReturnValue {
+            let settings = ApplicationSettings.shared
             return .value(Int64(settings.bringToFrontDoubleTapKey.keyEquivalentModifierMask.rawValue))
         }
         
-        func setEditor(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
+        func setEditor(args: Arguments) -> SwiftReturnValue {
+            let settings = ApplicationSettings.shared
             let editorPath = args.string
             settings.editor = URL(fileURLWithPath: editorPath)
             
             return .nothing
         }
         
-        func getEditor(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
+        func getEditor(args: Arguments) -> SwiftReturnValue {
+            let settings = ApplicationSettings.shared
             return .value(settings.editor.path)
         }
         
-        func setShortcutForEvent(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
+        func setShortcutForEvent(args: Arguments) -> SwiftReturnValue {
+            let settings = ApplicationSettings.shared
             
             /*
              args:
@@ -250,15 +248,15 @@ class ApplicationSettings: CustomExtension {
             return .nothing
         }
         
-        func getShortcutForEvent(instance: CustomTypeImplementation, args: Arguments) -> SwiftReturnValue {
-            let settings = instance as! ApplicationSettings
+        func getShortcutForEvent(args: Arguments) -> SwiftReturnValue {
+            let settings = ApplicationSettings.shared
             let eventName = args.string
             let shortcut = settings.shortcuts[eventName]
             let modifiers = NSEvent.ModifierFlags
                 .allCases
                 .filter { shortcut!.key.modifiers.contains($0) }
                 .map { $0.rawValue }
-            let result = VirtualMachine.shared.luaVM.vm.createTable()
+            let result = try! LuaVirtualMachine.shared.createTable()
 
             result["modifiers"] = modifiers as! any Value
             if case let .character(character) = shortcut!.key.key {
@@ -279,27 +277,11 @@ class ApplicationSettings: CustomExtension {
         // Empty by design
     }
     
-    public class func initializeSettingsFile() throws {
-        let exists = FileManager.default.fileExists(url: AppDelegate.ApplicationConfigDirectory)
-        
-        if !exists {
-            try FileManager.default.createDirectory(at: AppDelegate.ApplicationConfigDirectory, withIntermediateDirectories: true)
-        } else if exists && !FileManager.default.isDirectory(url: AppDelegate.ApplicationConfigDirectory) {
-            try FileManager.default.removeItem(at: AppDelegate.ApplicationConfigDirectory)
-            try FileManager.default.createDirectory(at: AppDelegate.ApplicationConfigDirectory, withIntermediateDirectories: true)
-        }
-        
-        if !FileManager.default.fileExists(url: AppDelegate.ApplicationSettingsFile) {
-            let defaultSettingsFile = Bundle.main.url(forResource: "default-settings", withExtension: "lua")!
-            try FileManager.default.copyItem(at: defaultSettingsFile, to: AppDelegate.ApplicationSettingsFile)
-        }
-    }
-    
         
     // MARK: - Public Methods
     
     public func loadSettings() throws {
-        try VirtualMachine.shared.luaVM.execute(url: AppDelegate.ApplicationSettingsFile)
+        try LuaVirtualMachine.shared.execute(url: AppDelegate.ApplicationSettingsFile)
     }
 }
 
