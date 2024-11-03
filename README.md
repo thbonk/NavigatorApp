@@ -194,7 +194,18 @@ The following constants are predefined for event names:
 
 ### Application
 
-TODO
+The object `Application` provides access to the state of Navigator via the following functions.
+
+#### `Application.keyWindow() -> Window`
+
+#### `Application.windows() -> int`
+
+#### `Aplication.window(int) -> Window`
+
+#### `Window.title() -> string`
+
+#### `Window.selectedFiles() -> [string]`
+ 
 
 ## Licenses
 
