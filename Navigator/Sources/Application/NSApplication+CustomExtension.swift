@@ -40,14 +40,54 @@ extension NSApplication: CustomExtension {
     // MARK: - Functions
     
     private static func keyWindow(args: Arguments) -> SwiftReturnValue {
-        return .nothing
+        guard
+            let keyWindow = NSApp.keyWindow,
+            keyWindow.isVisible
+        else {
+            return .value(nil)
+        }
+        
+        return object(for: keyWindow)
     }
     
     private static func windows(args: Arguments) -> SwiftReturnValue {
-        return .nothing
+        return .value(NSApp.windows.filter { $0.isVisible }.count)
     }
     
     private static func window(args: Arguments) -> SwiftReturnValue {
-        return .nothing
+        let index = Int(args.number.toInteger())
+        let windows = NSApp.windows
+        
+        guard
+            index >= 0 && index < windows.count && windows[index].isVisible
+        else {
+            return .value(nil)
+        }
+        
+        return object(for: windows[index])
+    }
+    
+    private static func object(for window: NSWindow) -> SwiftReturnValue {
+        let obj = try! LuaVirtualMachine.shared.createTable()
+        
+        obj["title"] = try! LuaVirtualMachine.shared.createFunction { args in .value(window.title) }
+        obj["selectedFile"] = try! LuaVirtualMachine.shared.createFunction { args in
+            let files = try! LuaVirtualMachine.shared.createTable()
+            
+            if let directoryViewController = window
+                .contentViewController?
+                .children
+                .first(where: { controller in controller is DirectoryViewController })
+                .map({ $0 as! DirectoryViewController }) {
+                
+                for i in 0..<directoryViewController.selectedFiles.count {
+                    obj[i] = directoryViewController.selectedFiles[i]
+                }
+            }
+            
+            return .value(files)
+        }
+        
+        return .value(obj)
     }
 }

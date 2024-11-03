@@ -155,13 +155,13 @@ class ApplicationSettings: CustomExtension {
         luaVM.globals["ApplicationSettings"] = applicationSettingsObject
         
         applicationSettingsObject["setOpenWindowOnStart"] = try luaVM.createFunction([Bool.arg], fn: setOpenWindowOnStart)
-        applicationSettingsObject["getOpenWindowOnStart"] = try luaVM.createFunction(fn: getOpenWindowOnStart)
+        applicationSettingsObject["openWindowOnStart"] = try luaVM.createFunction(fn: openWindowOnStart)
         applicationSettingsObject["setBringToFrontDoubleTapKey"] = try luaVM.createFunction([Int.arg], fn: setBringToFrontDoubleTapKey)
-        applicationSettingsObject["getBringToFrontDoubleTapKey"] = try luaVM.createFunction(fn: getBringToFrontDoubleTapKey)
+        applicationSettingsObject["bringToFrontDoubleTapKey"] = try luaVM.createFunction(fn: bringToFrontDoubleTapKey)
         applicationSettingsObject["setEditor"] = try luaVM.createFunction([String.arg], fn: setEditor)
-        applicationSettingsObject["getEditor"] = try luaVM.createFunction(fn: getEditor)
+        applicationSettingsObject["editor"] = try luaVM.createFunction(fn: editor)
         applicationSettingsObject["setShortcutForEvent"] = try luaVM.createFunction([String.arg, Table.arg], fn: setShortcutForEvent)
-        applicationSettingsObject["getShortcutForEvent"] = try luaVM.createFunction(fn: setShortcutForEvent)
+        applicationSettingsObject["shortcutForEvent"] = try luaVM.createFunction(fn: setShortcutForEvent)
         
         try luaVM.protect("ApplicationSettings")
         
@@ -171,7 +171,7 @@ class ApplicationSettings: CustomExtension {
             return .nothing
         }
         
-        func getOpenWindowOnStart(args: Arguments) -> SwiftReturnValue {
+        func openWindowOnStart(args: Arguments) -> SwiftReturnValue {
             return .value(ApplicationSettings.shared.openWindowOnStartup)
         }
         
@@ -182,7 +182,7 @@ class ApplicationSettings: CustomExtension {
             return .nothing
         }
         
-        func getBringToFrontDoubleTapKey(args: Arguments) -> SwiftReturnValue {
+        func bringToFrontDoubleTapKey(args: Arguments) -> SwiftReturnValue {
             let settings = ApplicationSettings.shared
             return .value(Int64(settings.bringToFrontDoubleTapKey.keyEquivalentModifierMask.rawValue))
         }
@@ -195,7 +195,7 @@ class ApplicationSettings: CustomExtension {
             return .nothing
         }
         
-        func getEditor(args: Arguments) -> SwiftReturnValue {
+        func editor(args: Arguments) -> SwiftReturnValue {
             let settings = ApplicationSettings.shared
             return .value(settings.editor.path)
         }
@@ -248,7 +248,7 @@ class ApplicationSettings: CustomExtension {
             return .nothing
         }
         
-        func getShortcutForEvent(args: Arguments) -> SwiftReturnValue {
+        func shortcutForEvent(args: Arguments) -> SwiftReturnValue {
             let settings = ApplicationSettings.shared
             let eventName = args.string
             let shortcut = settings.shortcuts[eventName]
