@@ -38,7 +38,7 @@ Navigator can be configured using the object `ApplicationSettings`. It provides 
 
 <table>
     <tr>
-        <th>Function</th>
+        <th>`Function`</th>
         <th>Parameters</th>
         <th>Description</th>
     </tr>
