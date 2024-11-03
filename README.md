@@ -198,14 +198,23 @@ The object `Application` provides access to the state of Navigator via the follo
 
 #### `Application.keyWindow() -> Window`
 
+Returns the key window of Navigator, otherwise `nil`.
+
 #### `Application.windows() -> int`
+
+Returns the number of open windows.
 
 #### `Aplication.window(int) -> Window`
 
+Returns the window with the given index, otherwise `nil`.
+
 #### `Window.title() -> string`
+
+Return the title of the window.
 
 #### `Window.selectedFiles() -> [string]`
  
+Return the selected files in this window.
 
 ## Licenses
 
