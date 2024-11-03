@@ -44,27 +44,29 @@ Navigator can be configured using the object `ApplicationSettings`. It provides 
         <th>Description</th>
     </tr>
     <tr>
-        <td>setOpenWindowOnStart</td>
-        <td>
+        <td valign="top">setOpenWindowOnStart</td>
+        <td valign="top">
             <ul>
-                <li>Name: openOnStart</li>
-                <li>Type: Boolean</li> 
+                <li>openOnStart: bool</li> 
             </ul>
         </td>
-        <td></td>
-        <td></td>        
+        <td valign="top">None</td>
+        <td valign="top">
+            Set the flag that determines whether a window shall be opened when the application launches.
+            If windows have been persisted, they will be opened regardless of the value of this setting.
+        </td>        
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
+        <td valign="top"></td>
+        <td valign="top"></td>
+        <td valign="top"></td>
+        <td valign="top"></td>        
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>        
+        <td valign="top"></td>
+        <td valign="top"></td>
+        <td valign="top"></td>
+        <td valign="top"></td>        
     </tr>
 </table>
 
