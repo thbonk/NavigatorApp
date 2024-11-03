@@ -38,9 +38,33 @@ Navigator can be configured using the object `ApplicationSettings`. It provides 
 
 <table>
     <tr>
-        <th>`Function`</th>
+        <th>Function</th>
         <th>Parameters</th>
+        <th>Return Value</th>
         <th>Description</th>
+    </tr>
+    <tr>
+        <td>setOpenWindowOnStart</td>
+        <td>
+            <ul>
+                <li>Name: openOnStart</li>
+                <li>Type: Boolean</li> 
+            </ul>
+        </td>
+        <td></td>
+        <td></td>        
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>        
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>        
     </tr>
 </table>
 
