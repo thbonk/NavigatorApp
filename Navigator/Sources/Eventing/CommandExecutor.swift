@@ -1,8 +1,8 @@
 //
-//  CustomExtension.swift
+//  CommandExecutor.swift
 //  Navigator
 //
-//  Created by Thomas Bonk on 01.11.24.
+//  Created by Thomas Bonk on 03.11.24.
 //  Copyright 2024 Thomas Bonk
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,12 +18,25 @@
 //  limitations under the License.
 //
 
+import Causality
 import Foundation
-import SwiftyLua
 
-protocol CustomExtension {
+protocol CommandExecutor: Hashable {
     
-    /// Register variables
-    static func `extension`(_ vm: LuaVirtualMachine) throws
+    var name: String { get }
+    
+    func execute(eventBus: Causality.Bus)
+    
+}
+
+extension CommandExecutor {
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
     
 }

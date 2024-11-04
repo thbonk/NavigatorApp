@@ -55,25 +55,12 @@ class ActionBar: NSObject, DSFQuickActionBarContentSource {
     // MARK: - DSFQuickActionBarContentSource
     
     func quickActionBar(_ quickActionBar: DSFQuickActionBar, itemsForSearchTermTask task: DSFQuickActionBar.SearchTask) {
-        if task.searchTerm.isEmpty {
-            let items = EventRegistry.shared.actionEvents
-            
-            task.complete(with: items)
-        } else {
-            let items = EventRegistry.shared.actionEvents
-                .filter {
-                    $0.description
-                        .lowercased()
-                        .localizedCaseInsensitiveContains(task.searchTerm.lowercased())
-                }
-            
-            task.complete(with: items)
-        }
+        self.items(for: task)
     }
     
     func quickActionBar(_ quickActionBar: DSFQuickActionBar, viewForItem item: AnyHashable, searchTerm: String) -> NSView? {
-        let actionEvent = item as! EventRegistry.ActionEvent
-        let label = NSTextField(labelWithString: actionEvent.description)
+        let command = item as! (any CommandExecutor)
+        let label = NSTextField(labelWithString: command.name)
         
         label.font = .systemFont(ofSize: max(NSFont.systemFontSize, 16))
         
@@ -85,8 +72,34 @@ class ActionBar: NSObject, DSFQuickActionBarContentSource {
     }
     
     func quickActionBar(_ quickActionBar: DSFQuickActionBar, didActivateItem item: AnyHashable) {
-        let actionEvent = item as! EventRegistry.ActionEvent
+        let commandExecutor = item as! (any CommandExecutor)
+        commandExecutor.execute(eventBus: self.eventBus)
+    }
+    
+    
+    // MARK: - Private Methods
+    
+    private func items(for searchTask: DSFQuickActionBar.SearchTask) {
+        if searchTask.searchTerm.isEmpty {
+            searchTask.complete(with: self.allItems() as! [AnyHashable])
+        } else {
+            let items = self.allItems()
+                .filter {
+                    $0.name
+                        .lowercased()
+                        .localizedCaseInsensitiveContains(searchTask.searchTerm.lowercased())
+                }
+            
+            searchTask.complete(with: items as! [AnyHashable])
+        }
+    }
+    
+    private func allItems() -> [any CommandExecutor] {
+        var items = [any CommandExecutor]()
         
-        EventRegistry.shared.publish(eventBus: self.eventBus, event: actionEvent.label)
+        items.append(contentsOf: EventRegistry.shared.actionEvents as [any CommandExecutor])
+        items.append(contentsOf: LuaCommandRegistry.shared.commands as [any CommandExecutor])
+        
+        return items.sorted(by: { $0.name < $1.name })
     }
 }

@@ -68,6 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             LuaVirtualMachine.shared.registerCustomExtensions(type: ApplicationSettings.self)
             LuaVirtualMachine.shared.registerCustomExtensions(type: NSApplication.self)
+            LuaVirtualMachine.shared.registerCustomExtensions(type: LuaCommandRegistry.self)
             
             if FileManager.default.fileExists(url: AppDelegate.ApplicationInitFile) && !FileManager.default.isDirectory(url: AppDelegate.ApplicationInitFile) {
                 try LuaVirtualMachine.shared.execute(url: AppDelegate.ApplicationInitFile)
