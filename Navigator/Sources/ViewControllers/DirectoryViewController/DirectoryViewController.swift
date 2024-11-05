@@ -25,6 +25,15 @@ import UniformTypeIdentifiers
 
 class DirectoryViewController: NSViewController, NSTableViewDelegate, NSTextFieldDelegate {
     
+    // MARK: - Public Properties
+    
+    public var selectedFiles: [String] {
+        return self.tableView
+            .selectedRowIndexes
+            .map { self.tableViewDataSource.directoryContents[$0].path }
+    }
+    
+    
     // MARK: - Outlets
     
     @IBOutlet private var tableView: DirectoryTableView!

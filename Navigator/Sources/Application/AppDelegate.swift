@@ -37,6 +37,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return applicationConfigDirectory.fileUrl
     }()
     
+    public static let ApplicationInitFile: URL = {
+        let applicationInitFile = AppDelegate.ApplicationConfigDirectory.appendingPathComponent("init.lua")
+        return applicationInitFile
+    }()
+    
     public static let ApplicationSettingsFile: URL = {
         let applicationSettingFile = AppDelegate.ApplicationConfigDirectory.appendingPathComponent("settings.lua")
         return applicationSettingFile
@@ -51,39 +56,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private var showAlertSubscription: Commands.ShowAlertSubscription!
     
-    private var settingsFileObserver: Cancellable?
-    
 
     // MARK: - NSApplicationDelegate
     
     override func awakeFromNib() {
         EventRegistry.initialize()
-        
         self.showAlertSubscription = AppDelegate.globalEventBus.subscribe(Commands.ShowAlert, handler: self.showAlert)
     }
     
     func applicationWillFinishLaunching(_ notification: Notification) {
         do {
-            try ApplicationSettings.initializeSettingsFile()
-            self.settingsFileObserver = FileManager.default.observeFileForChanges(
-                AppDelegate.ApplicationSettingsFile, handler: self.settingsFileChanged)
-            self.loadSettings()
+            LuaVirtualMachine.shared.registerCustomExtensions(type: ApplicationSettings.self)
+            LuaVirtualMachine.shared.registerCustomExtensions(type: NSApplication.self)
+            LuaVirtualMachine.shared.registerCustomExtensions(type: LuaCommandRegistry.self)
+            
+            if FileManager.default.fileExists(url: AppDelegate.ApplicationInitFile) && !FileManager.default.isDirectory(url: AppDelegate.ApplicationInitFile) {
+                try LuaVirtualMachine.shared.execute(url: AppDelegate.ApplicationInitFile)
+            }
         } catch {
             fatalError("Failed to initialize settings file: \(error). Please file a bug report at https://github.com/thbonk/NavigatorApp/issues.")
         }
         
         DispatchQueue.main.async {
             self.setupHotKeys()
-            
-            /*do {
-                try self.restoreWindows()
-            } catch {
-                if NSApp.windows.count == 0 {
-                    if ApplicationSettings.shared.openWindowOnStartup {
-                        self.newWindow(self)
-                    }
-                }
-            }*/
         }
         
         DispatchQueue.main.async {
@@ -106,7 +101,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        self.settingsFileObserver?.cancel()
         self.storeWindows()
     }
     
@@ -142,7 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction
     func showSettings(_ sender: Any) {
         NSWorkspace.shared.open(
-            [AppDelegate.ApplicationSettingsFile],
+            [AppDelegate.ApplicationConfigDirectory],
             withApplicationAt: ApplicationSettings.shared.editor,
             configuration: NSWorkspace.OpenConfiguration())
     }
@@ -234,50 +228,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func deregisterHotKeys() {
         self.bringToFrontHotKey.unregister()
-    }
-    
-    private func settingsFileChanged() {
-        DispatchQueue.main.async {
-            self.deregisterHotKeys()
-            self.loadSettings()
-            self.setupHotKeys()
-        }
-    }
-    
-    private func loadSettings() {
-        do {
-            try ApplicationSettings.shared.loadSettings()
-            Events.settingsChanged(eventBus: AppDelegate.globalEventBus)
-        } catch let error {
-            Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while loading settings", error: error)
-        }
-    }
-    
-    private func initializeSettingsFile() {
-        do {
-            let fileManager = FileManager.default
-            
-            if fileManager.fileExists(url: AppDelegate.ApplicationConfigDirectory) && fileManager.isDirectory(url: AppDelegate.ApplicationConfigDirectory) {
-                if !fileManager.fileExists(url: AppDelegate.ApplicationSettingsFile) {
-                    try self.copyDefaultSettingsFile()
-                }
-            } else {
-                try fileManager.removeItem(at: AppDelegate.ApplicationConfigDirectory)
-                try fileManager.createDirectory(at: AppDelegate.ApplicationConfigDirectory, withIntermediateDirectories: true)
-                
-                try self.copyDefaultSettingsFile()
-            }
-        } catch let error {
-            Commands.showErrorAlert(window: NSApp.keyWindow, title: "Error while initializing settings file. Using the default settings.", error: error)
-        }
-    }
-    
-    private func copyDefaultSettingsFile() throws {
-        // Copy default file
-        let defaultFileUrl = Bundle.main.url(forResource: "default-settings.marco", withExtension: "")
-        try FileManager.default.copyItem(
-            at: defaultFileUrl!,
-            to: AppDelegate.ApplicationConfigDirectory.appendingPathComponent("settings.marco"))
     }
     
     private func storeWindows() {

@@ -23,13 +23,15 @@ import Foundation
 
 class EventRegistry {
     
-    struct ActionEvent: Hashable {
+    struct ActionEvent: Hashable, CommandExecutor {
         
         // MARK: - Public Properties
         
         let label: String
         let event: Causality.Event<Causality.NoMessage>
         let description: String
+        
+        weak var registry: EventRegistry?
         
         
         // MARK: - Hashable
@@ -40,6 +42,19 @@ class EventRegistry {
         
         func hash(into hasher: inout Hasher) {
             hasher.combine(description)
+        }
+        
+        
+        // MARK: - CommandExecutor
+        
+        var name: String {
+            self.description
+        }
+        
+        func execute(eventBus: Causality.Bus) {
+            if let registry {
+                registry.publish(eventBus: eventBus, event: self.label)
+            }
         }
     }
     
@@ -69,7 +84,8 @@ class EventRegistry {
                 return ActionEvent(
                     label: $0,
                     event: self.events[$0]!.event,
-                    description: description)
+                    description: description,
+                    registry: self)
             }
             .sorted(by: { $0.description < $1.description })
     }

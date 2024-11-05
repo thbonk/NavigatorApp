@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftyLua/CLua",
       "state" : {
-        "revision" : "cbe3f84d05a245273c95064aee0430d4c0bd96ea",
-        "version" : "5.4.3"
+        "branch" : "main",
+        "revision" : "6cbd08845f9746095cf6ddde426acb5cda8a01ac"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftyLua/lua4swift",
       "state" : {
-        "revision" : "ceb89fd07e8ea09b1f06fe847207bea7cef04662",
-        "version" : "1.1.2"
+        "branch" : "main",
+        "revision" : "7d2cec6ef9abbb3a9325d7bd8fd75928691d94ab"
       }
     },
     {
@@ -79,7 +79,7 @@
       "location" : "git@github.com:SwiftyLua/SwiftyLua.git",
       "state" : {
         "branch" : "main",
-        "revision" : "9ae553dee83815f9da752d53fbaa4508530fb607"
+        "revision" : "b48ea749f8e31517b420db3bdc506a5d0e22a5a9"
       }
     }
   ],
